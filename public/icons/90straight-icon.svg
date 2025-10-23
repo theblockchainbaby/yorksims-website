@@ -1,0 +1,30 @@
+<svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="128" height="128" fill="#0a0a0a" rx="12"/>
+  
+  <!-- Stopwatch/Timer -->
+  <g transform="translate(64, 64)">
+    <!-- Watch circle -->
+    <circle cx="0" cy="0" r="28" fill="none" stroke="#f87171" stroke-width="2.5" opacity="0.9"/>
+    
+    <!-- Watch inner circle -->
+    <circle cx="0" cy="0" r="24" fill="none" stroke="#f87171" stroke-width="1" opacity="0.5"/>
+    
+    <!-- Button on top -->
+    <rect x="-4" y="-32" width="8" height="6" fill="#f87171" rx="1" opacity="0.8"/>
+    
+    <!-- Hour hand -->
+    <line x1="0" y1="0" x2="0" y2="-12" stroke="#f87171" stroke-width="2.5" opacity="0.9"/>
+    
+    <!-- Minute hand -->
+    <line x1="0" y1="0" x2="15" y2="0" stroke="#f87171" stroke-width="2" opacity="0.8"/>
+    
+    <!-- Center dot -->
+    <circle cx="0" cy="0" r="3" fill="#f87171" opacity="1"/>
+    
+    <!-- Numbers (simplified) -->
+    <text x="0" y="-20" text-anchor="middle" fill="#f87171" font-size="8" opacity="0.6">12</text>
+    <text x="20" y="5" text-anchor="middle" fill="#f87171" font-size="8" opacity="0.6">3</text>
+  </g>
+</svg>
+

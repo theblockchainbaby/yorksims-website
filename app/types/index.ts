@@ -6,6 +6,7 @@ export interface Portal {
   name: string;
   description: string;
   icon: string;
+  iconType?: 'emoji' | 'image'; // New field to distinguish between emoji and image
   color: string;
   glowColor: string;
   route: string;

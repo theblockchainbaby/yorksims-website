@@ -1,0 +1,36 @@
+<svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="128" height="128" fill="#0a0a0a" rx="12"/>
+
+  <!-- Padlock -->
+  <g transform="translate(64, 64)">
+    <!-- Shackle (top curved part) -->
+    <path d="M -16 -8 Q -16 -28 0 -28 Q 16 -28 16 -8"
+          fill="none" stroke="#00d9ff" stroke-width="3" stroke-linecap="round" opacity="0.95"/>
+
+    <!-- Lock body -->
+    <rect x="-22" y="-6" width="44" height="32" fill="none" stroke="#00d9ff" stroke-width="2.5" rx="3" opacity="0.95"/>
+
+    <!-- Lock body fill (subtle) -->
+    <rect x="-20" y="-4" width="40" height="28" fill="#00d9ff" opacity="0.15" rx="2"/>
+
+    <!-- Keyhole circle -->
+    <circle cx="0" cy="6" r="5" fill="none" stroke="#00d9ff" stroke-width="2" opacity="0.9"/>
+
+    <!-- Keyhole inner -->
+    <circle cx="0" cy="6" r="2.5" fill="#00d9ff" opacity="0.6"/>
+
+    <!-- Keyhole stem -->
+    <rect x="-1.5" y="11" width="3" height="8" fill="#00d9ff" opacity="0.7"/>
+
+    <!-- Blockchain nodes (bottom) -->
+    <circle cx="-12" cy="20" r="2.5" fill="#23f0c6" opacity="0.8"/>
+    <circle cx="0" cy="20" r="2.5" fill="#23f0c6" opacity="0.8"/>
+    <circle cx="12" cy="20" r="2.5" fill="#23f0c6" opacity="0.8"/>
+
+    <!-- Connecting lines -->
+    <line x1="-9.5" y1="20" x2="-2.5" y2="20" stroke="#23f0c6" stroke-width="1" opacity="0.5"/>
+    <line x1="2.5" y1="20" x2="9.5" y2="20" stroke="#23f0c6" stroke-width="1" opacity="0.5"/>
+  </g>
+</svg>
+

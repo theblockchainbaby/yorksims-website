@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Portal } from '@/app/types';
 
 interface PortalCardProps {
@@ -48,11 +49,26 @@ export function PortalCard({ portal, index, onHover }: PortalCardProps) {
           />
 
           {/* Content */}
-          <div className="relative z-10 text-center">
-            <div className="text-4xl mb-2">{portal.icon}</div>
-            <h3 className="text-xs font-bold text-white group-hover:text-neon-green transition-colors">
-              {portal.name.split(' ')[0]}
-            </h3>
+          <div className="relative z-10 w-full h-full">
+            {portal.iconType === 'image' ? (
+              <div className="w-full h-full relative">
+                <Image
+                  src={portal.icon}
+                  alt={portal.name}
+                  fill
+                  className="object-cover rounded-lg"
+                  sizes="128px"
+                  priority
+                />
+              </div>
+            ) : (
+              <div className="text-center flex flex-col items-center justify-center h-full">
+                <div className="text-4xl mb-2">{portal.icon}</div>
+                <h3 className="text-xs font-bold text-white group-hover:text-neon-green transition-colors">
+                  {portal.name.split(' ')[0]}
+                </h3>
+              </div>
+            )}
           </div>
 
           {/* Border animation */}

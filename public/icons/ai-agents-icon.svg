@@ -1,0 +1,35 @@
+<svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="128" height="128" fill="#0a0a0a" rx="12"/>
+  
+  <!-- AI Robot head -->
+  <g transform="translate(64, 64)">
+    <!-- Head -->
+    <rect x="-20" y="-25" width="40" height="35" fill="none" stroke="#b000ff" stroke-width="2" rx="4" opacity="0.9"/>
+    
+    <!-- Eyes -->
+    <circle cx="-10" cy="-15" r="4" fill="#ff006e" opacity="0.8"/>
+    <circle cx="10" cy="-15" r="4" fill="#ff006e" opacity="0.8"/>
+    
+    <!-- Eye glow -->
+    <circle cx="-10" cy="-15" r="2" fill="#ff006e" opacity="1"/>
+    <circle cx="10" cy="-15" r="2" fill="#ff006e" opacity="1"/>
+    
+    <!-- Mouth/speaker -->
+    <path d="M -8 -2 Q 0 2 8 -2" fill="none" stroke="#b000ff" stroke-width="2" opacity="0.7"/>
+    
+    <!-- Antenna -->
+    <line x1="-18" y1="-28" x2="-18" y2="-40" stroke="#b000ff" stroke-width="2" opacity="0.8"/>
+    <circle cx="-18" cy="-42" r="2" fill="#b000ff" opacity="0.9"/>
+    
+    <line x1="18" y1="-28" x2="18" y2="-40" stroke="#b000ff" stroke-width="2" opacity="0.8"/>
+    <circle cx="18" cy="-42" r="2" fill="#b000ff" opacity="0.9"/>
+    
+    <!-- Chest panel -->
+    <rect x="-15" y="8" width="30" height="15" fill="none" stroke="#b000ff" stroke-width="1.5" opacity="0.6"/>
+    <circle cx="-8" cy="15" r="2" fill="#ff006e" opacity="0.7"/>
+    <circle cx="0" cy="15" r="2" fill="#ff006e" opacity="0.7"/>
+    <circle cx="8" cy="15" r="2" fill="#ff006e" opacity="0.7"/>
+  </g>
+</svg>
+
