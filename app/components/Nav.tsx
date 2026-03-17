@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+
 import { usePathname } from "next/navigation";
 
 const links = [
@@ -16,13 +17,12 @@ export default function Nav() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[#1e1e1e] bg-[#0a0a0a]/90 backdrop-blur-sm">
-      <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-6 h-[80px] flex items-center justify-between overflow-visible">
 
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <span className="text-sm font-bold tracking-widest text-white uppercase">
-            York<span className="text-[#e63946]">Sims</span>
-          </span>
+        <Link href="/" className="flex items-center group">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/nsu-logo.png" alt="York State University" className="h-[100px]" />
         </Link>
 
         {/* Links */}

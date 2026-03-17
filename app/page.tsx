@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import dynamic from "next/dynamic";
 import { motion, useInView } from "framer-motion";
 import { gsap } from "gsap";
@@ -11,7 +12,7 @@ import { Meteors } from "./components/magicui/meteors";
 import { ShimmerButton } from "./components/magicui/shimmer-button";
 import { BorderBeam } from "./components/magicui/border-beam";
 import { MagicCard } from "./components/magicui/magic-card";
-import { Marquee } from "./components/magicui/marquee";
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -255,7 +256,7 @@ export default function Home() {
 
       const st = ScrollTrigger.create({
         trigger: section,
-        start: "top top",
+        start: "top 56px",
         end: () => `+=${totalWidth}`,
         pin: true,
         scrub: 1,
@@ -368,81 +369,99 @@ export default function Home() {
       </section>
 
       {/* ── TECH MARQUEE ──────────────────────────────────────────────────── */}
-      <div className="relative border-t border-white/[0.04] py-8 overflow-hidden" style={{ zIndex: 1, background: "#0a0a0a" }}>
-        <Marquee pauseOnHover className="[--duration:30s] [--gap:3rem]">
-          {["Next.js", "Supabase", "Vercel", "ElevenLabs", "OpenAI", "Solana", "XRPL", "SystemVerilog", "MCP", "GSAP", "Three.js", "Framer Motion", "Neon", "Python", "Node.js", "Docker"].map((tech) => (
-            <span key={tech} className="text-[11px] uppercase tracking-[0.2em] text-white/20 font-mono whitespace-nowrap px-4">
-              {tech}
-            </span>
+      <div className="relative border-t border-white/[0.04] py-6 overflow-hidden" style={{ zIndex: 1, background: "#0a0a0a" }}>
+        <motion.div
+          className="flex whitespace-nowrap"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ duration: 20, ease: "linear", repeat: Infinity }}
+        >
+          {[...Array(2)].map((_, dupeIdx) => (
+            <div key={dupeIdx} className="flex shrink-0">
+              {["Next.js", "Supabase", "Vercel", "ElevenLabs", "OpenAI", "Solana", "XRPL", "SystemVerilog", "MCP", "GSAP", "Three.js", "Framer Motion", "Neon", "Python", "Node.js", "Docker"].map((tech) => (
+                <span key={`${dupeIdx}-${tech}`} className="text-[11px] uppercase tracking-[0.2em] text-white/20 font-mono whitespace-nowrap px-6">
+                  {tech} <span className="text-[#e63946]/30 ml-3">{"\u2022"}</span>
+                </span>
+              ))}
+            </div>
           ))}
-        </Marquee>
+        </motion.div>
       </div>
 
       {/* ── PROBLEM / SOLUTION ────────────────────────────────────────────── */}
-      <section className="relative border-t border-white/[0.08] py-52 flex justify-center" style={{ zIndex: 1, background: "#0a0a0a" }}>
-        <div className="w-full max-w-5xl mx-auto px-8 md:px-16 text-center">
+      <section style={{ zIndex: 1, background: "#0a0a0a", display: "flex", justifyContent: "center", borderTop: "1px solid rgba(255,255,255,0.08)", padding: "208px 64px" }}>
+        <div style={{ width: "100%", maxWidth: "896px", textAlign: "center" }}>
 
-          {/* Headline block */}
-          <div className="mb-20">
-            <div style={{ height: "50px" }} />
-            <Reveal>
-              <p className="text-[11px] uppercase tracking-[0.24em] text-[#e63946]">The Difference</p>
-            </Reveal>
-            <Reveal delay={0.05}>
-              <h2 className="text-[clamp(40px,5.5vw,72px)] leading-[0.96] font-semibold tracking-tight max-w-4xl mx-auto" style={{ paddingLeft: "24px" }}>
-                The education space is full of talkers.
-              </h2>
-              <div style={{ height: "25px" }} />
-              <p className="text-[17px] leading-7 text-white/40 max-w-2xl mx-auto">
-                Not theory. Not commentary. Real shipped work across software, AI, hardware, blockchain, business, and physical products.
-              </p>
-              <div style={{ height: "25px" }} />
-            </Reveal>
+          <Reveal>
+            <p className="text-[11px] uppercase tracking-[0.24em] text-[#e63946]">The Difference</p>
+          </Reveal>
+
+          <div style={{ height: "40px" }} />
+
+          <Reveal delay={0.05}>
+            <h2 className="text-[clamp(40px,5.5vw,72px)] leading-[0.96] font-semibold tracking-tight">
+              The education space is full of talkers.
+            </h2>
+          </Reveal>
+
+          <div style={{ height: "48px" }} />
+
+          {/* Animated subtitle — word-by-word with color highlights */}
+          <div style={{ maxWidth: "600px", margin: "0 auto", marginBottom: "80px" }}>
+            {(() => {
+              const words = "Not theory. Not commentary. Real shipped work across software, AI, hardware, blockchain, business, and physical products.".split(" ");
+              const highlights = new Set(["software,", "AI,", "hardware,", "blockchain,", "business,"]);
+              return (
+                <p className="text-[17px] leading-8 text-white/40" style={{ textAlign: "center" }}>
+                  {words.map((word, i) => (
+                    <motion.span
+                      key={i}
+                      initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+                      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                      viewport={{ once: true, margin: "-40px" }}
+                      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.15 + i * 0.04 }}
+                      style={{
+                        display: "inline-block",
+                        marginRight: "0.3em",
+                        color: highlights.has(word) ? "rgba(230,57,70,0.8)" : undefined,
+                        fontWeight: highlights.has(word) ? 600 : undefined,
+                      }}
+                    >
+                      {word}
+                    </motion.span>
+                  ))}
+                </p>
+              );
+            })()}
           </div>
 
           {/* Column headers */}
           <div className="grid grid-cols-2 gap-5 mb-6">
             <SlideFrom dir="left" delay={0.05}>
-              <p className="text-[11px] uppercase tracking-[0.22em] text-white/20 px-2">Every other platform</p>
+              <p className="text-[11px] uppercase tracking-[0.22em] text-white/20">Every other platform</p>
             </SlideFrom>
             <SlideFrom dir="right" delay={0.05}>
-              <p className="text-[11px] uppercase tracking-[0.22em] text-[#e63946] px-2">YorkSims.com</p>
+              <p className="text-[11px] uppercase tracking-[0.22em] text-[#e63946]">YorkSims.com</p>
             </SlideFrom>
           </div>
 
-          {/* Individual comparison rows */}
+          {/* Comparison rows */}
           {[
-            {
-              bad: "Interviews about what successful people did",
-              good: "Here's how I built it — and here's the code",
-            },
-            {
-              bad: "Surface-level business concepts & motivation",
-              good: "Deep technical: build a SaaS, design a chip, structure a deal",
-            },
-            {
-              bad: "Podcast episodes, webinars, community talks",
-              good: "Templates, codebases, contracts, SOPs you use TODAY",
-            },
-            {
-              bad: "Finish knowing what an LLC is",
-              good: "Finish having formed the LLC — op agreement in hand",
-            },
-            {
-              bad: "Leave inspired — still stuck",
-              good: "Leave with a deployed SaaS on Vercel",
-            },
+            { bad: "Interviews about what successful people did", good: "Here\u2019s how I built it \u2014 and here\u2019s the code" },
+            { bad: "Surface-level business concepts & motivation", good: "Deep technical: build a SaaS, design a chip, structure a deal" },
+            { bad: "Podcast episodes, webinars, community talks", good: "Templates, codebases, contracts, SOPs you use TODAY" },
+            { bad: "Finish knowing what an LLC is", good: "Finish having formed the LLC \u2014 op agreement in hand" },
+            { bad: "Leave inspired \u2014 still stuck", good: "Leave with a deployed SaaS on Vercel" },
           ].map((row, i) => (
             <div key={i} className="grid grid-cols-2 gap-5 mb-4">
               <SlideFrom dir="left" delay={0.08 + i * 0.07}>
-                <div className="rounded-[20px] bg-white/[0.02] ring-1 ring-white/[0.05] px-6 py-5 flex gap-4 items-start">
+                <div className="rounded-[20px] bg-white/[0.02] ring-1 ring-white/[0.05] px-6 py-5 flex gap-4 items-start text-left">
                   <span className="mt-2 h-1.5 w-1.5 rounded-full bg-white/15 shrink-0" />
                   <span className="text-[14px] leading-relaxed text-white/30">{row.bad}</span>
                 </div>
               </SlideFrom>
               <SlideFrom dir="right" delay={0.08 + i * 0.07}>
                 <motion.div
-                  className="rounded-[20px] ring-1 ring-white/[0.08] px-6 py-5 flex gap-4 items-start"
+                  className="rounded-[20px] ring-1 ring-white/[0.08] px-6 py-5 flex gap-4 items-start text-left"
                   style={{
                     background: "linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)",
                     boxShadow: "0 0 40px rgba(230,57,70,0.05)",
@@ -462,57 +481,84 @@ export default function Home() {
       {/* ── 10 VERTICALS — HORIZONTAL SCROLL ─────────────────────────────── */}
       <section
         ref={horizontalRef}
-        className="relative overflow-hidden py-0"
-        style={{ zIndex: 1, background: "#0a0a0a" }}
+        className="relative overflow-hidden"
+        style={{ zIndex: 1, borderTop: "1px solid rgba(255,255,255,0.08)", padding: "48px 0 0 0" }}
       >
-        <div className="border-t border-white/[0.08] py-48 px-8 md:px-16 max-w-6xl mx-auto lg:px-16 lg:max-w-none">
-          <div className="max-w-6xl mx-auto mb-20">
-            <div style={{ height: "96px" }} />
+        <div style={{ display: "flex", justifyContent: "center", padding: "0 64px", marginBottom: "12px" }}>
+          <div style={{ width: "100%", maxWidth: "896px", textAlign: "center" }}>
             <FlipIn>
-              <p className="text-[11px] uppercase tracking-[0.24em] text-[#e63946] mb-5">10 Verticals</p>
+              <p className="text-[11px] uppercase tracking-[0.24em] text-[#e63946]" style={{ marginBottom: "40px" }}>10 Verticals</p>
             </FlipIn>
-            <div style={{ height: "32px" }} />
-            <h2 className="text-[clamp(36px,5vw,72px)] leading-[0.96] font-semibold tracking-tight max-w-3xl mb-5">
-              <WordReveal text="More breadth than any single competitor. Every one with receipts." delay={0.05} />
-            </h2>
-            <Reveal delay={0.2}>
-              <p className="text-[17px] leading-7 text-white/40 max-w-xl">
-                Software. AI. Hardware. Blockchain. Business. Products. Land. Athletics. Automotive. Creative Tech.
-              </p>
+            <Reveal delay={0.05}>
+              <h2 className="text-[clamp(36px,5vw,72px)] leading-[0.96] font-semibold tracking-tight" style={{ maxWidth: "720px", margin: "0 auto", marginBottom: "40px" }}>
+                More breadth than any single competitor. Every one with receipts.
+              </h2>
             </Reveal>
+            {/* Animated verticals list */}
+            <div style={{ margin: "0 auto", maxWidth: "700px", marginBottom: "8px" }}>
+              <p className="text-[17px] leading-7" style={{ textAlign: "center" }}>
+                {["Software.", "AI.", "Hardware.", "Blockchain.", "Business.", "Products.", "Land.", "Athletics.", "Automotive.", "Creative Tech."].map((word, i) => (
+                  <motion.span
+                    key={word}
+                    initial={{ opacity: 0, scale: 0.6, filter: "blur(8px)" }}
+                    whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                    viewport={{ once: true, margin: "-40px" }}
+                    transition={{ duration: 0.5, ease: [0.34, 1.56, 0.64, 1], delay: 0.2 + i * 0.06 }}
+                    style={{
+                      display: "inline-block",
+                      marginRight: "0.4em",
+                      color: i % 2 === 0 ? "rgba(255,255,255,0.5)" : "rgba(230,57,70,0.6)",
+                    }}
+                  >
+                    {word}
+                  </motion.span>
+                ))}
+              </p>
+            </div>
           </div>
+        </div>
 
-          {/* Desktop: horizontal scroll track */}
-          <div className="hidden lg:block overflow-hidden">
-            <div ref={trackRef} className="flex gap-4 px-8 md:px-16 w-max pb-4">
-              {VERTICALS.map((v, i) => (
-                <motion.div
-                  key={v.num}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: i * 0.04 }}
-                >
-                  <Link href={v.href}>
-                    <MagicCard className="w-[300px] rounded-[28px] p-8 cursor-pointer h-52 flex flex-col justify-between bg-[#0a0a0a]">
+        {/* Desktop: horizontal scroll track */}
+        <div className="hidden lg:block overflow-hidden" style={{ paddingBottom: "16px" }}>
+          <div ref={trackRef} style={{ display: "flex", gap: "16px", width: "max-content", paddingLeft: "calc(50vw - 150px)", paddingRight: "calc(50vw - 150px)", paddingBottom: "16px" }}>
+            {VERTICALS.map((v, i) => (
+              <motion.div
+                key={v.num}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: i * 0.04 }}
+              >
+                <Link href={v.href}>
+                  <div className="relative w-[300px] rounded-[28px] cursor-pointer h-52 overflow-hidden group">
+                    {/* Background image */}
+                    <div
+                      className="absolute inset-0 opacity-30 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                      style={{ backgroundImage: `url(/verticals/${v.href.split("/").pop()}.webp)` }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/50 to-[#0a0a0a]/20" />
+                    <div className="absolute inset-0 ring-1 ring-white/[0.08] rounded-[28px]" />
+                    <div className="relative p-8 h-full flex flex-col justify-between">
                       <div>
                         <span className="text-[11px] font-medium tracking-[0.18em] uppercase text-white/20 block mb-5">{v.num}</span>
                         <p className="text-[20px] leading-[1.15] font-semibold text-white">{v.title}</p>
                       </div>
                       <span className="text-[11px] tracking-[0.08em] uppercase text-white/25">{v.tag}</span>
-                    </MagicCard>
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
           </div>
+        </div>
 
-          {/* Mobile grid */}
-          <div className="lg:hidden grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {/* Mobile grid */}
+        <div className="lg:hidden" style={{ display: "flex", justifyContent: "center", padding: "0 64px 192px" }}>
+          <div style={{ width: "100%", maxWidth: "896px", display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "16px" }}>
             {VERTICALS.map((v, i) => (
               <FlipIn key={v.num} delay={i * 0.05}>
                 <Link href={v.href}>
-                  <MagicCard className="rounded-[28px] p-8 bg-[#0a0a0a]">
+                  <MagicCard className="rounded-[28px] p-8 bg-[#0a0a0a]/60 backdrop-blur-md">
                     <span className="text-[11px] font-medium tracking-[0.18em] uppercase text-white/20 block mb-4">{v.num}</span>
                     <p className="text-[18px] leading-[1.2] font-semibold text-white mb-6">{v.title}</p>
                     <span className="text-[11px] tracking-[0.08em] uppercase text-white/25">{v.tag}</span>
@@ -525,8 +571,8 @@ export default function Home() {
       </section>
 
       {/* ── ABOUT ─────────────────────────────────────────────────────────── */}
-      <section className="relative py-52 px-8 md:px-16 border-t border-white/[0.08]" style={{ zIndex: 1, background: "#0a0a0a" }}>
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+      <section style={{ zIndex: 1, background: "#0a0a0a", display: "flex", justifyContent: "center", borderTop: "1px solid rgba(255,255,255,0.08)", padding: "208px 64px" }}>
+        <div style={{ width: "100%", maxWidth: "896px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center" }}>
           <div>
             <FlipIn>
               <p className="text-[11px] uppercase tracking-[0.24em] text-[#e63946] mb-8">Built by a Builder</p>
@@ -567,14 +613,14 @@ export default function Home() {
           </div>
 
           {/* Stat grid */}
-          <div className="grid grid-cols-2 gap-4">
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
             {[
-              { label: "Full-Stack SaaS",     sub: "VitrOS — Next.js + Supabase" },
-              { label: "AI Voice Agents",      sub: "Otto + MoltBot + YorkAi" },
+              { label: "Full-Stack SaaS",     sub: "VitrOS \u2014 Next.js + Supabase" },
+              { label: "Agentic AI Agents",   sub: "Otto + MoltBot + YorkAi" },
               { label: "Semiconductor RTL",    sub: "HBM memory in SystemVerilog" },
-              { label: "Web3 / Blockchain",    sub: "DualPay · ChainPlay · XRPL" },
+              { label: "Web3 / Blockchain",    sub: "DualPay \u00b7 ChainPlay \u00b7 XRPL" },
               { label: "Cannabis Industry",    sub: "Farm to distribution" },
-              { label: "Land Development",     sub: "Raw land → built from scratch" },
+              { label: "Land Development",     sub: "Raw land \u2192 built from scratch" },
             ].map((item, i) => (
               <FlipIn key={item.label} delay={0.1 + i * 0.08}>
                 <MagicCard className="rounded-[16px] p-4 cursor-default bg-[#0a0a0a]">
@@ -588,8 +634,8 @@ export default function Home() {
       </section>
 
       {/* ── PRICING ───────────────────────────────────────────────────────── */}
-      <section id="pricing" className="relative py-44 px-8 md:px-16 border-t border-white/[0.08]" style={{ zIndex: 1, background: "#0a0a0a" }}>
-        <div className="max-w-6xl mx-auto">
+      <section id="pricing" style={{ zIndex: 1, background: "#0a0a0a", display: "flex", justifyContent: "center", borderTop: "1px solid rgba(255,255,255,0.08)", padding: "176px 64px" }}>
+        <div style={{ width: "100%", maxWidth: "1100px" }}>
           <FlipIn>
             <p className="text-[11px] uppercase tracking-[0.24em] text-[#e63946] mb-6">Pricing</p>
           </FlipIn>
@@ -598,7 +644,7 @@ export default function Home() {
             <WordReveal text="Pick your level. Start building." delay={0.1} />
           </h2>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "16px" }}>
             {PRICING.map((plan, i) => (
               <motion.div
                 key={plan.name}
@@ -621,7 +667,7 @@ export default function Home() {
                   )}
                   <div className="mb-5">
                     <p className="text-xs uppercase tracking-widest text-[#444] font-mono mb-2">{plan.name}</p>
-                    <div className="flex items-baseline gap-1">
+                    <div style={{ display: "flex", alignItems: "baseline", gap: "4px" }}>
                       <span className="text-4xl font-black">{plan.price}</span>
                       {plan.per && <span className="text-sm text-[#444]">{plan.per}</span>}
                     </div>
@@ -636,7 +682,7 @@ export default function Home() {
                   >
                     {plan.features.map((f) => (
                       <motion.li key={f} variants={staggerItem} className="flex gap-2 text-xs text-[#777] items-start">
-                        <span className="text-[#e63946] shrink-0 mt-px">→</span>
+                        <span className="text-[#e63946] shrink-0 mt-px">{"\u2192"}</span>
                         {f}
                       </motion.li>
                     ))}
@@ -659,7 +705,7 @@ export default function Home() {
       </section>
 
       {/* ── CLOSING STATEMENT ─────────────────────────────────────────────── */}
-      <section className="relative py-52 px-8 md:px-16 border-t border-white/[0.08] overflow-hidden" style={{ zIndex: 1, background: "#0a0a0a" }}>
+      <section className="relative overflow-hidden" style={{ zIndex: 1, display: "flex", justifyContent: "center", borderTop: "1px solid rgba(255,255,255,0.08)", padding: "208px 64px" }}>
         <Meteors number={24} />
         {/* Pulsing red ambient glow */}
         <motion.div
@@ -669,7 +715,7 @@ export default function Home() {
           style={{ background: "radial-gradient(ellipse, rgba(230,57,70,0.08) 0%, transparent 70%)" }}
         />
 
-        <div className="relative max-w-5xl mx-auto text-center">
+        <div className="relative" style={{ width: "100%", maxWidth: "896px", textAlign: "center" }}>
           <ScaleUp>
             <p className="text-xs font-mono uppercase tracking-[0.25em] text-[#e63946] mb-8">The Moat</p>
           </ScaleUp>
@@ -701,21 +747,21 @@ export default function Home() {
       </section>
 
       {/* ── FOOTER ────────────────────────────────────────────────────────── */}
-      <footer className="relative border-t border-white/[0.08] py-16 px-8 md:px-16" style={{ zIndex: 1, background: "#0a0a0a" }}>
+      <footer style={{ zIndex: 1, background: "#0a0a0a", display: "flex", justifyContent: "center", borderTop: "1px solid rgba(255,255,255,0.08)", padding: "64px" }}>
         <motion.div
-          className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6"
+          style={{ width: "100%", maxWidth: "896px", display: "flex", justifyContent: "space-between", alignItems: "center", gap: "24px" }}
           variants={staggerContainer}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-20px" }}
         >
-          <motion.span variants={staggerItem} className="text-sm font-black tracking-widest uppercase">
-            York<span className="text-[#e63946]">Sims</span>.com
-          </motion.span>
-          <motion.p variants={staggerItem} className="text-xs text-[#2a2a2a] font-mono">
-            Teaching Execution, Not Theory — Built by a Builder, for Builders
+          <motion.div variants={staggerItem}>
+            <Image src="/logo-v3.png" alt="YorkSims" width={160} height={45} className="h-10 w-auto" />
+          </motion.div>
+          <motion.p variants={staggerItem} className="text-xs text-white/30 font-mono">
+            Teaching Execution, Not Theory {"\u2014"} Built by a Builder, for Builders
           </motion.p>
-          <motion.div variants={staggerItem} className="flex gap-6">
+          <motion.div variants={staggerItem} style={{ display: "flex", gap: "24px" }}>
             {[
               { label: "GitHub", href: "https://github.com/theblockchainbaby", external: true },
               { label: "Platform", href: "/hub", external: false },
@@ -724,9 +770,9 @@ export default function Home() {
             ].map((l) => (
               l.external
                 ? <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer"
-                     className="text-xs text-[#333] hover:text-white transition-colors">{l.label}</a>
+                     className="text-xs text-white/40 hover:text-white transition-colors">{l.label}</a>
                 : <Link key={l.label} href={l.href}
-                        className="text-xs text-[#333] hover:text-white transition-colors">{l.label}</Link>
+                        className="text-xs text-white/40 hover:text-white transition-colors">{l.label}</Link>
             ))}
           </motion.div>
         </motion.div>

@@ -26,7 +26,11 @@
 
 html {
   scroll-behavior: smooth;
-  scrollbar-gutter: stable;
+}
+
+.animate-marquee {
+  animation: marquee var(--duration, 20s) infinite linear !important;
+  animation-play-state: running !important;
 }
 
 body {
