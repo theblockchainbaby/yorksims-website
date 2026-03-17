@@ -9,43 +9,59 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Dark futuristic palette
-        'dark-bg': '#0a0a0a',
-        'dark-surface': '#1a1a1a',
-        'dark-card': '#252525',
-        'neon-green': '#00ff88',
-        'neon-cyan': '#00d9ff',
-        'neon-purple': '#b000ff',
-        'neon-pink': '#ff006e',
-        'cyber-blue': '#0066ff',
-        'xrpl-green': '#23f0c6',
+        'dark-bg':      '#0a0a0a',
+        'dark-surface': '#111111',
+        'dark-card':    '#161616',
+        'dark-border':  '#1e1e1e',
+        'accent':       '#e63946',
+        'accent-hover': '#ff4d5a',
+        'muted':        '#666666',
+        'muted-light':  '#999999',
       },
-      backgroundImage: {
-        'gradient-cyber': 'linear-gradient(135deg, #0066ff 0%, #00d9ff 50%, #23f0c6 100%)',
-        'gradient-neon': 'linear-gradient(135deg, #b000ff 0%, #ff006e 100%)',
-        'grid-pattern': 'linear-gradient(0deg, transparent 24%, rgba(0, 255, 136, 0.05) 25%, rgba(0, 255, 136, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 136, 0.05) 75%, rgba(0, 255, 136, 0.05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0, 255, 136, 0.05) 25%, rgba(0, 255, 136, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 136, 0.05) 75%, rgba(0, 255, 136, 0.05) 76%, transparent 77%, transparent)',
+      fontFamily: {
+        sans: ['var(--font-geist-sans)', 'system-ui', 'sans-serif'],
+        mono: ['var(--font-geist-mono)', 'monospace'],
       },
       animation: {
-        'pulse-glow': 'pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'float': 'float 6s ease-in-out infinite',
-        'scan': 'scan 3s linear infinite',
+        'fade-up':        'fadeUp 0.5s ease forwards',
+        'fade-in':        'fadeIn 0.4s ease forwards',
+        'meteor':         'meteor 5s linear infinite',
+        'shimmer-slide':  'shimmer-slide var(--speed) ease-in-out infinite alternate',
+        'spin-around':    'spin-around calc(var(--speed)*2) infinite linear',
+        'marquee':        'marquee var(--duration) infinite linear',
+        'marquee-vertical': 'marquee-vertical var(--duration) linear infinite',
       },
       keyframes: {
-        'pulse-glow': {
-          '0%, 100%': { opacity: '1', boxShadow: '0 0 20px rgba(0, 255, 136, 0.5)' },
-          '50%': { opacity: '0.8', boxShadow: '0 0 40px rgba(0, 255, 136, 0.8)' },
+        fadeUp: {
+          '0%':   { opacity: '0', transform: 'translateY(16px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
-        'float': {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-20px)' },
+        fadeIn: {
+          '0%':   { opacity: '0' },
+          '100%': { opacity: '1' },
         },
-        'scan': {
-          '0%': { transform: 'translateY(-100%)' },
-          '100%': { transform: 'translateY(100%)' },
+        meteor: {
+          '0%':   { transform: 'rotate(var(--angle)) translateX(0)', opacity: '1' },
+          '70%':  { opacity: '1' },
+          '100%': { transform: 'rotate(var(--angle)) translateX(-500px)', opacity: '0' },
         },
-      },
-      backdropBlur: {
-        xs: '2px',
+        'shimmer-slide': {
+          to: { transform: 'translate(calc(100cqw - 100%), 0)' },
+        },
+        'spin-around': {
+          '0%':   { transform: 'translateZ(0) rotate(0)' },
+          '15%, 35%': { transform: 'translateZ(0) rotate(90deg)' },
+          '65%, 85%': { transform: 'translateZ(0) rotate(270deg)' },
+          '100%': { transform: 'translateZ(0) rotate(360deg)' },
+        },
+        'marquee': {
+          from: { transform: 'translateX(0)' },
+          to:   { transform: 'translateX(calc(-100% - var(--gap)))' },
+        },
+        'marquee-vertical': {
+          from: { transform: 'translateY(0)' },
+          to:   { transform: 'translateY(calc(-100% - var(--gap)))' },
+        },
       },
     },
   },
@@ -53,4 +69,3 @@ const config: Config = {
 };
 
 export default config;
-

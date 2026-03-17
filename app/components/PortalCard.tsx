@@ -28,15 +28,20 @@ export function PortalCard({ portal, index, onHover }: PortalCardProps) {
       style={{
         left: '50%',
         top: '50%',
-        marginLeft: '-64px',
-        marginTop: '-64px',
+        marginLeft: '-80px',
+        marginTop: '-80px',
       }}
     >
       <Link href={portal.route}>
         <motion.div
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
-          className={`glass w-32 h-32 rounded-lg flex flex-col items-center justify-center cursor-pointer group overflow-hidden relative`}
+          className={`w-40 h-40 rounded-lg flex flex-col items-center justify-center cursor-pointer group overflow-hidden relative`}
+          style={{
+            backdropFilter: 'blur(10px)',
+            backgroundColor: 'transparent',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+          }}
         >
           {/* Background gradient */}
           <div

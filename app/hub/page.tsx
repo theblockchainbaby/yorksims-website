@@ -1,169 +1,146 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import { PortalCard } from '@/app/components/PortalCard';
-import { PlayerDashboard } from '@/app/components/PlayerDashboard';
-import { AnimatedBackground } from '@/app/components/AnimatedBackground';
-import { WalletConnect } from '@/app/components/WalletConnect';
-import { useGameification } from '@/app/hooks/useGameification';
-import { PORTALS } from '@/app/lib/portals';
+import Link from "next/link";
+import Nav from "../components/Nav";
+
+const VERTICALS = [
+  {
+    num: "01",
+    title: "Build Software From Zero",
+    desc: "How to build a SaaS product from scratch. Full-stack with Next.js, Prisma, PostgreSQL. Multi-tenant architecture. Deploy to Vercel and Supabase. Using VitrOS as a live case study.",
+    tags: ["Next.js", "Supabase", "Vercel", "PostgreSQL"],
+    href: "/verticals/software",
+  },
+  {
+    num: "02",
+    title: "AI Agents & Voice Automation",
+    desc: "Building AI voice agents with ElevenLabs. Autonomous bots like MoltBot. n8n + MCP workflow automation. White-label AI SaaS with tRPC, Redis, Stripe billing. Selling AI to local businesses.",
+    tags: ["ElevenLabs", "MCP", "n8n", "OpenAI"],
+    href: "/verticals/ai-agents",
+  },
+  {
+    num: "03",
+    title: "Hardware & Semiconductor Engineering",
+    desc: "HBM memory subsystem design in SystemVerilog. Hardware verification testbenches. Monte Carlo reliability simulation. Bottleneck analysis. Semiconductor test log automation.",
+    tags: ["SystemVerilog", "RTL", "VLSI", "ECC"],
+    href: "/verticals/hardware",
+  },
+  {
+    num: "04",
+    title: "Blockchain & Fintech",
+    desc: "Building on the XRP Ledger. DualPay multi-payment system: crypto + fiat. Web3 gaming with on-chain USDC wagering. Multi-chain wallet integration: XRPL, EVM, Solana.",
+    tags: ["XRPL", "EVM", "Solana", "DeFi"],
+    href: "/verticals/blockchain",
+  },
+  {
+    num: "05",
+    title: "Start & Structure a Business",
+    desc: "Entity formation: LLC, S-Corp, C-Corp — which one and why. Operating agreements. NDAs and sales contracts. Pricing strategy. Building a sales pipeline from cold email to close.",
+    tags: ["LLC", "Contracts", "Sales", "Operations"],
+    href: "/verticals/business",
+  },
+  {
+    num: "06",
+    title: "Physical Products & Manufacturing",
+    desc: "From idea to retail shelf. Sourcing manufacturers worldwide. Getting into retail: distributors, shelf placement, margins. Brand building, packaging, positioning. Cannabis industry masterclass.",
+    tags: ["CPG", "Manufacturing", "Retail", "Sourcing"],
+    href: "/verticals/products",
+  },
+  {
+    num: "07",
+    title: "Land & Real Estate Development",
+    desc: "Buying raw land: due diligence and negotiation. Developing from scratch: well, septic, power, permits. Navigating county zoning — the stuff nobody teaches. Building equity through land vs. traditional real estate.",
+    tags: ["Land", "Development", "Permits", "Zoning"],
+    href: "/verticals/land",
+  },
+  {
+    num: "08",
+    title: "Athlete to Entrepreneur",
+    desc: "The athlete's edge: how discipline transfers to business. Playing overseas: what nobody tells you about pro sports abroad. Building your brand while you're still playing. D1 → pro → builder.",
+    tags: ["Mindset", "D1", "Performance", "Transition"],
+    href: "/verticals/athlete",
+  },
+  {
+    num: "09",
+    title: "Automotive Industry Tech",
+    desc: "Building Otto: AI for dealerships, zero to production. Automating service centers with phone agents and appointment booking. The Autolux platform architecture. Selling AI to the automotive industry.",
+    tags: ["Automotive", "AI", "Voice Agents", "CRM"],
+    href: "/verticals/automotive",
+  },
+  {
+    num: "10",
+    title: "Creative Tech & AI-Powered Production",
+    desc: "The Animation Engine: turn any product image into a scroll-driven website with AI. Apple-level product launch pages. AI video production pipeline. fal.ai masterclass: Kling 3.0, Nano Banana.",
+    tags: ["Canvas", "fal.ai", "Kling", "Scroll Animation"],
+    href: "/verticals/creative",
+  },
+];
 
 export default function HubPage() {
-  const { player, addXP, getXPProgress } = useGameification();
-  const [hoveredPortal, setHoveredPortal] = useState<string | null>(null);
-  const xpProgress = getXPProgress();
-
-  // Add XP for visiting hub
-  if (player && !player.walletAddress) {
-    // Only add XP once per session
-    const hasVisitedHub = sessionStorage.getItem('hub_visited');
-    if (!hasVisitedHub) {
-      addXP({
-        type: 'portal_visit',
-        xpAmount: 25,
-        description: 'Visited the hub',
-      });
-      sessionStorage.setItem('hub_visited', 'true');
-    }
-  }
-
   return (
-    <main className="relative w-full min-h-screen bg-dark-bg overflow-hidden">
-      <AnimatedBackground />
+    <div className="min-h-screen bg-[#0a0a0a] text-white">
+      <Nav />
 
-      {/* Wallet Connect */}
-      <WalletConnect />
-
-      {/* Player Dashboard */}
-      <PlayerDashboard player={player} xpProgress={xpProgress} />
-
-      {/* Hub Content */}
-      <div className="relative z-10 w-full h-screen flex flex-col items-center justify-center px-4">
+      <div className="pt-28 pb-16 px-6 max-w-6xl mx-auto">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-12"
-        >
-          <h1 className="text-5xl md:text-6xl font-black mb-4 tracking-tighter">
-            <span className="bg-gradient-to-r from-neon-green via-neon-cyan to-xrpl-green bg-clip-text text-transparent">
-              MISSION CONSOLE
-            </span>
+        <div className="mb-12 max-w-2xl">
+          <p className="text-xs font-mono uppercase tracking-[0.2em] text-[#e63946] mb-4">The Platform</p>
+          <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-4">
+            10 Verticals.<br />All with receipts.
           </h1>
-          <p className="text-gray-400 text-sm md:text-base">
-            Select a portal to begin your journey
+          <p className="text-[#666] text-sm leading-relaxed">
+            Every vertical maps to real, shipped projects. Every course includes
+            downloadable templates, real code, and actionable frameworks.
+            Ten verticals — more than any single competitor covers.
           </p>
-        </motion.div>
-
-        {/* Radial Portal Navigation */}
-        <div className="relative w-full h-screen flex items-center justify-center overflow-visible">
-          {/* Center circle */}
-          <motion.div
-            animate={{
-              boxShadow: [
-                '0 0 20px rgba(0, 255, 136, 0.3)',
-                '0 0 40px rgba(0, 255, 136, 0.6)',
-                '0 0 20px rgba(0, 255, 136, 0.3)',
-              ],
-            }}
-            transition={{ duration: 3, repeat: Infinity }}
-            className="absolute w-20 h-20 rounded-full glass border-2 border-neon-green flex items-center justify-center"
-          >
-            <div className="text-2xl">⚡</div>
-          </motion.div>
-
-          {/* Portal Cards in radial layout */}
-          {PORTALS.map((portal, index) => (
-            <PortalCard
-              key={portal.id}
-              portal={portal}
-              index={index}
-              onHover={setHoveredPortal}
-            />
-          ))}
-
-          {/* Connecting lines */}
-          <svg className="absolute inset-0 w-full h-full pointer-events-none">
-            {PORTALS.map((_, index) => {
-              const angle = (index / PORTALS.length) * Math.PI * 2;
-              const radius = 200;
-              const x = Math.cos(angle) * radius;
-              const y = Math.sin(angle) * radius;
-              return (
-                <motion.line
-                  key={`line-${index}`}
-                  x1="50%"
-                  y1="50%"
-                  x2={`calc(50% + ${x}px)`}
-                  y2={`calc(50% + ${y}px)`}
-                  stroke="rgba(0, 255, 136, 0.1)"
-                  strokeWidth="1"
-                  animate={{
-                    stroke: hoveredPortal === PORTALS[index].id
-                      ? 'rgba(0, 255, 136, 0.5)'
-                      : 'rgba(0, 255, 136, 0.1)',
-                  }}
-                  transition={{ duration: 0.3 }}
-                />
-              );
-            })}
-          </svg>
         </div>
 
-        {/* Portal Info */}
-        {hoveredPortal && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2 glass px-6 py-4 rounded-lg max-w-md text-center"
-          >
-            <p className="text-neon-green font-bold mb-2">
-              {PORTALS.find((p) => p.id === hoveredPortal)?.name}
-            </p>
-            <p className="text-gray-400 text-sm">
-              {PORTALS.find((p) => p.id === hoveredPortal)?.description}
-            </p>
-          </motion.div>
-        )}
-      </div>
+        {/* Verticals grid */}
+        <div className="grid gap-px bg-[#1e1e1e] border border-[#1e1e1e] rounded overflow-hidden">
+          {VERTICALS.map((v) => (
+            <Link
+              key={v.num}
+              href={v.href}
+              className="bg-[#0a0a0a] p-6 md:p-8 group hover:bg-[#0f0f0f] transition-colors flex gap-6 md:gap-8 items-start"
+            >
+              {/* Number */}
+              <span className="text-xs font-mono text-[#222] shrink-0 w-6 mt-1">{v.num}</span>
 
-      {/* Navigation Buttons */}
-      <div className="fixed bottom-4 left-4 z-50 flex gap-2">
-        <Link href="/">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="glass px-4 py-2 rounded text-sm text-neon-green hover:text-neon-cyan transition-colors"
-          >
-            ← Home
-          </motion.button>
-        </Link>
-      </div>
+              {/* Content */}
+              <div className="flex-1 min-w-0">
+                <div className="flex items-start justify-between gap-4 mb-2">
+                  <h2 className="text-base font-semibold text-white group-hover:text-[#e63946] transition-colors">
+                    {v.title}
+                  </h2>
+                  <span className="text-[#333] group-hover:text-[#e63946] transition-colors shrink-0 mt-0.5">→</span>
+                </div>
+                <p className="text-sm text-[#555] leading-relaxed mb-3">{v.desc}</p>
+                <div className="flex flex-wrap gap-2">
+                  {v.tags.map((t) => (
+                    <span key={t} className="text-[10px] font-mono px-2 py-0.5 border border-[#1e1e1e] text-[#444] rounded">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
 
-      {/* Secondary Navigation */}
-      <div className="fixed bottom-4 right-4 z-50 flex gap-2">
-        <Link href="/blog">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="glass px-4 py-2 rounded text-sm text-neon-cyan hover:text-neon-green transition-colors"
+        {/* Bottom CTA */}
+        <div className="mt-16 border border-[#1e1e1e] rounded p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div>
+            <p className="text-sm font-semibold mb-1">Ready to build?</p>
+            <p className="text-xs text-[#555]">Pro starts at $29/mo. Full access to all 10 verticals.</p>
+          </div>
+          <Link
+            href="/#pricing"
+            className="px-6 py-3 bg-[#e63946] text-white text-xs font-semibold uppercase tracking-widest rounded hover:bg-[#ff4d5a] transition-colors shrink-0"
           >
-            Briefings
-          </motion.button>
-        </Link>
-        <Link href="/contact">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="glass px-4 py-2 rounded text-sm text-neon-cyan hover:text-neon-green transition-colors"
-          >
-            Recruit
-          </motion.button>
-        </Link>
+            See Plans
+          </Link>
+        </div>
       </div>
-    </main>
+    </div>
   );
 }
-

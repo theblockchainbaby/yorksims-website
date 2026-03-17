@@ -1,149 +1,143 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import { AnimatedBackground } from '@/app/components/AnimatedBackground';
-import { PlayerDashboard } from '@/app/components/PlayerDashboard';
-import { useGameification } from '@/app/hooks/useGameification';
+import Link from "next/link";
+import Nav from "../components/Nav";
 
-interface BlogPost {
-  id: string;
-  title: string;
-  excerpt: string;
-  date: string;
-  category: string;
-  xpReward: number;
-}
-
-const BLOG_POSTS: BlogPost[] = [
+const POSTS = [
   {
-    id: 'dualpay-launch',
-    title: 'DualPay Ecosystem Launch Announcement',
-    excerpt: 'We are excited to announce the official launch of the DualPay ecosystem. This marks a new era in fintech innovation.',
-    date: '2025-10-20',
-    category: 'Announcement',
-    xpReward: 25,
+    slug: "building-vitros-saas",
+    vertical: "Software",
+    title: "Building VitrOS: From Zero to Production SaaS in 30 Days",
+    excerpt: "Next.js 16, Prisma, PostgreSQL, NextAuth v5, multi-tenant RBAC, PWA offline capability — and it's live. Here's the full build breakdown.",
+    date: "Mar 10, 2026",
+    readTime: "12 min",
   },
   {
-    id: 'yorkverse-beta',
-    title: 'YorkVerse Beta Now Live',
-    excerpt: 'The YorkVerse digital hub is now in beta. Explore portals, earn XP, and unlock exclusive content.',
-    date: '2025-10-18',
-    category: 'Update',
-    xpReward: 30,
+    slug: "moltbot-autonomous-ai-agent",
+    vertical: "AI Agents",
+    title: "MoltBot: Building a 20-Skill Autonomous AI Agent for Business",
+    excerpt: "How I built an AI that handles CMO/CEO functions — email, research, outreach, reporting — without touching it. Full architecture breakdown.",
+    date: "Mar 5, 2026",
+    readTime: "9 min",
   },
   {
-    id: 'ai-agents-release',
-    title: 'AI Agents Framework v1.0 Released',
-    excerpt: 'AgentZero and Otto AI are now available for developers. Build intelligent automation today.',
-    date: '2025-10-15',
-    category: 'Release',
-    xpReward: 35,
+    slug: "hbm-memory-systemverilog",
+    vertical: "Hardware",
+    title: "HBM Memory Subsystem Design in SystemVerilog",
+    excerpt: "Building an HBM-style controller with interleaving, ECC, and power states from scratch. What I learned building semiconductor-grade RTL on my own.",
+    date: "Feb 28, 2026",
+    readTime: "15 min",
   },
   {
-    id: 'xrpl-integration',
-    title: 'XRPL Integration Complete',
-    excerpt: 'Full XRPL blockchain integration is now live. Secure your assets with our escrow system.',
-    date: '2025-10-12',
-    category: 'Technical',
-    xpReward: 40,
+    slug: "dualpay-xrp-ledger",
+    vertical: "Blockchain",
+    title: "Building DualPay: Multi-Payment on the XRP Ledger",
+    excerpt: "Crypto + fiat in one system. How DualPay handles XRPL transactions, stablecoins, and fiat rails simultaneously — the full technical walkthrough.",
+    date: "Feb 20, 2026",
+    readTime: "11 min",
   },
   {
-    id: 'dualacademy-courses',
-    title: 'New DualAcademy Courses Available',
-    excerpt: 'Learn crypto, hustle mindset, mental toughness, and coding from industry experts.',
-    date: '2025-10-10',
-    category: 'Education',
-    xpReward: 25,
+    slug: "llc-operating-agreement",
+    vertical: "Business",
+    title: "How I Structured Caipher AI LLC — and What I'd Do Differently",
+    excerpt: "Entity setup, operating agreements, equity splits, and exit strategies. The real decisions behind building a holding company for multiple SaaS products.",
+    date: "Feb 14, 2026",
+    readTime: "8 min",
   },
   {
-    id: 'marketplace-launch',
-    title: 'Marketplace Store Now Open',
-    excerpt: 'Shop exclusive YorkVerse merchandise and digital bundles. Limited edition items available.',
-    date: '2025-10-08',
-    category: 'Commerce',
-    xpReward: 20,
+    slug: "raw-land-development",
+    vertical: "Land",
+    title: "Developing Raw Land From Scratch: Well, Septic, Power, Permits",
+    excerpt: "Nobody teaches this. Buying a piece of raw land and turning it into something livable — the permits, the contractors, the county fights, the math.",
+    date: "Feb 6, 2026",
+    readTime: "10 min",
+  },
+  {
+    slug: "d1-to-entrepreneur",
+    vertical: "Athlete",
+    title: "From D1 Basketball to Ankara, Turkey to Building a Tech Company",
+    excerpt: "What playing pro basketball overseas teaches you about business — and why the discipline you built in athletics is your biggest unfair advantage.",
+    date: "Jan 30, 2026",
+    readTime: "7 min",
+  },
+  {
+    slug: "animation-engine-fal-ai",
+    vertical: "Creative Tech",
+    title: "The Animation Engine: Turning Product Images into Scroll-Driven Websites",
+    excerpt: "engine.py: an automated pipeline using fal.ai Nano Banana 2 + Kling 3.0 + ffmpeg. From a product photo to a full Apple-style launch page — with code.",
+    date: "Jan 22, 2026",
+    readTime: "13 min",
   },
 ];
 
+const VERTICAL_COLORS: Record<string, string> = {
+  "Software":     "text-blue-400",
+  "AI Agents":    "text-purple-400",
+  "Hardware":     "text-yellow-500",
+  "Blockchain":   "text-green-400",
+  "Business":     "text-orange-400",
+  "Land":         "text-amber-500",
+  "Athlete":      "text-cyan-400",
+  "Creative Tech":"text-pink-400",
+};
+
 export default function BlogPage() {
-  const { player, addXP, getXPProgress } = useGameification();
-  const xpProgress = getXPProgress();
-
-  const handleReadPost = (post: BlogPost) => {
-    addXP({
-      type: 'portal_visit',
-      xpAmount: post.xpReward,
-      description: `Read: ${post.title}`,
-    });
-  };
-
   return (
-    <main className="relative w-full min-h-screen bg-dark-bg overflow-hidden">
-      <AnimatedBackground />
+    <div className="min-h-screen bg-[#0a0a0a] text-white">
+      <Nav />
 
-      <PlayerDashboard player={player} xpProgress={xpProgress} />
-
-      <div className="relative z-10 w-full min-h-screen px-4 py-12">
-        <motion.div
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="max-w-4xl mx-auto mb-12"
-        >
-          <Link href="/hub">
-            <button className="text-neon-green hover:text-neon-cyan transition-colors mb-6 text-sm">
-              ← Back to Hub
-            </button>
-          </Link>
-
-          <h1 className="text-5xl md:text-6xl font-black mb-4 tracking-tighter">
-            <span className="bg-gradient-to-r from-neon-green via-neon-cyan to-xrpl-green bg-clip-text text-transparent">
-              MISSION BRIEFINGS
-            </span>
+      <div className="pt-28 pb-16 px-6 max-w-6xl mx-auto">
+        {/* Header */}
+        <div className="mb-12 max-w-xl">
+          <p className="text-xs font-mono uppercase tracking-[0.2em] text-[#e63946] mb-4">The Build Blog</p>
+          <h1 className="text-4xl font-black tracking-tight mb-3">
+            Show the work.
           </h1>
-          <p className="text-gray-400 text-lg">
-            Latest updates, announcements, and lore from the YorkVerse
+          <p className="text-[#555] text-sm leading-relaxed">
+            Every post is a breakdown of something that was actually built —
+            code, receipts, and decisions included. No motivation. No fluff.
           </p>
-        </motion.div>
+        </div>
 
-        <div className="max-w-4xl mx-auto space-y-6">
-          {BLOG_POSTS.map((post, index) => (
-            <motion.div
-              key={post.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              onClick={() => handleReadPost(post)}
-              className="glass rounded-lg p-6 cursor-pointer group hover:border-neon-green transition-all"
+        {/* Posts */}
+        <div className="grid gap-px bg-[#1e1e1e] border border-[#1e1e1e] rounded overflow-hidden">
+          {POSTS.map((post) => (
+            <Link
+              key={post.slug}
+              href={`/blog/${post.slug}`}
+              className="bg-[#0a0a0a] p-6 md:p-8 group hover:bg-[#0f0f0f] transition-colors flex gap-6 items-start"
             >
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-xs px-3 py-1 bg-neon-green/20 text-neon-green rounded-full font-mono">
-                      {post.category}
-                    </span>
-                    <span className="text-xs text-gray-500">{post.date}</span>
-                  </div>
-                  <h2 className="text-2xl font-bold text-white group-hover:text-neon-green transition-colors mb-2">
-                    {post.title}
-                  </h2>
-                  <p className="text-gray-400 text-sm">{post.excerpt}</p>
-                </div>
-                <div className="ml-4 text-right">
-                  <span className="text-xs text-yellow-400 font-bold">
-                    +{post.xpReward} XP
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className={`text-[10px] font-mono uppercase tracking-widest ${VERTICAL_COLORS[post.vertical] ?? "text-[#666]"}`}>
+                    {post.vertical}
                   </span>
+                  <span className="text-[#222]">·</span>
+                  <span className="text-[10px] font-mono text-[#333]">{post.date}</span>
+                  <span className="text-[#222]">·</span>
+                  <span className="text-[10px] font-mono text-[#333]">{post.readTime} read</span>
                 </div>
+                <h2 className="text-base font-semibold text-white group-hover:text-[#e63946] transition-colors mb-2">
+                  {post.title}
+                </h2>
+                <p className="text-sm text-[#555] leading-relaxed">{post.excerpt}</p>
               </div>
-
-              <div className="flex items-center justify-between pt-4 border-t border-neon-green/10">
-                <span className="text-xs text-neon-cyan">Read more →</span>
-              </div>
-            </motion.div>
+              <span className="text-[#333] group-hover:text-[#e63946] transition-colors shrink-0 mt-1">→</span>
+            </Link>
           ))}
         </div>
+
+        {/* CTA */}
+        <div className="mt-12 text-center">
+          <p className="text-xs text-[#444] mb-4">Pro members get full breakdowns, code, and templates with every post.</p>
+          <Link
+            href="/#pricing"
+            className="inline-block px-6 py-2.5 border border-[#1e1e1e] text-white text-xs font-semibold uppercase tracking-widest rounded hover:border-[#333] transition-colors"
+          >
+            Join Pro — $29/mo
+          </Link>
+        </div>
       </div>
-    </main>
+    </div>
   );
 }
-
