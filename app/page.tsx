@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
+
 import dynamic from "next/dynamic";
 import { motion, useInView } from "framer-motion";
 import { gsap } from "gsap";
@@ -29,16 +29,30 @@ const PROOF: { value: number; suffix: string; label: string; format?: boolean }[
 ];
 
 const VERTICALS = [
-  { num: "01", title: "Build Software From Zero",           tag: "Next.js · Supabase · Vercel",       href: "/verticals/software" },
-  { num: "02", title: "Agentic AI Agents & Automation",      tag: "ElevenLabs · MCP · OpenAI",          href: "/verticals/ai-agents" },
-  { num: "03", title: "Hardware & Semiconductor",           tag: "SystemVerilog · RTL · VLSI",          href: "/verticals/hardware" },
-  { num: "04", title: "Blockchain & Fintech",               tag: "XRPL · EVM · Solana",                 href: "/verticals/blockchain" },
-  { num: "05", title: "Start & Structure a Business",       tag: "LLC · Contracts · Sales",             href: "/verticals/business" },
-  { num: "06", title: "Physical Products & Manufacturing",  tag: "CPG · Sourcing · Retail",             href: "/verticals/products" },
-  { num: "07", title: "Land & Real Estate Development",     tag: "Raw Land · Permits · Zoning",         href: "/verticals/land" },
-  { num: "08", title: "Athlete to Entrepreneur",            tag: "D1 · Discipline · Transition",        href: "/verticals/athlete" },
-  { num: "09", title: "Automotive Industry Tech",           tag: "AI Dealership · Otto · Voice",        href: "/verticals/automotive" },
-  { num: "10", title: "Creative Tech & AI Production",      tag: "Canvas · fal.ai · Kling 3.0",         href: "/verticals/creative" },
+  { num: "01", title: "Build Software From Zero",           tag: "Next.js · Supabase · Vercel",       href: "/verticals/software",
+    proofs: ["/proofs/software-1.webp", "/proofs/software-2.webp", "/proofs/software-3.webp"],
+    proofFit: ["object-left object-cover", "object-left object-cover", "object-left object-cover"] },
+  { num: "02", title: "Agentic AI Agents & Automation",      tag: "ElevenLabs · MCP · OpenAI",          href: "/verticals/ai-agents",
+    proofs: ["/proofs/ai-1.webp", "/proofs/ai-2.webp", "/proofs/ai-3.webp"],
+    proofFit: ["object-left-top object-cover", "object-left object-cover", "object-center-bottom object-cover"] },
+  { num: "03", title: "Hardware & Semiconductor",           tag: "SystemVerilog · RTL · VLSI",          href: "/verticals/hardware",
+    proofs: ["/proofs/hardware-1.webp", "/proofs/hardware-2.webp", "/proofs/hardware-3.webp"],
+    proofFit: ["object-center object-cover", "object-left-top object-cover", "object-left-top object-cover"] },
+  { num: "04", title: "Blockchain & Fintech",               tag: "XRPL · EVM · Solana · Bitcoin",      href: "/verticals/blockchain",
+    proofs: ["/proofs/blockchain-1.webp", "/proofs/blockchain-2.webp", "/proofs/blockchain-3.webp"],
+    proofFit: ["object-top object-cover", "object-center object-cover scale-[1.4]", "object-center object-cover scale-[1.4]"] },
+  { num: "05", title: "Start & Structure a Business",       tag: "LLC · Contracts · Sales",             href: "/verticals/business",
+    proofs: ["/proofs/business-1.webp", "/proofs/business-2.webp", "/proofs/business-3.webp"] },
+  { num: "06", title: "Physical Products & Manufacturing",  tag: "CPG · Sourcing · Retail",             href: "/verticals/products",
+    proofs: ["/proofs/products-1.webp", "/proofs/products-2.webp", "/proofs/products-3.webp"] },
+  { num: "07", title: "Land & Real Estate Development",     tag: "Raw Land · Permits · Zoning",         href: "/verticals/land",
+    proofs: ["/proofs/land-1.webp", "/proofs/land-2.webp", "/proofs/land-3.webp"] },
+  { num: "08", title: "Athlete to Entrepreneur",            tag: "D1 · Discipline · Transition",        href: "/verticals/athlete",
+    proofs: ["/proofs/athlete-1.webp", "/proofs/athlete-2.webp", "/proofs/athlete-3.webp"] },
+  { num: "09", title: "Vertical SaaS & Voice Agents",       tag: "Voice · Vertical SaaS · White-Label", href: "/verticals/automotive",
+    proofs: ["/proofs/automotive-1.webp", "/proofs/automotive-2.webp", "/proofs/automotive-3.webp"] },
+  { num: "10", title: "Creative Tech & AI Production",      tag: "Canvas · fal.ai · Kling 3.0",         href: "/verticals/creative",
+    proofs: ["/proofs/creative-1.webp", "/proofs/creative-2.webp", "/proofs/creative-3.webp"] },
 ];
 
 const PRICING = [
@@ -307,7 +321,8 @@ export default function Home() {
             Teaching Execution, Not Theory — Built by a Builder, for Builders
           </p>
 
-          <h1 ref={headlineRef} className="font-black tracking-tight leading-[0.92] mb-16">
+          <div style={{ height: "48px" }} />
+          <h1 ref={headlineRef} className="font-black tracking-tight leading-[0.92]">
             <span className="hero-line-1 block text-[clamp(52px,8vw,120px)] text-white">
               Stop learning.
             </span>
@@ -315,13 +330,15 @@ export default function Home() {
               Start building.
             </span>
           </h1>
+          <div style={{ height: "48px" }} />
 
-          <p ref={taglineRef} className="hero-sub text-lg md:text-xl text-[#555] max-w-2xl leading-relaxed mb-12">
+          <p ref={taglineRef} className="hero-sub text-lg md:text-xl text-[#555] max-w-2xl leading-relaxed">
             Competitors tell you <span className="text-white font-semibold">what</span> to do.
-            YorkSims teaches you <span className="text-white font-semibold">how</span>.
+            York teaches you <span className="text-white font-semibold">how</span>.
             Real code. Real contracts. Real hardware. Every course ends with
             something you use today.
           </p>
+          <div style={{ height: "40px" }} />
 
           <div className="hero-ctas flex justify-center">
             <Link href="/hub">
@@ -389,7 +406,7 @@ export default function Home() {
 
       {/* ── PROBLEM / SOLUTION ────────────────────────────────────────────── */}
       <section style={{ zIndex: 1, background: "#0a0a0a", display: "flex", justifyContent: "center", borderTop: "1px solid rgba(255,255,255,0.08)", padding: "208px 64px" }}>
-        <div style={{ width: "100%", maxWidth: "896px", textAlign: "center" }}>
+        <div style={{ width: "100%", maxWidth: "1100px", textAlign: "center" }}>
 
           <Reveal>
             <p className="text-[11px] uppercase tracking-[0.24em] text-[#e63946]">The Difference</p>
@@ -435,12 +452,12 @@ export default function Home() {
           </div>
 
           {/* Column headers */}
-          <div className="grid grid-cols-2 gap-5 mb-6">
+          <div className="grid grid-cols-2 gap-6 mb-8">
             <SlideFrom dir="left" delay={0.05}>
-              <p className="text-[11px] uppercase tracking-[0.22em] text-white/20">Every other platform</p>
+              <p className="text-[14px] uppercase tracking-[0.22em] text-white/20 font-semibold">Every other platform</p>
             </SlideFrom>
             <SlideFrom dir="right" delay={0.05}>
-              <p className="text-[11px] uppercase tracking-[0.22em] text-[#e63946]">YorkSims.com</p>
+              <p className="text-[14px] uppercase tracking-[0.22em] text-[#e63946] font-semibold">YorkSims.com</p>
             </SlideFrom>
           </div>
 
@@ -452,16 +469,16 @@ export default function Home() {
             { bad: "Finish knowing what an LLC is", good: "Finish having formed the LLC \u2014 op agreement in hand" },
             { bad: "Leave inspired \u2014 still stuck", good: "Leave with a deployed SaaS on Vercel" },
           ].map((row, i) => (
-            <div key={i} className="grid grid-cols-2 gap-5 mb-4">
+            <div key={i} className="grid grid-cols-2 gap-6 mb-5">
               <SlideFrom dir="left" delay={0.08 + i * 0.07}>
-                <div className="rounded-[20px] bg-white/[0.02] ring-1 ring-white/[0.05] px-6 py-5 flex gap-4 items-start text-left">
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-white/15 shrink-0" />
-                  <span className="text-[14px] leading-relaxed text-white/30">{row.bad}</span>
+                <div className="rounded-[20px] bg-white/[0.02] ring-1 ring-white/[0.05] px-8 py-6 flex gap-4 items-start text-left">
+                  <span className="mt-2.5 h-2 w-2 rounded-full bg-white/15 shrink-0" />
+                  <span className="text-[17px] leading-relaxed text-white/30">{row.bad}</span>
                 </div>
               </SlideFrom>
               <SlideFrom dir="right" delay={0.08 + i * 0.07}>
                 <motion.div
-                  className="rounded-[20px] ring-1 ring-white/[0.08] px-6 py-5 flex gap-4 items-start text-left"
+                  className="rounded-[20px] ring-1 ring-white/[0.08] px-8 py-6 flex gap-4 items-start text-left"
                   style={{
                     background: "linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)",
                     boxShadow: "0 0 40px rgba(230,57,70,0.05)",
@@ -469,8 +486,8 @@ export default function Home() {
                   whileHover={{ scale: 1.02, boxShadow: "0 0 60px rgba(230,57,70,0.12)" }}
                   transition={{ duration: 0.3 }}
                 >
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[#e63946] shrink-0" />
-                  <span className="text-[14px] leading-relaxed text-white/80">{row.good}</span>
+                  <span className="mt-2.5 h-2 w-2 rounded-full bg-[#e63946] shrink-0" />
+                  <span className="text-[17px] leading-relaxed text-white/80">{row.good}</span>
                 </motion.div>
               </SlideFrom>
             </div>
@@ -519,9 +536,24 @@ export default function Home() {
         </div>
 
         {/* Desktop: horizontal scroll track */}
-        <div className="hidden lg:block overflow-hidden" style={{ paddingBottom: "16px" }}>
-          <div ref={trackRef} style={{ display: "flex", gap: "16px", width: "max-content", paddingLeft: "calc(50vw - 150px)", paddingRight: "calc(50vw - 150px)", paddingBottom: "16px" }}>
-            {VERTICALS.map((v, i) => (
+        <div className="hidden lg:block overflow-hidden" style={{ paddingBottom: "120px" }}>
+          <div ref={trackRef} style={{ display: "flex", gap: "20px", width: "max-content", paddingLeft: "calc(50vw - 220px)", paddingRight: "calc(50vw - 220px)", paddingBottom: "16px" }}>
+            {VERTICALS.map((v, i) => {
+              const rotations = [
+                ["-rotate-[5deg]", "rotate-[3deg]", "-rotate-[2deg]"],
+                ["-rotate-[4deg]", "rotate-[2deg]", "-rotate-[6deg]"],
+                ["-rotate-[3deg]", "rotate-[5deg]", "-rotate-[1deg]"],
+                ["-rotate-[6deg]", "rotate-[2deg]", "-rotate-[4deg]"],
+                ["-rotate-[5deg]", "rotate-[4deg]", "-rotate-[2deg]"],
+                ["-rotate-[3deg]", "rotate-[6deg]", "-rotate-[3deg]"],
+                ["-rotate-[4deg]", "rotate-[3deg]", "-rotate-[5deg]"],
+                ["-rotate-[5deg]", "rotate-[2deg]", "-rotate-[3deg]"],
+                ["-rotate-[6deg]", "rotate-[4deg]", "-rotate-[2deg]"],
+                ["-rotate-[3deg]", "rotate-[5deg]", "-rotate-[4deg]"],
+              ];
+              const rots = rotations[i] || rotations[0];
+
+              return (
               <motion.div
                 key={v.num}
                 initial={{ opacity: 0, y: 24 }}
@@ -530,39 +562,89 @@ export default function Home() {
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: i * 0.04 }}
               >
                 <Link href={v.href}>
-                  <div className="relative w-[300px] rounded-[28px] cursor-pointer h-52 overflow-hidden group">
-                    {/* Background image */}
-                    <div
-                      className="absolute inset-0 opacity-30 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                      style={{ backgroundImage: `url(/verticals/${v.href.split("/").pop()}.webp)` }}
+                  <div className="relative w-[520px] rounded-[24px] cursor-pointer overflow-hidden group transition-shadow duration-500 hover:shadow-[0_0_80px_-20px_rgba(230,57,70,0.25)]">
+                    {/* Base layer — dark bg */}
+                    <div className="absolute inset-0 bg-[#0c0c0c]" />
+                    <div className="absolute inset-0 border border-white/[0.06] rounded-[24px] group-hover:border-white/[0.12] transition-colors duration-500" />
+
+                    {/* Red glow on hover */}
+                    <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-[400px] h-[200px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                      style={{ background: "radial-gradient(ellipse, rgba(230,57,70,0.15) 0%, transparent 70%)" }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/50 to-[#0a0a0a]/20" />
-                    <div className="absolute inset-0 ring-1 ring-white/[0.08] rounded-[28px]" />
-                    <div className="relative p-8 h-full flex flex-col justify-between">
-                      <div>
-                        <span className="text-[11px] font-medium tracking-[0.18em] uppercase text-white/20 block mb-5">{v.num}</span>
-                        <p className="text-[20px] leading-[1.15] font-semibold text-white">{v.title}</p>
+
+                    {/* Text content — top */}
+                    <div className="relative z-10 px-8 pt-8 pb-5">
+                      <div className="flex items-center gap-3 mb-4">
+                        <span className="text-[10px] font-mono text-[#e63946]/60 tracking-widest">{v.num}</span>
+                        <div className="w-8 h-px bg-[#e63946]/20 group-hover:w-12 group-hover:bg-[#e63946]/40 transition-all duration-500" />
                       </div>
-                      <span className="text-[11px] tracking-[0.08em] uppercase text-white/25">{v.tag}</span>
+                      <p className="text-[22px] leading-[1.15] font-bold text-white">{v.title}</p>
+                      <span className="text-[10px] tracking-[0.12em] uppercase text-white/20 group-hover:text-white/40 transition-colors duration-500 mt-3 block">{v.tag}</span>
+                    </div>
+
+                    {/* Proof layer — 3 images spread horizontally */}
+                    <div className="relative z-10 px-6 pb-6 flex gap-3 items-end">
+                      {v.proofs.map((src, j) => {
+                        const fit = v.proofFit?.[j] || "object-cover object-left";
+                        const scaleMatch = fit.match(/scale-\[([^\]]+)\]/);
+                        const scale = scaleMatch ? parseFloat(scaleMatch[1]) : 1;
+                        const fitClasses = fit.replace(/scale-\[[^\]]+\]\s*/g, "").trim();
+                        return (
+                        <div
+                          key={j}
+                          className={`w-[155px] h-[180px] rounded-lg shadow-2xl border border-white/[0.06] overflow-hidden ${rots[j]} opacity-100 transition-all duration-500`}
+                          style={{
+                            transitionDelay: `${j * 100}ms`,
+                            transform: `translateY(${10 + j * 4}px)`,
+                          }}
+                        >
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={src}
+                            alt=""
+                            className={`w-full h-full ${fitClasses}`}
+                            style={scale !== 1 ? { transform: `scale(${scale})` } : undefined}
+                          />
+                        </div>
+                        );
+                      })}
                     </div>
                   </div>
                 </Link>
               </motion.div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
         {/* Mobile grid */}
-        <div className="lg:hidden" style={{ display: "flex", justifyContent: "center", padding: "0 64px 192px" }}>
-          <div style={{ width: "100%", maxWidth: "896px", display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "16px" }}>
+        <div className="lg:hidden" style={{ display: "flex", justifyContent: "center", padding: "0 40px 192px" }}>
+          <div style={{ width: "100%", maxWidth: "896px", display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "12px" }}>
             {VERTICALS.map((v, i) => (
               <FlipIn key={v.num} delay={i * 0.05}>
                 <Link href={v.href}>
-                  <MagicCard className="rounded-[28px] p-8 bg-[#0a0a0a]/60 backdrop-blur-md">
-                    <span className="text-[11px] font-medium tracking-[0.18em] uppercase text-white/20 block mb-4">{v.num}</span>
-                    <p className="text-[18px] leading-[1.2] font-semibold text-white mb-6">{v.title}</p>
-                    <span className="text-[11px] tracking-[0.08em] uppercase text-white/25">{v.tag}</span>
-                  </MagicCard>
+                  <motion.div
+                    className="group relative overflow-hidden"
+                    style={{ borderRadius: "24px", padding: "28px 24px" }}
+                    whileHover={{ y: -4 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  >
+                    {/* Gradient border effect */}
+                    <div className="absolute inset-0 rounded-[24px] bg-gradient-to-b from-white/[0.08] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ padding: "1px" }}>
+                      <div className="w-full h-full rounded-[23px] bg-[#0a0a0a]" />
+                    </div>
+                    {/* Bottom accent line */}
+                    <div className="absolute bottom-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#e63946]/30 to-transparent group-hover:via-[#e63946]/60 transition-all duration-500" />
+                    {/* Content */}
+                    <div className="relative z-10">
+                      <div className="flex items-center gap-3 mb-4">
+                        <span className="text-[10px] font-mono text-[#e63946]/50 tracking-widest">{v.num}</span>
+                        <div className="flex-1 h-px bg-gradient-to-r from-white/[0.04] to-transparent" />
+                      </div>
+                      <p className="text-[17px] leading-[1.25] font-semibold text-white mb-4 group-hover:text-white transition-colors">{v.title}</p>
+                      <span className="text-[10px] tracking-[0.12em] uppercase text-white/20 group-hover:text-white/35 transition-colors">{v.tag}</span>
+                    </div>
+                  </motion.div>
                 </Link>
               </FlipIn>
             ))}
@@ -572,48 +654,52 @@ export default function Home() {
 
       {/* ── ABOUT ─────────────────────────────────────────────────────────── */}
       <section style={{ zIndex: 1, background: "#0a0a0a", display: "flex", justifyContent: "center", borderTop: "1px solid rgba(255,255,255,0.08)", padding: "208px 64px" }}>
-        <div style={{ width: "100%", maxWidth: "896px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "center" }}>
-          <div>
-            <FlipIn>
-              <p className="text-[11px] uppercase tracking-[0.24em] text-[#e63946] mb-8">Built by a Builder</p>
-            </FlipIn>
-            <SlideFrom dir="left" delay={0.1}>
-              <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-[1.05] mb-8">
-                <WordReveal text="Not a course creator who read a book." />
-              </h2>
-            </SlideFrom>
-            <SlideFrom dir="left" delay={0.15}>
-              <p className="text-sm text-[#555] leading-relaxed mb-4">
-                D1 college basketball → professional basketball in Ankara, Turkey →
-                CEO of Caipher AI LLC. 15 public GitHub repositories spanning SaaS,
-                AI voice agents, semiconductor design, blockchain gaming, and
-                automotive AI.
-              </p>
-            </SlideFrom>
-            <SlideFrom dir="left" delay={0.25}>
-              <p className="text-sm text-[#555] leading-relaxed mb-8">
-                Cannabis farms. Raw land developed from scratch. Physical products
-                on retail shelves. Every course comes with the receipts.
-              </p>
-              <a
-                href="https://github.com/theblockchainbaby"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-xs font-mono text-[#e63946] hover:text-white transition-colors group"
-              >
-                github.com/theblockchainbaby
-                <motion.span
-                  animate={{ x: [0, 4, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  →
-                </motion.span>
-              </a>
-            </SlideFrom>
-          </div>
+        <div style={{ width: "100%", maxWidth: "1100px" }}>
+          <FlipIn>
+            <p className="text-[14px] uppercase tracking-[0.24em] text-[#e63946] mb-8 font-semibold">Built by a Builder</p>
+          </FlipIn>
+          <div style={{ height: "40px" }} />
+          <Reveal delay={0.1}>
+            <h2 className="text-5xl md:text-6xl font-black tracking-tight leading-[1.05]">
+              Not a course creator who read a book.
+            </h2>
+          </Reveal>
+          <div style={{ height: "40px" }} />
 
-          {/* Stat grid */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "start" }}>
+            <div>
+              <SlideFrom dir="left" delay={0.15}>
+                <p className="text-base text-[#555] leading-relaxed mb-6">
+                  D1 college basketball → professional basketball in Ankara, Turkey →
+                  CEO of Caipher AI LLC. 15 public GitHub repositories spanning SaaS,
+                  AI voice agents, semiconductor design, blockchain gaming, and
+                  automotive AI.
+                </p>
+              </SlideFrom>
+              <SlideFrom dir="left" delay={0.25}>
+                <p className="text-base text-[#555] leading-relaxed mb-8">
+                  Cannabis farms. Raw land developed from scratch. Physical products
+                  on retail shelves. Every course comes with the receipts.
+                </p>
+                <a
+                  href="https://github.com/theblockchainbaby"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-mono text-[#e63946] hover:text-white transition-colors group"
+                >
+                  github.com/theblockchainbaby
+                  <motion.span
+                    animate={{ x: [0, 4, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    →
+                  </motion.span>
+                </a>
+              </SlideFrom>
+            </div>
+
+            {/* Stat grid */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
             {[
               { label: "Full-Stack SaaS",     sub: "VitrOS \u2014 Next.js + Supabase" },
               { label: "Agentic AI Agents",   sub: "Otto + MoltBot + YorkAi" },
@@ -623,13 +709,48 @@ export default function Home() {
               { label: "Land Development",     sub: "Raw land \u2192 built from scratch" },
             ].map((item, i) => (
               <FlipIn key={item.label} delay={0.1 + i * 0.08}>
-                <MagicCard className="rounded-[16px] p-4 cursor-default bg-[#0a0a0a]">
-                  <p className="text-xs font-semibold text-white mb-1">{item.label}</p>
-                  <p className="text-[10px] text-white/25 font-mono">{item.sub}</p>
+                <MagicCard className="rounded-[16px] p-6 cursor-default bg-[#0a0a0a]">
+                  <p className="text-sm font-semibold text-white mb-2">{item.label}</p>
+                  <p className="text-xs text-white/25 font-mono">{item.sub}</p>
                 </MagicCard>
               </FlipIn>
             ))}
+            </div>
           </div>
+        </div>
+      </section>
+
+      {/* ── BOOK ─────────────────────────────────────────────────────────── */}
+      <section style={{ zIndex: 1, background: "#0a0a0a", display: "flex", justifyContent: "center", borderTop: "1px solid rgba(255,255,255,0.08)", padding: "160px 64px" }}>
+        <div style={{ width: "100%", maxWidth: "896px", textAlign: "center" }}>
+          <FlipIn>
+            <p className="text-[11px] uppercase tracking-[0.24em] text-[#e63946] mb-6">The Book</p>
+          </FlipIn>
+          <Reveal delay={0.1}>
+            <h2 className="text-4xl md:text-6xl font-black tracking-tight mb-4">YORK</h2>
+          </Reveal>
+          <Reveal delay={0.15}>
+            <p className="text-[17px] text-white/40 mb-12">by York W. Sims Jr.</p>
+          </Reveal>
+          <ScaleUp delay={0.2}>
+            <div style={{ maxWidth: "550px", margin: "0 auto", marginBottom: "48px", position: "relative" }}>
+              <div style={{
+                position: "absolute", inset: 0, zIndex: 1, pointerEvents: "none",
+                background: "radial-gradient(ellipse at center, transparent 40%, #0a0a0a 85%)",
+              }} />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/york-book.png"
+                alt="YORK — by York W. Sims Jr."
+                className="w-full"
+                style={{ boxShadow: "0 20px 80px rgba(230,57,70,0.15), 0 0 120px rgba(0,0,0,0.5)" }}
+              />
+            </div>
+          </ScaleUp>
+          <Reveal delay={0.3}>
+            <p className="text-2xl md:text-3xl font-black tracking-tight text-white mb-4">Coming Soon</p>
+            <p className="text-sm text-white/30 font-mono italic">&ldquo;I am most dangerous when I am desperate.&rdquo;</p>
+          </Reveal>
         </div>
       </section>
 
@@ -637,14 +758,18 @@ export default function Home() {
       <section id="pricing" style={{ zIndex: 1, background: "#0a0a0a", display: "flex", justifyContent: "center", borderTop: "1px solid rgba(255,255,255,0.08)", padding: "176px 64px" }}>
         <div style={{ width: "100%", maxWidth: "1100px" }}>
           <FlipIn>
-            <p className="text-[11px] uppercase tracking-[0.24em] text-[#e63946] mb-6">Pricing</p>
+            <p className="text-[14px] uppercase tracking-[0.24em] text-[#e63946] mb-6 font-semibold text-center">Pricing</p>
           </FlipIn>
           <div style={{ height: "24px" }} />
-          <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-16">
-            <WordReveal text="Pick your level. Start building." delay={0.1} />
-          </h2>
+          <Reveal delay={0.1}>
+            <h2 className="text-5xl md:text-6xl font-black tracking-tight mb-16 text-center">
+              Pick your level. Start building.
+            </h2>
+          </Reveal>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "16px" }}>
+          <div style={{ height: "40px" }} />
+
+          <div className="flex items-stretch justify-center gap-5">
             {PRICING.map((plan, i) => (
               <motion.div
                 key={plan.name}
@@ -652,52 +777,79 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: i * 0.1 }}
+                whileHover={{ y: -8, transition: { duration: 0.3, ease: "easeOut" } }}
+                className="group"
+                style={{ width: "265px" }}
               >
-                <MagicCard
-                  className={`h-full rounded-xl p-6 flex flex-col ${plan.accent ? "bg-[#0f0f0f]" : "bg-[#0a0a0a]"}`}
-                  gradientFrom={plan.accent ? "#e63946" : "#333"}
-                  gradientTo={plan.accent ? "#6b0a10" : "#111"}
-                  gradientColor={plan.accent ? "#1a0608" : "#111"}
+                <div
+                  className={`relative h-full flex flex-col backdrop-blur-xl border transition-all duration-500 overflow-hidden ${
+                    plan.accent
+                      ? "bg-[#e63946]/[0.06] border-[#e63946]/20 group-hover:border-[#e63946]/50 group-hover:shadow-[0_0_60px_-12px_rgba(230,57,70,0.3)]"
+                      : "bg-white/[0.02] border-white/[0.06] group-hover:border-white/[0.12] group-hover:shadow-[0_0_60px_-12px_rgba(255,255,255,0.06)]"
+                  }`}
+                  style={{ borderRadius: "32px", padding: "48px 28px 32px" }}
                 >
                   {plan.accent && <BorderBeam colorFrom="#e63946" colorTo="#ff8c94" duration={4} />}
                   {plan.accent && (
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#e63946] mb-3 block">
+                    <span className="absolute top-4 left-7 inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-widest text-[#e63946] bg-[#e63946]/10 px-3 py-1.5 rounded-full">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#e63946] animate-pulse" />
                       Most Popular
                     </span>
                   )}
-                  <div className="mb-5">
-                    <p className="text-xs uppercase tracking-widest text-[#444] font-mono mb-2">{plan.name}</p>
+                  <div className="mb-7">
+                    <p className="text-xs uppercase tracking-[0.2em] text-white/25 font-medium mb-4">{plan.name}</p>
                     <div style={{ display: "flex", alignItems: "baseline", gap: "4px" }}>
-                      <span className="text-4xl font-black">{plan.price}</span>
-                      {plan.per && <span className="text-sm text-[#444]">{plan.per}</span>}
+                      <span className="text-5xl font-black tracking-tight">{plan.price}</span>
+                      {plan.per && <span className="text-sm text-white/20 font-medium">{plan.per}</span>}
                     </div>
-                    <p className="text-xs text-[#444] mt-1">{plan.desc}</p>
+                    <p className="text-[13px] text-white/30 mt-3 leading-relaxed">{plan.desc}</p>
                   </div>
+                  <div className="w-full h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent mb-7" />
                   <motion.ul
                     variants={staggerContainer}
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: true }}
-                    className="space-y-2.5 mb-8 flex-1"
+                    className="space-y-3.5 mb-9 flex-1"
                   >
                     {plan.features.map((f) => (
-                      <motion.li key={f} variants={staggerItem} className="flex gap-2 text-xs text-[#777] items-start">
-                        <span className="text-[#e63946] shrink-0 mt-px">{"\u2192"}</span>
+                      <motion.li key={f} variants={staggerItem} className="flex gap-3 text-[13px] text-white/40 items-start">
+                        <span className={`shrink-0 mt-0.5 text-xs ${plan.accent ? "text-[#e63946]" : "text-white/20"}`}>{"\u2192"}</span>
                         {f}
                       </motion.li>
                     ))}
                   </motion.ul>
-                  <Link
-                    href={plan.href}
-                    className={`text-xs font-bold uppercase tracking-widest py-3 text-center rounded-lg transition-all block ${
-                      plan.accent
-                        ? "bg-[#e63946] text-white hover:bg-[#ff4d5a]"
-                        : "border border-[#222] text-white hover:border-[#444]"
-                    }`}
-                  >
-                    {plan.cta}
-                  </Link>
-                </MagicCard>
+                  {plan.accent ? (
+                    <Link href={plan.href} className="block">
+                      <motion.div
+                        className="relative text-sm font-bold uppercase tracking-widest py-4 text-center bg-[#e63946] text-white overflow-hidden"
+                        style={{ borderRadius: "100px" }}
+                        whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(230,57,70,0.5)" }}
+                        whileTap={{ scale: 0.95 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                      >
+                        <motion.div
+                          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                          animate={{ x: ["-100%", "100%"] }}
+                          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", repeatDelay: 1 }}
+                        />
+                        <span className="relative z-10">{plan.cta}</span>
+                      </motion.div>
+                    </Link>
+                  ) : (
+                    <Link href={plan.href} className="block">
+                      <motion.div
+                        className="relative text-sm font-bold uppercase tracking-widest py-4 text-center border border-white/10 text-white/60 overflow-hidden hover:text-white hover:border-white/25 transition-colors"
+                        style={{ borderRadius: "100px" }}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                      >
+                        {plan.cta}
+                      </motion.div>
+                    </Link>
+                  )}
+                </div>
               </motion.div>
             ))}
           </div>
@@ -720,29 +872,35 @@ export default function Home() {
             <p className="text-xs font-mono uppercase tracking-[0.25em] text-[#e63946] mb-8">The Moat</p>
           </ScaleUp>
 
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.0] mb-10">
-            <WordReveal
-              text="Nobody else can teach across 10 verticals with real shipped projects in every one."
-              delay={0.05}
-            />
-          </h2>
+          <div style={{ height: "48px" }} />
+          <Reveal delay={0.05}>
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.0]">
+              Nobody else can teach across 10 verticals with real shipped projects in every one.
+            </h2>
+          </Reveal>
+          <div style={{ height: "48px" }} />
 
-          <Reveal delay={0.3}>
-            <p className="text-white/25 text-sm mb-12 font-mono">That&apos;s the moat. Let&apos;s build.</p>
+          <Reveal delay={0.2}>
+            <p className="text-white/25 text-sm font-mono">That&apos;s the moat. Let&apos;s build.</p>
           </Reveal>
 
-          <ScaleUp delay={0.4}>
-            <Link href="/#pricing">
-              <ShimmerButton
-                shimmerColor="#ff8c94"
-                background="rgba(230,57,70,1)"
-                borderRadius="12px"
-                className="text-xs font-bold uppercase tracking-widest px-12 py-5"
-              >
-                Start Building
-              </ShimmerButton>
-            </Link>
+          <div style={{ height: "40px" }} />
+
+          <ScaleUp delay={0.3}>
+            <div className="flex justify-center">
+              <Link href="/#pricing">
+                <ShimmerButton
+                  shimmerColor="#ff8c94"
+                  background="rgba(230,57,70,1)"
+                  borderRadius="12px"
+                  className="text-xs font-bold uppercase tracking-widest px-12 py-5"
+                >
+                  Start Building
+                </ShimmerButton>
+              </Link>
+            </div>
           </ScaleUp>
+
         </div>
       </section>
 
@@ -756,7 +914,8 @@ export default function Home() {
           viewport={{ once: true, margin: "-20px" }}
         >
           <motion.div variants={staggerItem}>
-            <Image src="/logo-v3.png" alt="YorkSims" width={160} height={45} className="h-10 w-auto" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/nsu-logo.png" alt="York State University" style={{ height: "120px", width: "auto" }} />
           </motion.div>
           <motion.p variants={staggerItem} className="text-xs text-white/30 font-mono">
             Teaching Execution, Not Theory {"\u2014"} Built by a Builder, for Builders
