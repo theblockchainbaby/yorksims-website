@@ -45,11 +45,14 @@ const VERTICALS = [
     proofs: ["/proofs/business-1.webp", "/proofs/business-2.webp", "/proofs/business-3.webp"],
     proofFit: ["object-top object-cover", "object-top object-cover", "object-center object-cover scale-[1.3]"] },
   { num: "06", title: "Physical Products & Manufacturing",  tag: "CPG · Sourcing · Retail",             href: "/verticals/products",
-    proofs: ["/proofs/products-1.webp", "/proofs/products-2.webp", "/proofs/products-3.webp"] },
+    proofs: ["/proofs/manufacturing-1.webp", "/proofs/manufacturing-2.webp", "/proofs/manufacturing-grid.webp"],
+    proofFit: ["object-center object-cover", "object-center object-cover", "object-top object-cover"] },
   { num: "07", title: "Land & Real Estate Development",     tag: "Raw Land · Permits · Zoning",         href: "/verticals/land",
-    proofs: ["/proofs/land-1.webp", "/proofs/land-2.webp", "/proofs/land-3.webp"] },
+    proofs: ["/proofs/land-1.webp", "/proofs/land-2.webp", "/proofs/land-3.webp"],
+    proofFit: ["object-center object-cover", "object-center object-cover", "object-top object-cover"] },
   { num: "08", title: "Athlete to Entrepreneur",            tag: "D1 · Discipline · Transition",        href: "/verticals/athlete",
-    proofs: ["/proofs/athlete-1.webp", "/proofs/athlete-2.webp", "/proofs/athlete-3.webp"] },
+    proofs: ["/proofs/athlete-1.webp", "/proofs/athlete-2.webp", "/proofs/athlete-3.webp"],
+    proofFit: ["object-[50%_0%] object-cover", "object-center object-cover", "object-top object-cover"] },
   { num: "09", title: "Vertical SaaS & Voice Agents",       tag: "Voice · Vertical SaaS · White-Label", href: "/verticals/automotive",
     proofs: ["/proofs/automotive-1.webp", "/proofs/automotive-2.webp", "/proofs/automotive-3.webp"] },
   { num: "10", title: "Creative Tech & AI Production",      tag: "Canvas · fal.ai · Kling 3.0",         href: "/verticals/creative",
@@ -916,7 +919,7 @@ export default function Home() {
         >
           <motion.div variants={staggerItem}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/nsu-logo.png" alt="York State University" style={{ height: "120px", width: "auto" }} />
+            <img src="/york-state-logo.png" alt="York State University" style={{ height: "80px", width: "auto" }} />
           </motion.div>
           <motion.p variants={staggerItem} className="text-xs text-white/30 font-mono">
             Teaching Execution, Not Theory {"\u2014"} Built by a Builder, for Builders
