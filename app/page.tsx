@@ -54,9 +54,11 @@ const VERTICALS = [
     proofs: ["/proofs/athlete-1.webp", "/proofs/athlete-2.webp", "/proofs/athlete-3.webp"],
     proofFit: ["object-[50%_0%] object-cover", "object-center object-cover", "object-top object-cover"] },
   { num: "09", title: "Vertical SaaS & Voice Agents",       tag: "Voice · Vertical SaaS · White-Label", href: "/verticals/automotive",
-    proofs: ["/proofs/automotive-1.webp", "/proofs/automotive-2.webp", "/proofs/automotive-3.webp"] },
+    proofs: ["/proofs/creative-1.webp", "/proofs/creative-2.webp", "/proofs/creative-3.webp"],
+    proofFit: ["object-left-top object-cover", "object-top object-cover", "object-left-top object-cover"] },
   { num: "10", title: "Creative Tech & AI Production",      tag: "Canvas · fal.ai · Kling 3.0",         href: "/verticals/creative",
-    proofs: ["/proofs/creative-1.webp", "/proofs/creative-2.webp", "/proofs/creative-3.webp"] },
+    proofs: ["/proofs/saas-a.webp", "/proofs/saas-b.webp", "/proofs/saas-c.webp"],
+    proofFit: ["object-left-top object-cover", "object-top object-cover", "object-right-top object-cover"] },
 ];
 
 const PRICING = [

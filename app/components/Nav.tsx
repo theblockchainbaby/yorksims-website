@@ -49,7 +49,7 @@ export default function Nav() {
         className="absolute text-lg font-bold uppercase tracking-widest px-20 py-6 min-w-[200px] text-center bg-[#e63946] text-white rounded-xl hover:bg-[#ff4d5a] transition-all hover:scale-105 shadow-[0_0_20px_rgba(230,57,70,0.4)] hover:shadow-[0_0_30px_rgba(230,57,70,0.6)]"
         style={{ right: "32px" }}
       >
-        Join
+        Join Now
       </Link>
 
     </nav>
