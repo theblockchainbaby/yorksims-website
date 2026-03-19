@@ -42,7 +42,7 @@ export const VERTICALS: Vertical[] = [
     title: "Blockchain & Fintech",
     shortTitle: "Blockchain",
     desc: "XRP Ledger, crypto/fiat, Web3 gaming, multi-chain wallet integration.",
-    tags: ["XRPL", "EVM", "Solana", "DeFi"],
+    tags: ["XRPL", "EVM", "Solana", "Bitcoin", "DeFi"],
     route: "/verticals/blockchain",
   },
   {
@@ -84,10 +84,10 @@ export const VERTICALS: Vertical[] = [
   {
     id: "automotive",
     num: "09",
-    title: "Automotive Industry Tech",
-    shortTitle: "Automotive",
-    desc: "AI dealership systems, phone agents, Otto platform case study.",
-    tags: ["Automotive", "AI", "Voice Agents", "CRM"],
+    title: "Vertical SaaS & Voice Agents",
+    shortTitle: "Voice Agents",
+    desc: "Voice AI agents, white-label SaaS, vertical industry automation.",
+    tags: ["Voice", "Vertical SaaS", "White-Label"],
     route: "/verticals/automotive",
   },
   {

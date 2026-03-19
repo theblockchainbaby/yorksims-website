@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 import dynamic from "next/dynamic";
@@ -45,7 +45,7 @@ const VERTICALS = [
     proofs: ["/proofs/business-1.webp", "/proofs/business-2.webp", "/proofs/business-3.webp"],
     proofFit: ["object-top object-cover", "object-top object-cover", "object-center object-cover scale-[1.3]"] },
   { num: "06", title: "Physical Products & Manufacturing",  tag: "CPG · Sourcing · Retail",             href: "/verticals/products",
-    proofs: ["/proofs/manufacturing-1.webp", "/proofs/manufacturing-2.webp", "/proofs/manufacturing-grid.webp"],
+    proofs: ["/proofs/mfg-a.webp", "/proofs/mfg-b.webp", "/proofs/mfg-c.webp"],
     proofFit: ["object-center object-cover", "object-center object-cover", "object-top object-cover"] },
   { num: "07", title: "Land & Real Estate Development",     tag: "Raw Land · Permits · Zoning",         href: "/verticals/land",
     proofs: ["/proofs/land-1.webp", "/proofs/land-2.webp", "/proofs/land-3.webp"],
@@ -64,42 +64,50 @@ const VERTICALS = [
 const PRICING = [
   {
     name: "Free",
-    price: "$0",
+    price: { monthly: "$0", yearly: "$0" },
+    per: { monthly: "", yearly: "" },
     desc: "Sample before you build.",
     features: ["1 free module per vertical", "Weekly build newsletter", "YouTube channel access", "Free blog breakdowns"],
     cta: "Start Free",
     href: "/hub",
     accent: false,
+    priceKey: { monthly: null, yearly: null },
   },
   {
     name: "Pro",
-    price: "$29",
-    per: "/mo",
+    price: { monthly: "$29", yearly: "$290" },
+    per: { monthly: "/mo", yearly: "/yr" },
     desc: "Full platform access.",
     features: ["All courses across 10 verticals", "Templates, contracts & SOPs", "Monthly live Q&A with York", "Private community", "Weekly new content"],
     cta: "Join Pro",
     href: "/contact",
     accent: true,
+    priceKey: { monthly: "pro_monthly", yearly: "pro_yearly" },
+    yearlySavings: "2 months free",
   },
   {
     name: "Builder",
-    price: "$99",
-    per: "/mo",
+    price: { monthly: "$99", yearly: "$990" },
+    per: { monthly: "/mo", yearly: "/yr" },
     desc: "Watch it happen live.",
     features: ["Everything in Pro", "Live build sessions", "Full code repos & starters", "Small group coaching (20 max)", "Priority tool access"],
     cta: "Join Builder",
     href: "/contact",
     accent: false,
+    priceKey: { monthly: "builder_monthly", yearly: "builder_yearly" },
+    yearlySavings: "2 months free",
   },
   {
     name: "1-on-1",
-    price: "$500",
-    per: "/hr",
+    price: { monthly: "$500", yearly: "$3,000" },
+    per: { monthly: "/hr", yearly: "/yr" },
     desc: "Direct access. Limited.",
     features: ["SaaS & AI consulting", "Business structure review", "Go-to-market strategy", "Hardware guidance", "Limited to 5 hrs/week"],
     cta: "Book Session",
     href: "/contact",
     accent: false,
+    priceKey: { monthly: "one_on_one_monthly", yearly: "one_on_one_yearly" },
+    yearlySavings: "50% off",
   },
 ];
 
@@ -238,6 +246,162 @@ const staggerItem = {
 };
 
 // ── MAIN ─────────────────────────────────────────────────────────────────────
+
+function PricingSection() {
+  const [billing, setBilling] = useState<"monthly" | "yearly">("monthly");
+  const [loadingPlan, setLoadingPlan] = useState<string | null>(null);
+
+  const handleCheckout = async (priceKey: string) => {
+    setLoadingPlan(priceKey);
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ priceKey }),
+      });
+      const data = await res.json();
+      if (data.url) window.location.href = data.url;
+      else alert("Something went wrong. Please try again.");
+    } catch {
+      alert("Something went wrong. Please try again.");
+    } finally {
+      setLoadingPlan(null);
+    }
+  };
+
+  return (
+    <section id="pricing" style={{ zIndex: 1, background: "#0a0a0a", display: "flex", justifyContent: "center", borderTop: "1px solid rgba(255,255,255,0.08)", padding: "176px 64px" }}>
+      <div style={{ width: "100%", maxWidth: "1100px" }}>
+        <FlipIn>
+          <p className="text-[14px] uppercase tracking-[0.24em] text-[#e63946] mb-6 font-semibold text-center">Pricing</p>
+        </FlipIn>
+        <div style={{ height: "24px" }} />
+        <Reveal delay={0.1}>
+          <h2 className="text-5xl md:text-6xl font-black tracking-tight mb-10 text-center">
+            Pick your level. Start building.
+          </h2>
+        </Reveal>
+
+        {/* Billing toggle */}
+        <div className="flex justify-center mb-12">
+          <div className="flex items-center gap-1 bg-white/[0.04] border border-white/[0.08] p-1 rounded-full">
+            <button
+              onClick={() => setBilling("monthly")}
+              className={`px-6 py-2 text-xs font-bold uppercase tracking-widest rounded-full transition-all ${billing === "monthly" ? "bg-white text-black" : "text-white/40 hover:text-white"}`}
+            >Monthly</button>
+            <button
+              onClick={() => setBilling("yearly")}
+              className={`px-6 py-2 text-xs font-bold uppercase tracking-widest rounded-full transition-all ${billing === "yearly" ? "bg-white text-black" : "text-white/40 hover:text-white"}`}
+            >
+              Yearly
+              <span className="ml-2 text-[#e63946]">Save</span>
+            </button>
+          </div>
+        </div>
+
+        <div className="flex items-stretch justify-center gap-5">
+          {PRICING.map((plan, i) => {
+            const priceKey = plan.priceKey[billing];
+            const isLoading = loadingPlan === priceKey;
+            return (
+              <motion.div
+                key={plan.name}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: i * 0.1 }}
+                whileHover={{ y: -8, transition: { duration: 0.3, ease: "easeOut" } }}
+                className="group"
+                style={{ width: "265px" }}
+              >
+                <div
+                  className={`relative h-full flex flex-col backdrop-blur-xl border transition-all duration-500 overflow-hidden ${
+                    plan.accent
+                      ? "bg-[#e63946]/[0.06] border-[#e63946]/20 group-hover:border-[#e63946]/50 group-hover:shadow-[0_0_60px_-12px_rgba(230,57,70,0.3)]"
+                      : "bg-white/[0.02] border-white/[0.06] group-hover:border-white/[0.12] group-hover:shadow-[0_0_60px_-12px_rgba(255,255,255,0.06)]"
+                  }`}
+                  style={{ borderRadius: "32px", padding: "48px 28px 32px" }}
+                >
+                  {plan.accent && <BorderBeam colorFrom="#e63946" colorTo="#ff8c94" duration={4} />}
+                  {plan.accent && (
+                    <span className="absolute top-4 left-7 inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-widest text-[#e63946] bg-[#e63946]/10 px-3 py-1.5 rounded-full">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#e63946] animate-pulse" />
+                      Most Popular
+                    </span>
+                  )}
+                  <div className="mb-7">
+                    <p className="text-xs uppercase tracking-[0.2em] text-white/25 font-medium mb-4">{plan.name}</p>
+                    <div style={{ display: "flex", alignItems: "baseline", gap: "4px" }}>
+                      <span className="text-5xl font-black tracking-tight">{plan.price[billing]}</span>
+                      {plan.per[billing] && <span className="text-sm text-white/20 font-medium">{plan.per[billing]}</span>}
+                    </div>
+                    {"yearlySavings" in plan && billing === "yearly" && (
+                      <span className="inline-block mt-2 text-[10px] font-semibold uppercase tracking-widest text-[#e63946] bg-[#e63946]/10 px-2 py-1 rounded-full">
+                        {plan.yearlySavings}
+                      </span>
+                    )}
+                    <p className="text-[13px] text-white/30 mt-3 leading-relaxed">{plan.desc}</p>
+                  </div>
+                  <div className="w-full h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent mb-7" />
+                  <motion.ul
+                    variants={staggerContainer}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true }}
+                    className="space-y-3.5 mb-9 flex-1"
+                  >
+                    {plan.features.map((f) => (
+                      <motion.li key={f} variants={staggerItem} className="flex gap-3 text-[13px] text-white/40 items-start">
+                        <span className={`shrink-0 mt-0.5 text-xs ${plan.accent ? "text-[#e63946]" : "text-white/20"}`}>{"\u2192"}</span>
+                        {f}
+                      </motion.li>
+                    ))}
+                  </motion.ul>
+                  {priceKey ? (
+                    <motion.button
+                      onClick={() => handleCheckout(priceKey)}
+                      disabled={isLoading}
+                      className={`w-full relative text-sm font-bold uppercase tracking-widest py-4 text-center overflow-hidden disabled:opacity-60 ${
+                        plan.accent
+                          ? "bg-[#e63946] text-white"
+                          : "border border-white/10 text-white/60 hover:text-white hover:border-white/25"
+                      }`}
+                      style={{ borderRadius: "100px" }}
+                      whileHover={{ scale: 1.05, boxShadow: plan.accent ? "0 0 30px rgba(230,57,70,0.5)" : undefined }}
+                      whileTap={{ scale: 0.95 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                    >
+                      {plan.accent && (
+                        <motion.div
+                          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                          animate={{ x: ["-100%", "100%"] }}
+                          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", repeatDelay: 1 }}
+                        />
+                      )}
+                      <span className="relative z-10">{isLoading ? "Redirecting…" : plan.cta}</span>
+                    </motion.button>
+                  ) : (
+                    <Link href={plan.href} className="block">
+                      <motion.div
+                        className="relative text-sm font-bold uppercase tracking-widest py-4 text-center border border-white/10 text-white/60 overflow-hidden hover:text-white hover:border-white/25 transition-colors"
+                        style={{ borderRadius: "100px" }}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                      >
+                        {plan.cta}
+                      </motion.div>
+                    </Link>
+                  )}
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 export default function Home() {
   const heroRef    = useRef<HTMLDivElement>(null);
@@ -761,106 +925,7 @@ export default function Home() {
       </section>
 
       {/* ── PRICING ───────────────────────────────────────────────────────── */}
-      <section id="pricing" style={{ zIndex: 1, background: "#0a0a0a", display: "flex", justifyContent: "center", borderTop: "1px solid rgba(255,255,255,0.08)", padding: "176px 64px" }}>
-        <div style={{ width: "100%", maxWidth: "1100px" }}>
-          <FlipIn>
-            <p className="text-[14px] uppercase tracking-[0.24em] text-[#e63946] mb-6 font-semibold text-center">Pricing</p>
-          </FlipIn>
-          <div style={{ height: "24px" }} />
-          <Reveal delay={0.1}>
-            <h2 className="text-5xl md:text-6xl font-black tracking-tight mb-16 text-center">
-              Pick your level. Start building.
-            </h2>
-          </Reveal>
-
-          <div style={{ height: "40px" }} />
-
-          <div className="flex items-stretch justify-center gap-5">
-            {PRICING.map((plan, i) => (
-              <motion.div
-                key={plan.name}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: i * 0.1 }}
-                whileHover={{ y: -8, transition: { duration: 0.3, ease: "easeOut" } }}
-                className="group"
-                style={{ width: "265px" }}
-              >
-                <div
-                  className={`relative h-full flex flex-col backdrop-blur-xl border transition-all duration-500 overflow-hidden ${
-                    plan.accent
-                      ? "bg-[#e63946]/[0.06] border-[#e63946]/20 group-hover:border-[#e63946]/50 group-hover:shadow-[0_0_60px_-12px_rgba(230,57,70,0.3)]"
-                      : "bg-white/[0.02] border-white/[0.06] group-hover:border-white/[0.12] group-hover:shadow-[0_0_60px_-12px_rgba(255,255,255,0.06)]"
-                  }`}
-                  style={{ borderRadius: "32px", padding: "48px 28px 32px" }}
-                >
-                  {plan.accent && <BorderBeam colorFrom="#e63946" colorTo="#ff8c94" duration={4} />}
-                  {plan.accent && (
-                    <span className="absolute top-4 left-7 inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-widest text-[#e63946] bg-[#e63946]/10 px-3 py-1.5 rounded-full">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#e63946] animate-pulse" />
-                      Most Popular
-                    </span>
-                  )}
-                  <div className="mb-7">
-                    <p className="text-xs uppercase tracking-[0.2em] text-white/25 font-medium mb-4">{plan.name}</p>
-                    <div style={{ display: "flex", alignItems: "baseline", gap: "4px" }}>
-                      <span className="text-5xl font-black tracking-tight">{plan.price}</span>
-                      {plan.per && <span className="text-sm text-white/20 font-medium">{plan.per}</span>}
-                    </div>
-                    <p className="text-[13px] text-white/30 mt-3 leading-relaxed">{plan.desc}</p>
-                  </div>
-                  <div className="w-full h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent mb-7" />
-                  <motion.ul
-                    variants={staggerContainer}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true }}
-                    className="space-y-3.5 mb-9 flex-1"
-                  >
-                    {plan.features.map((f) => (
-                      <motion.li key={f} variants={staggerItem} className="flex gap-3 text-[13px] text-white/40 items-start">
-                        <span className={`shrink-0 mt-0.5 text-xs ${plan.accent ? "text-[#e63946]" : "text-white/20"}`}>{"\u2192"}</span>
-                        {f}
-                      </motion.li>
-                    ))}
-                  </motion.ul>
-                  {plan.accent ? (
-                    <Link href={plan.href} className="block">
-                      <motion.div
-                        className="relative text-sm font-bold uppercase tracking-widest py-4 text-center bg-[#e63946] text-white overflow-hidden"
-                        style={{ borderRadius: "100px" }}
-                        whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(230,57,70,0.5)" }}
-                        whileTap={{ scale: 0.95 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                      >
-                        <motion.div
-                          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                          animate={{ x: ["-100%", "100%"] }}
-                          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", repeatDelay: 1 }}
-                        />
-                        <span className="relative z-10">{plan.cta}</span>
-                      </motion.div>
-                    </Link>
-                  ) : (
-                    <Link href={plan.href} className="block">
-                      <motion.div
-                        className="relative text-sm font-bold uppercase tracking-widest py-4 text-center border border-white/10 text-white/60 overflow-hidden hover:text-white hover:border-white/25 transition-colors"
-                        style={{ borderRadius: "100px" }}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                      >
-                        {plan.cta}
-                      </motion.div>
-                    </Link>
-                  )}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PricingSection />
 
       {/* ── CLOSING STATEMENT ─────────────────────────────────────────────── */}
       <section className="relative overflow-hidden" style={{ zIndex: 1, display: "flex", justifyContent: "center", borderTop: "1px solid rgba(255,255,255,0.08)", padding: "208px 64px" }}>
