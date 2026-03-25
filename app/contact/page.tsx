@@ -99,7 +99,7 @@ export default function ContactPage() {
           </motion.p>
           <motion.h1
             className="text-6xl md:text-7xl font-black tracking-tight leading-[0.95] text-center"
-            style={{ marginBottom: "24px" }}
+            style={{ marginTop: "32px", marginBottom: "40px" }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.08 }}
@@ -119,7 +119,7 @@ export default function ContactPage() {
 
       {/* ── MAIN ── */}
       <section style={{ padding: "40px 64px 140px", maxWidth: "1100px", margin: "0 auto" }}>
-        <div className="grid md:grid-cols-2 gap-8 items-start">
+        <div className="grid md:grid-cols-2 gap-8 items-stretch">
 
           {/* Left — tier selector + consulting info */}
           <div className="flex flex-col gap-5">
@@ -218,7 +218,7 @@ export default function ContactPage() {
             </AnimatePresence>
 
             {/* Direct contact */}
-            <FadeIn delay={0.2}>
+            <FadeIn delay={0.2} className="mt-auto">
               <div className="flex gap-3">
                 {[
                   { label: "contact@yorksims.com", href: "mailto:contact@yorksims.com" },
@@ -242,8 +242,8 @@ export default function ContactPage() {
           </div>
 
           {/* Right — form */}
-          <FadeIn delay={0.12}>
-            <AnimatePresence mode="wait">
+          <FadeIn delay={0.12} className="flex flex-col">
+            <AnimatePresence mode="wait" >
               {submitted ? (
                 <motion.div
                   key="success"
@@ -273,7 +273,7 @@ export default function ContactPage() {
                   key="form"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="relative overflow-hidden"
+                  className="relative overflow-hidden flex-1"
                   style={{
                     borderRadius: "32px",
                     background: "rgba(255,255,255,0.02)",

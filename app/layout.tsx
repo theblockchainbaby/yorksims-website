@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "./components/SmoothScroll";
+import PasscodeGate from "./components/PasscodeGate";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,7 +38,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-dark-bg text-white`}>
-        <SmoothScroll>{children}</SmoothScroll>
+        <PasscodeGate>
+          <SmoothScroll>{children}</SmoothScroll>
+        </PasscodeGate>
       </body>
     </html>
   );

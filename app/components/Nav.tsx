@@ -4,11 +4,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const links = [
-  { label: "Platform",   href: "/hub" },
-  { label: "Verticals",  href: "/verticals" },
-  { label: "Pricing",    href: "/#pricing" },
-  { label: "Blog",       href: "/blog" },
-  { label: "Contact",    href: "/contact" },
+  { label: "Platform",   href: "/hub",      anchor: null },
+  { label: "Verticals",  href: "/verticals", anchor: null },
+  { label: "Pricing",    href: "/#pricing",  anchor: "pricing" },
+  { label: "Blog",       href: "/blog",      anchor: null },
+  { label: "Contact",    href: "/contact",   anchor: null },
 ];
 
 export default function Nav() {
@@ -16,6 +16,13 @@ export default function Nav() {
 
   // Only show navbar on homepage
   if (pathname !== "/") return null;
+
+  function handleAnchorClick(e: React.MouseEvent, anchor: string | null) {
+    if (!anchor) return;
+    e.preventDefault();
+    const el = document.getElementById(anchor);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  }
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 h-[70px] flex items-center px-8 border-b border-[#1e1e1e] bg-[#0a0a0a]/90 backdrop-blur-sm">
@@ -32,6 +39,7 @@ export default function Nav() {
           <Link
             key={l.href}
             href={l.href}
+            onClick={(e) => handleAnchorClick(e, l.anchor)}
             className={`text-sm font-semibold tracking-widest uppercase transition-colors ${
               pathname === l.href
                 ? "text-white"
@@ -43,10 +51,10 @@ export default function Nav() {
         ))}
       </div>
 
-      {/* CTA — positioned from right */}
+      {/* CTA — positioned from right, hidden on mobile */}
       <Link
         href="/#pricing"
-        className="absolute text-lg font-bold uppercase tracking-widest px-20 py-6 min-w-[200px] text-center bg-[#e63946] text-white rounded-xl hover:bg-[#ff4d5a] transition-all hover:scale-105 shadow-[0_0_20px_rgba(230,57,70,0.4)] hover:shadow-[0_0_30px_rgba(230,57,70,0.6)]"
+        className="hidden sm:block absolute text-lg font-bold uppercase tracking-widest px-20 py-6 min-w-[200px] text-center bg-[#e63946] text-white rounded-xl hover:bg-[#ff4d5a] transition-all hover:scale-105 shadow-[0_0_20px_rgba(230,57,70,0.4)] hover:shadow-[0_0_30px_rgba(230,57,70,0.6)]"
         style={{ right: "32px" }}
       >
         Join Now

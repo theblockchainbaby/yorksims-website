@@ -26,7 +26,7 @@ export default function VerticalPage({ params }: { params: Promise<{ slug: strin
     <div className="min-h-screen bg-[#0a0a0a] text-white">
       <Nav />
 
-      <div className="pt-28 pb-16 px-6 max-w-6xl mx-auto">
+      <div className="pt-12 pb-16 px-6 max-w-6xl mx-auto">
         <Link href="/hub" className="text-xs text-[#444] hover:text-white transition-colors mb-8 inline-block">
           ← Back to Platform
         </Link>
