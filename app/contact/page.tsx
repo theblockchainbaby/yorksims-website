@@ -76,7 +76,7 @@ export default function ContactPage() {
       {/* ── HERO ── */}
       <section
         className="relative flex flex-col items-center justify-center text-center overflow-hidden"
-        style={{ minHeight: "38vh", padding: "120px 64px 70px" }}
+        style={{ minHeight: "38vh", padding: "120px 24px 70px" }}
       >
         <div className="absolute inset-0 pointer-events-none" style={{
           backgroundImage: "linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px)",
@@ -118,7 +118,7 @@ export default function ContactPage() {
       </section>
 
       {/* ── MAIN ── */}
-      <section style={{ padding: "40px 64px 140px", maxWidth: "1100px", margin: "0 auto" }}>
+      <section className="px-6 md:px-16" style={{ paddingTop: "40px", paddingBottom: "140px", maxWidth: "1100px", margin: "0 auto" }}>
         <div className="grid md:grid-cols-2 gap-8 items-stretch">
 
           {/* Left — tier selector + consulting info */}
@@ -362,12 +362,12 @@ export default function ContactPage() {
       </section>
 
       {/* Footer */}
-      <footer style={{ borderTop: "1px solid rgba(255,255,255,0.06)", padding: "48px 64px", display: "flex", justifyContent: "center" }}>
-        <div style={{ width: "100%", maxWidth: "1100px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      <footer className="px-6 md:px-16" style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: "48px", paddingBottom: "48px", display: "flex", justifyContent: "center" }}>
+        <div className="w-full max-w-[1100px] flex flex-col md:flex-row justify-between items-center gap-6">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/york-state-logo.png" alt="York State University" style={{ height: "60px", width: "auto" }} />
           <p className="text-xs text-white/20 font-mono">Teaching Execution, Not Theory</p>
-          <div className="flex gap-8">
+          <div className="flex gap-6 md:gap-8 flex-wrap justify-center">
             {[
               { label: "Home", href: "/" },
               { label: "Platform", href: "/hub" },

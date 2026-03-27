@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@stripe/react-stripe-js": "^5.2.0",
+    "@supabase/ssr": "^0.9.0",
+    "@supabase/supabase-js": "^2.100.1",
     "@types/three": "^0.183.1",
     "@web3modal/ethers": "^5.1.11",
     "clsx": "^2.1.1",

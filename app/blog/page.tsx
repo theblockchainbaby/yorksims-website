@@ -7,6 +7,14 @@ import Nav from "../components/Nav";
 
 const POSTS = [
   {
+    slug: "business-runs-without-me",
+    vertical: "Business",
+    title: "How I Built a Business That Runs Without Me",
+    excerpt: "The real systems behind Caipher AI LLC. AI agents, automated workflows, and the architecture that lets me build across 10 verticals without burning out.",
+    date: "Mar 26, 2026",
+    readTime: "14 min",
+  },
+  {
     slug: "building-vitros-saas",
     vertical: "Software",
     title: "Building VitrOS: From Zero to Production SaaS in 30 Days",
@@ -144,7 +152,7 @@ export default function BlogPage() {
       {/* ── HERO ── */}
       <section
         className="relative flex flex-col items-center justify-center text-center overflow-hidden"
-        style={{ minHeight: "40vh", padding: "120px 64px 80px" }}
+        style={{ minHeight: "40vh", padding: "120px 24px 80px" }}
       >
         {/* Grid */}
         <div className="absolute inset-0 pointer-events-none" style={{
@@ -189,7 +197,7 @@ export default function BlogPage() {
       </section>
 
       {/* ── POSTS ── */}
-      <section style={{ padding: "40px 64px 140px", maxWidth: "1000px", margin: "0 auto" }}>
+      <section className="px-6 md:px-16" style={{ paddingTop: "40px", paddingBottom: "140px", maxWidth: "1000px", margin: "0 auto" }}>
         <div className="flex flex-col gap-4">
           {POSTS.map((post, i) => (
             <PostCard key={post.slug} post={post} index={i} />
@@ -215,12 +223,12 @@ export default function BlogPage() {
       </section>
 
       {/* Footer */}
-      <footer style={{ borderTop: "1px solid rgba(255,255,255,0.06)", padding: "48px 64px", display: "flex", justifyContent: "center" }}>
-        <div style={{ width: "100%", maxWidth: "1000px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      <footer className="px-6 md:px-16" style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: "48px", paddingBottom: "48px", display: "flex", justifyContent: "center" }}>
+        <div className="w-full max-w-[1000px] flex flex-col md:flex-row justify-between items-center gap-6">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/york-state-logo.png" alt="York State University" style={{ height: "60px", width: "auto" }} />
           <p className="text-xs text-white/20 font-mono">Teaching Execution, Not Theory</p>
-          <div className="flex gap-8">
+          <div className="flex gap-6 md:gap-8 flex-wrap justify-center">
             {[
               { label: "Home", href: "/" },
               { label: "Platform", href: "/hub" },

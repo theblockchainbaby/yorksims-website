@@ -270,7 +270,7 @@ function PricingSection() {
   };
 
   return (
-    <section id="pricing" style={{ zIndex: 1, background: "#0a0a0a", display: "flex", justifyContent: "center", borderTop: "1px solid rgba(255,255,255,0.08)", padding: "176px 64px" }}>
+    <section id="pricing" className="px-6 md:px-16" style={{ zIndex: 1, background: "#0a0a0a", display: "flex", justifyContent: "center", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "176px", paddingBottom: "176px" }}>
       <div style={{ width: "100%", maxWidth: "1100px" }}>
         <FlipIn>
           <p className="text-[14px] uppercase tracking-[0.24em] text-[#e63946] mb-6 font-semibold text-center">Pricing</p>
@@ -299,7 +299,7 @@ function PricingSection() {
           </div>
         </div>
 
-        <div className="flex items-stretch justify-center gap-5">
+        <div className="flex flex-wrap items-stretch justify-center gap-5">
           {PRICING.map((plan, i) => {
             const priceKey = plan.priceKey[billing];
             const isLoading = loadingPlan === priceKey;
@@ -311,8 +311,7 @@ function PricingSection() {
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: i * 0.1 }}
                 whileHover={{ y: -8, transition: { duration: 0.3, ease: "easeOut" } }}
-                className="group"
-                style={{ width: "265px" }}
+                className="group w-full sm:w-[265px]"
               >
                 <div
                   className={`relative h-full flex flex-col backdrop-blur-xl border transition-all duration-500 overflow-hidden ${
@@ -575,7 +574,7 @@ export default function Home() {
       </div>
 
       {/* ── PROBLEM / SOLUTION ────────────────────────────────────────────── */}
-      <section style={{ zIndex: 1, background: "#0a0a0a", display: "flex", justifyContent: "center", borderTop: "1px solid rgba(255,255,255,0.08)", padding: "208px 64px" }}>
+      <section className="px-6 md:px-16" style={{ zIndex: 1, background: "#0a0a0a", display: "flex", justifyContent: "center", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "120px", paddingBottom: "120px" }}>
         <div style={{ width: "100%", maxWidth: "1100px", textAlign: "center" }}>
 
           <Reveal>
@@ -622,7 +621,7 @@ export default function Home() {
           </div>
 
           {/* Column headers */}
-          <div className="grid grid-cols-2 gap-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-8">
             <SlideFrom dir="left" delay={0.05}>
               <p className="text-[14px] uppercase tracking-[0.22em] text-white/20 font-semibold">Every other platform</p>
             </SlideFrom>
@@ -639,7 +638,7 @@ export default function Home() {
             { bad: "Finish knowing what an LLC is", good: "Finish having formed the LLC \u2014 op agreement in hand" },
             { bad: "Leave inspired \u2014 still stuck", good: "Leave with a deployed SaaS on Vercel" },
           ].map((row, i) => (
-            <div key={i} className="grid grid-cols-2 gap-6 mb-5">
+            <div key={i} className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-5">
               <SlideFrom dir="left" delay={0.08 + i * 0.07}>
                 <div className="rounded-[20px] bg-white/[0.02] ring-1 ring-white/[0.05] px-8 py-6 flex gap-4 items-start text-left">
                   <span className="mt-2.5 h-2 w-2 rounded-full bg-white/15 shrink-0" />
@@ -671,7 +670,7 @@ export default function Home() {
         className="relative overflow-hidden"
         style={{ zIndex: 1, borderTop: "1px solid rgba(255,255,255,0.08)", padding: "48px 0 0 0" }}
       >
-        <div style={{ display: "flex", justifyContent: "center", padding: "0 64px", marginBottom: "12px" }}>
+        <div className="flex justify-center px-6 md:px-16 mb-3">
           <div style={{ width: "100%", maxWidth: "896px", textAlign: "center" }}>
             <FlipIn>
               <p className="text-[11px] uppercase tracking-[0.24em] text-[#e63946]" style={{ marginBottom: "40px" }}>10 Verticals</p>
@@ -788,7 +787,7 @@ export default function Home() {
         </div>
 
         {/* Mobile grid */}
-        <div className="lg:hidden" style={{ display: "flex", justifyContent: "center", padding: "0 40px 192px" }}>
+        <div className="lg:hidden flex justify-center px-4 md:px-10 pb-32 md:pb-48">
           <div style={{ width: "100%", maxWidth: "896px", display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "12px" }}>
             {VERTICALS.map((v, i) => (
               <FlipIn key={v.num} delay={i * 0.05}>
@@ -823,7 +822,7 @@ export default function Home() {
       </section>
 
       {/* ── ABOUT ─────────────────────────────────────────────────────────── */}
-      <section style={{ zIndex: 1, background: "#0a0a0a", display: "flex", justifyContent: "center", borderTop: "1px solid rgba(255,255,255,0.08)", padding: "208px 64px" }}>
+      <section className="px-6 md:px-16" style={{ zIndex: 1, background: "#0a0a0a", display: "flex", justifyContent: "center", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "120px", paddingBottom: "120px" }}>
         <div style={{ width: "100%", maxWidth: "1100px" }}>
           <FlipIn>
             <p className="text-[14px] uppercase tracking-[0.24em] text-[#e63946] mb-8 font-semibold">Built by a Builder</p>
@@ -836,7 +835,7 @@ export default function Home() {
           </Reveal>
           <div style={{ height: "40px" }} />
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px", alignItems: "start" }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16" style={{ alignItems: "start" }}>
             <div>
               <SlideFrom dir="left" delay={0.15}>
                 <p className="text-base text-[#555] leading-relaxed mb-6">
@@ -869,7 +868,7 @@ export default function Home() {
             </div>
 
             {/* Stat grid */}
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
+            <div className="grid grid-cols-2 gap-5">
             {[
               { label: "Full-Stack SaaS",     sub: "VitrOS \u2014 Next.js + Supabase" },
               { label: "Agentic AI Agents",   sub: "Otto + MoltBot + YorkAi" },
@@ -891,7 +890,7 @@ export default function Home() {
       </section>
 
       {/* ── BOOK ─────────────────────────────────────────────────────────── */}
-      <section style={{ zIndex: 1, background: "#0a0a0a", display: "flex", justifyContent: "center", borderTop: "1px solid rgba(255,255,255,0.08)", padding: "160px 64px" }}>
+      <section className="px-6 md:px-16" style={{ zIndex: 1, background: "#0a0a0a", display: "flex", justifyContent: "center", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "120px", paddingBottom: "120px" }}>
         <div style={{ width: "100%", maxWidth: "896px", textAlign: "center" }}>
           <FlipIn>
             <p className="text-[11px] uppercase tracking-[0.24em] text-[#e63946] mb-6">The Book</p>
@@ -928,7 +927,7 @@ export default function Home() {
       <PricingSection />
 
       {/* ── CLOSING STATEMENT ─────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden" style={{ zIndex: 1, display: "flex", justifyContent: "center", borderTop: "1px solid rgba(255,255,255,0.08)", padding: "208px 64px" }}>
+      <section className="relative overflow-hidden px-6 md:px-16" style={{ zIndex: 1, display: "flex", justifyContent: "center", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "120px", paddingBottom: "120px" }}>
         <Meteors number={24} />
         {/* Pulsing red ambient glow */}
         <motion.div
