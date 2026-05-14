@@ -12,14 +12,17 @@ import { Item } from '@/app/types';
 interface PortalTemplateProps {
   title: string;
   subtitle: string;
-  gradient: string;
+  /**
+   * Kept for backward compatibility — no longer rendered as a gradient
+   * since the site palette is single-accent. Pass anything.
+   */
+  gradient?: string;
   items: Item[];
 }
 
 export function PortalTemplate({
   title,
   subtitle,
-  gradient,
   items,
 }: PortalTemplateProps) {
   const { player, addXP, getXPProgress } = useGameification();
@@ -38,29 +41,29 @@ export function PortalTemplate({
   };
 
   return (
-    <main className="relative w-full min-h-screen bg-dark-bg overflow-hidden">
+    <main className="relative w-full min-h-screen bg-[#0a0a0a] text-white overflow-hidden">
       <AnimatedBackground />
 
       <PlayerDashboard player={player} xpProgress={xpProgress} />
 
-      <div className="relative z-10 w-full min-h-screen px-4 py-12">
+      <div className="relative z-10 w-full min-h-screen px-4 md:px-16 py-12">
         <motion.div
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           className="max-w-7xl mx-auto mb-12"
         >
           <Link href="/hub">
-            <button className="text-neon-green hover:text-neon-cyan transition-colors mb-6 text-sm">
+            <button className="text-xs font-mono text-white/30 hover:text-white transition-colors mb-6">
               ← Back to Hub
             </button>
           </Link>
 
-          <h1 className="text-5xl md:text-6xl font-black mb-4 tracking-tighter">
-            <span className={`bg-gradient-to-r ${gradient} bg-clip-text text-transparent`}>
+          <h1 className="text-5xl md:text-6xl font-black mb-4 tracking-tight leading-[1.05]">
+            <span className="bg-gradient-to-r from-white to-white/40 bg-clip-text text-transparent">
               {title}
             </span>
           </h1>
-          <p className="text-gray-400 text-lg max-w-2xl">{subtitle}</p>
+          <p className="text-white/50 text-lg max-w-2xl leading-relaxed">{subtitle}</p>
         </motion.div>
 
         <div className="max-w-7xl mx-auto">
@@ -86,45 +89,46 @@ export function PortalTemplate({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             onClick={() => setSelectedItem(null)}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4"
           >
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
+              initial={{ scale: 0.94, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               onClick={(e) => e.stopPropagation()}
-              className="glass rounded-lg p-8 max-w-md w-full"
+              className="bg-[#0a0a0a] border border-white/[0.08] rounded-[20px] p-8 max-w-md w-full"
             >
-              <h2 className="text-2xl font-bold text-neon-green mb-4">
+              <p className="text-[10px] uppercase tracking-[0.3em] text-[#e63946] font-semibold mb-3">
+                {selectedItem.type}
+              </p>
+              <h2 className="text-2xl font-black tracking-tight text-white mb-3">
                 {selectedItem.title}
               </h2>
-              <p className="text-gray-400 mb-6">{selectedItem.description}</p>
+              <p className="text-white/55 mb-6 leading-relaxed text-sm">
+                {selectedItem.description}
+              </p>
 
-              <div className="space-y-3 mb-6">
-                <div className="flex justify-between">
-                  <span className="text-gray-400">Type:</span>
-                  <span className="text-neon-cyan font-mono">{selectedItem.type}</span>
-                </div>
+              <div className="space-y-3 mb-6 text-sm">
                 {selectedItem.price && (
                   <div className="flex justify-between">
-                    <span className="text-gray-400">Price:</span>
-                    <span className="text-neon-green font-bold">${selectedItem.price}</span>
+                    <span className="text-white/40">Price:</span>
+                    <span className="text-white font-bold">${selectedItem.price}</span>
                   </div>
                 )}
                 {selectedItem.xpReward && (
                   <div className="flex justify-between">
-                    <span className="text-gray-400">XP Reward:</span>
-                    <span className="text-yellow-400 font-bold">+{selectedItem.xpReward}</span>
+                    <span className="text-white/40">XP Reward:</span>
+                    <span className="text-[#e63946] font-bold">+{selectedItem.xpReward}</span>
                   </div>
                 )}
               </div>
 
               <div className="flex gap-3">
-                <button className="flex-1 px-4 py-2 bg-gradient-to-r from-neon-green to-xrpl-green text-dark-bg font-bold rounded hover:shadow-lg hover:shadow-neon-green/50 transition-all">
+                <button className="flex-1 px-4 py-2.5 bg-[#e63946] text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-[#ff4d5a] transition-colors">
                   {selectedItem.price ? 'Purchase' : 'Download'}
                 </button>
                 <button
                   onClick={() => setSelectedItem(null)}
-                  className="flex-1 px-4 py-2 glass rounded hover:border-neon-green transition-all"
+                  className="flex-1 px-4 py-2.5 border border-white/15 text-white/70 text-sm font-bold uppercase tracking-widest rounded-full hover:text-white hover:border-white/40 transition-colors"
                 >
                   Close
                 </button>
@@ -136,4 +140,3 @@ export function PortalTemplate({
     </main>
   );
 }
-

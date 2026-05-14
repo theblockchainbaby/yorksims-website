@@ -69,7 +69,7 @@ export function PortalCard({ portal, index, onHover }: PortalCardProps) {
             ) : (
               <div className="text-center flex flex-col items-center justify-center h-full">
                 <div className="text-4xl mb-2">{portal.icon}</div>
-                <h3 className="text-xs font-bold text-white group-hover:text-neon-green transition-colors">
+                <h3 className="text-xs font-bold text-white group-hover:text-[#e63946] transition-colors">
                   {portal.name.split(' ')[0]}
                 </h3>
               </div>
@@ -78,9 +78,9 @@ export function PortalCard({ portal, index, onHover }: PortalCardProps) {
 
           {/* Border animation */}
           <motion.div
-            className="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-neon-green"
+            className="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-[#e63946]"
             animate={{
-              borderColor: ['rgba(0, 255, 136, 0)', 'rgba(0, 255, 136, 0.5)', 'rgba(0, 255, 136, 0)'],
+              borderColor: ['rgba(230, 57, 70, 0)', 'rgba(230, 57, 70, 0.5)', 'rgba(230, 57, 70, 0)'],
             }}
             transition={{ duration: 2, repeat: Infinity }}
           />
@@ -93,7 +93,7 @@ export function PortalCard({ portal, index, onHover }: PortalCardProps) {
         whileHover={{ opacity: 1, y: 0 }}
         className="absolute top-full mt-4 left-1/2 transform -translate-x-1/2 whitespace-nowrap"
       >
-        <div className="glass px-3 py-2 rounded text-xs text-neon-green font-mono">
+        <div className="px-3 py-2 rounded text-xs text-white/70 font-mono border border-white/[0.08] bg-[#0a0a0a]/80 backdrop-blur-sm">
           {portal.name}
         </div>
       </motion.div>

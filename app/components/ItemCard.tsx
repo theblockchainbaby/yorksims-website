@@ -14,55 +14,45 @@ export function ItemCard({ item, index, onSelect }: ItemCardProps) {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.1 }}
-      whileHover={{ y: -5 }}
+      transition={{ delay: index * 0.05 }}
+      whileHover={{ y: -4 }}
       onClick={() => onSelect?.(item)}
       className="group cursor-pointer"
     >
-      <div className="glass rounded-lg overflow-hidden h-full flex flex-col">
+      <div className="relative rounded-[16px] overflow-hidden h-full flex flex-col border border-white/[0.06] bg-white/[0.02] hover:border-white/20 transition-colors">
         {/* Image placeholder */}
-        <div className="w-full h-40 bg-gradient-to-br from-neon-green/20 to-neon-cyan/20 flex items-center justify-center relative overflow-hidden">
-          <div className="text-4xl opacity-50">📦</div>
-          <div className="absolute inset-0 bg-gradient-to-t from-dark-card to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="w-full h-40 flex items-center justify-center relative overflow-hidden border-b border-white/[0.06] bg-[#0a0a0a]">
+          <div className="text-4xl opacity-30">📦</div>
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         </div>
 
         {/* Content */}
-        <div className="p-4 flex-1 flex flex-col">
-          <h3 className="text-sm font-bold text-white group-hover:text-neon-green transition-colors mb-2 line-clamp-2">
+        <div className="p-5 flex-1 flex flex-col">
+          <h3 className="text-sm font-bold text-white group-hover:text-[#e63946] transition-colors mb-2 line-clamp-2">
             {item.title}
           </h3>
-          <p className="text-xs text-gray-400 mb-3 line-clamp-2 flex-1">
+          <p className="text-xs text-white/40 mb-4 line-clamp-2 flex-1 leading-relaxed">
             {item.description}
           </p>
 
           {/* Footer */}
-          <div className="flex items-center justify-between pt-3 border-t border-neon-green/10">
-            <span className="text-xs text-neon-green font-mono">
+          <div className="flex items-center justify-between pt-3 border-t border-white/[0.06] gap-3">
+            <span className="text-[10px] text-white/50 font-mono uppercase tracking-widest">
               {item.type}
             </span>
             {item.price && (
-              <span className="text-xs text-neon-cyan font-bold">
+              <span className="text-xs text-white font-bold">
                 ${item.price}
               </span>
             )}
             {item.xpReward && (
-              <span className="text-xs text-yellow-400 font-bold">
+              <span className="text-xs text-[#e63946] font-bold">
                 +{item.xpReward} XP
               </span>
             )}
           </div>
         </div>
-
-        {/* Hover border */}
-        <motion.div
-          className="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-neon-green pointer-events-none"
-          animate={{
-            borderColor: ['rgba(0, 255, 136, 0)', 'rgba(0, 255, 136, 0.5)', 'rgba(0, 255, 136, 0)'],
-          }}
-          transition={{ duration: 2, repeat: Infinity }}
-        />
       </div>
     </motion.div>
   );
 }
-

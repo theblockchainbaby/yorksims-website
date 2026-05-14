@@ -3,9 +3,10 @@
 import { useState, useEffect, useRef } from "react";
 
 const PASSCODE = "5118";
+const GATE_ENABLED = process.env.NEXT_PUBLIC_PASSCODE_ENABLED === "true";
 
 export default function PasscodeGate({ children }: { children: React.ReactNode }) {
-  const [unlocked, setUnlocked] = useState(false);
+  const [unlocked, setUnlocked] = useState(!GATE_ENABLED);
   const [digits, setDigits] = useState(["", "", "", ""]);
   const [shake, setShake] = useState(false);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
@@ -82,7 +83,7 @@ export default function PasscodeGate({ children }: { children: React.ReactNode }
         <h1 className="text-white text-2xl font-bold tracking-widest uppercase mb-2">
           Enter Access Code
         </h1>
-        <p className="text-[#666] text-sm mb-8 tracking-wide">
+        <p className="text-white/40 text-sm mb-8 tracking-wide">
           This site is currently invite-only.
         </p>
 

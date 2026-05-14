@@ -51,8 +51,8 @@ const VERTICALS = [
     proofs: ["/proofs/land-1.webp", "/proofs/land-2.webp", "/proofs/land-3.webp"],
     proofFit: ["object-center object-cover", "object-center object-cover", "object-top object-cover"] },
   { num: "08", title: "Athlete to Entrepreneur",            tag: "D1 · Discipline · Transition",        href: "/verticals/athlete",
-    proofs: ["/proofs/athlete-1.webp", "/proofs/athlete-2.webp", "/proofs/athlete-3.webp"],
-    proofFit: ["object-[50%_0%] object-cover", "object-center object-cover", "object-top object-cover"] },
+    proofs: ["/proofs/athlete-1.webp", "/proofs/athlete-2.webp", "/proofs/york-headshot.png"],
+    proofFit: ["object-[50%_0%] object-cover", "object-center object-cover", "object-[50%_25%] object-cover"] },
   { num: "09", title: "Vertical SaaS & Voice Agents",       tag: "Voice · Vertical SaaS · White-Label", href: "/verticals/automotive",
     proofs: ["/proofs/creative-1.webp", "/proofs/creative-2.webp", "/proofs/creative-3.webp"],
     proofFit: ["object-left-top object-cover", "object-top object-cover", "object-left-top object-cover"] },
@@ -66,10 +66,10 @@ const PRICING = [
     name: "Free",
     price: { monthly: "$0", yearly: "$0" },
     per: { monthly: "", yearly: "" },
-    desc: "Sample before you build.",
-    features: ["1 free module per vertical", "Weekly build newsletter", "YouTube channel access", "Free blog breakdowns"],
+    desc: "Every module. No paywall.",
+    features: ["All modules across all 10 verticals", "Code repos, templates & contracts", "Weekly build newsletter", "Free blog breakdowns"],
     cta: "Start Free",
-    href: "/hub",
+    href: "/verticals",
     accent: false,
     priceKey: { monthly: null, yearly: null },
   },
@@ -99,15 +99,15 @@ const PRICING = [
   },
   {
     name: "1-on-1",
-    price: { monthly: "$500", yearly: "$3,000" },
-    per: { monthly: "/hr", yearly: "/yr" },
+    price: { monthly: "$99", yearly: "$49" },
+    per: { monthly: "/hr", yearly: "/hr" },
     desc: "Direct access. Limited.",
     features: ["SaaS & AI consulting", "Business structure review", "Go-to-market strategy", "Hardware guidance", "Limited to 5 hrs/week"],
     cta: "Book Session",
     href: "/contact",
     accent: false,
     priceKey: { monthly: "one_on_one_monthly", yearly: "one_on_one_yearly" },
-    yearlySavings: "50% off",
+    yearlySavings: "50% off w/ retainer",
   },
 ];
 
@@ -380,16 +380,12 @@ function PricingSection() {
                       <span className="relative z-10">{isLoading ? "Redirecting…" : plan.cta}</span>
                     </motion.button>
                   ) : (
-                    <Link href={plan.href} className="block">
-                      <motion.div
-                        className="relative text-sm font-bold uppercase tracking-widest py-4 text-center border border-white/10 text-white/60 overflow-hidden hover:text-white hover:border-white/25 transition-colors"
-                        style={{ borderRadius: "100px" }}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                      >
-                        {plan.cta}
-                      </motion.div>
+                    <Link
+                      href={plan.href}
+                      className="block w-full text-sm font-bold uppercase tracking-widest py-4 text-center border border-white/10 text-white/60 hover:text-white hover:border-white/25 hover:scale-105 transition-all"
+                      style={{ borderRadius: "100px" }}
+                    >
+                      {plan.cta}
                     </Link>
                   )}
                 </div>
@@ -501,7 +497,7 @@ export default function Home() {
           </h1>
           <div style={{ height: "48px" }} />
 
-          <p ref={taglineRef} className="hero-sub text-lg md:text-xl text-[#555] max-w-2xl leading-relaxed">
+          <p ref={taglineRef} className="hero-sub text-lg md:text-xl text-white/40 max-w-2xl leading-relaxed">
             Competitors tell you <span className="text-white font-semibold">what</span> to do.
             York teaches you <span className="text-white font-semibold">how</span>.
             Real code. Real contracts. Real hardware. Every course ends with
@@ -530,12 +526,12 @@ export default function Home() {
             transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
             className="w-px h-12 bg-gradient-to-b from-transparent to-[#e63946]"
           />
-          <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#333]">Scroll</span>
+          <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white/20">Scroll</span>
         </div>
       </section>
 
       {/* ── PROOF COUNTERS ────────────────────────────────────────────────── */}
-      <section className="relative border-t border-white/[0.08] py-40 px-8 md:px-16" style={{ zIndex: 1, background: "#0a0a0a" }}>
+      <section className="relative border-t border-white/[0.08] py-16 md:py-20 px-8 md:px-16" style={{ zIndex: 1, background: "#0a0a0a" }}>
         <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
           {PROOF.map((p, i) => (
             <ScaleUp key={p.label} delay={i * 0.1}>
@@ -838,7 +834,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16" style={{ alignItems: "start" }}>
             <div>
               <SlideFrom dir="left" delay={0.15}>
-                <p className="text-base text-[#555] leading-relaxed mb-6">
+                <p className="text-base text-white/40 leading-relaxed mb-6">
                   D1 college basketball → professional basketball in Ankara, Turkey →
                   CEO of Caipher AI LLC. 15 public GitHub repositories spanning SaaS,
                   AI voice agents, semiconductor design, blockchain gaming, and
@@ -846,7 +842,7 @@ export default function Home() {
                 </p>
               </SlideFrom>
               <SlideFrom dir="left" delay={0.25}>
-                <p className="text-base text-[#555] leading-relaxed mb-8">
+                <p className="text-base text-white/40 leading-relaxed mb-8">
                   Cannabis farms. Raw land developed from scratch. Physical products
                   on retail shelves. Every course comes with the receipts.
                 </p>
@@ -889,6 +885,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── PRICING ───────────────────────────────────────────────────────── */}
+      <PricingSection />
+
       {/* ── BOOK ─────────────────────────────────────────────────────────── */}
       <section className="px-6 md:px-16" style={{ zIndex: 1, background: "#0a0a0a", display: "flex", justifyContent: "center", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "120px", paddingBottom: "120px" }}>
         <div style={{ width: "100%", maxWidth: "896px", textAlign: "center" }}>
@@ -922,9 +921,6 @@ export default function Home() {
           </Reveal>
         </div>
       </section>
-
-      {/* ── PRICING ───────────────────────────────────────────────────────── */}
-      <PricingSection />
 
       {/* ── CLOSING STATEMENT ─────────────────────────────────────────────── */}
       <section className="relative overflow-hidden px-6 md:px-16" style={{ zIndex: 1, display: "flex", justifyContent: "center", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "120px", paddingBottom: "120px" }}>
@@ -996,6 +992,8 @@ export default function Home() {
               { label: "Platform", href: "/hub", external: false },
               { label: "Blog", href: "/blog", external: false },
               { label: "Contact", href: "/contact", external: false },
+              { label: "Privacy", href: "/privacy", external: false },
+              { label: "Terms", href: "/terms", external: false },
             ].map((l) => (
               l.external
                 ? <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer"

@@ -30,7 +30,7 @@ export default function BlogPost() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
           className="flex items-center gap-3 mb-6"
         >
-          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#fb923c]">Business</span>
+          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#e63946]">Business</span>
           <span className="text-white/10">·</span>
           <span className="text-[10px] font-mono text-white/20">Mar 26, 2026</span>
           <span className="text-white/10">·</span>

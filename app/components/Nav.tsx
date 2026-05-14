@@ -6,9 +6,10 @@ import { usePathname } from "next/navigation";
 import { useAuth } from "./AuthProvider";
 
 const links = [
-  { label: "Platform",   href: "/hub",      anchor: null },
+  { label: "Platform",   href: "/hub",       anchor: null },
+  { label: "Tools",      href: "/tools",     anchor: null },
   { label: "Verticals",  href: "/verticals", anchor: null },
-  { label: "Pricing",    href: "/#pricing",  anchor: "pricing" },
+  { label: "Pricing",    href: "/pricing",   anchor: null },
   { label: "Blog",       href: "/blog",      anchor: null },
   { label: "Contact",    href: "/contact",   anchor: null },
 ];
@@ -17,9 +18,6 @@ export default function Nav() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const { user } = useAuth();
-
-  // Only show navbar on homepage
-  if (pathname !== "/") return null;
 
   function handleAnchorClick(e: React.MouseEvent, anchor: string | null) {
     if (!anchor) return;
@@ -49,7 +47,7 @@ export default function Nav() {
               className={`text-sm font-semibold tracking-widest uppercase transition-colors ${
                 pathname === l.href
                   ? "text-white"
-                  : "text-[#666666] hover:text-white"
+                  : "text-white/40 hover:text-white"
               }`}
             >
               {l.label}
@@ -61,22 +59,22 @@ export default function Nav() {
         {user ? (
           <Link
             href="/dashboard"
-            className="hidden md:block absolute text-lg font-bold uppercase tracking-widest px-12 py-6 min-w-[180px] text-center border border-white/10 text-white rounded-xl hover:border-white/25 hover:bg-white/[0.04] transition-all"
+            className="hidden md:block absolute text-xs font-bold uppercase tracking-widest px-5 py-2.5 text-center border border-white/10 text-white rounded-full hover:border-white/25 hover:bg-white/[0.04] transition-all"
             style={{ right: "32px" }}
           >
             Dashboard
           </Link>
         ) : (
-          <div className="hidden md:flex items-center gap-4 absolute" style={{ right: "32px" }}>
+          <div className="hidden md:flex items-center gap-5 absolute" style={{ right: "32px" }}>
             <Link
               href="/login"
-              className="text-sm font-bold uppercase tracking-widest text-white/40 hover:text-white transition-colors"
+              className="text-xs font-bold uppercase tracking-widest text-white/40 hover:text-white transition-colors"
             >
               Sign In
             </Link>
             <Link
-              href="/#pricing"
-              className="text-lg font-bold uppercase tracking-widest px-16 py-6 text-center bg-[#e63946] text-white rounded-xl hover:bg-[#ff4d5a] transition-all hover:scale-105 shadow-[0_0_20px_rgba(230,57,70,0.4)] hover:shadow-[0_0_30px_rgba(230,57,70,0.6)]"
+              href="/pricing"
+              className="text-xs font-bold uppercase tracking-widest px-5 py-2.5 text-center bg-[#e63946] text-white rounded-full hover:bg-[#ff4d5a] transition-all hover:scale-105 shadow-[0_0_20px_rgba(230,57,70,0.35)] hover:shadow-[0_0_28px_rgba(230,57,70,0.55)]"
             >
               Join Now
             </Link>
@@ -117,7 +115,7 @@ export default function Nav() {
               <Link
                 href="/dashboard"
                 onClick={() => setMenuOpen(false)}
-                className="mt-4 text-lg font-bold uppercase tracking-widest px-12 py-4 border border-white/10 text-white rounded-xl hover:border-white/25 transition-all"
+                className="mt-4 text-base font-bold uppercase tracking-widest px-8 py-3 border border-white/10 text-white rounded-full hover:border-white/25 transition-all"
               >
                 Dashboard
               </Link>
@@ -126,14 +124,14 @@ export default function Nav() {
                 <Link
                   href="/login"
                   onClick={() => setMenuOpen(false)}
-                  className="text-xl font-bold uppercase tracking-widest text-white/40 hover:text-white transition-colors"
+                  className="text-base font-bold uppercase tracking-widest text-white/40 hover:text-white transition-colors"
                 >
                   Sign In
                 </Link>
                 <Link
-                  href="/#pricing"
+                  href="/pricing"
                   onClick={() => setMenuOpen(false)}
-                  className="mt-2 text-lg font-bold uppercase tracking-widest px-12 py-4 bg-[#e63946] text-white rounded-xl hover:bg-[#ff4d5a] transition-all shadow-[0_0_20px_rgba(230,57,70,0.4)]"
+                  className="mt-2 text-base font-bold uppercase tracking-widest px-8 py-3 bg-[#e63946] text-white rounded-full hover:bg-[#ff4d5a] transition-all shadow-[0_0_20px_rgba(230,57,70,0.35)]"
                 >
                   Join Now
                 </Link>

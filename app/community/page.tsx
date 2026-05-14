@@ -40,10 +40,10 @@ const VERTICAL_LABELS: Record<string, string> = {
 };
 
 const TIER_COLORS: Record<string, string> = {
-  free: "text-white/20",
+  free: "text-white/30",
   pro: "text-[#e63946]",
-  builder: "text-[#f59e0b]",
-  one_on_one: "text-[#8b5cf6]",
+  builder: "text-white/80",
+  one_on_one: "text-white",
 };
 
 export default function CommunityPage() {
