@@ -7,31 +7,22 @@ import Nav from "../components/Nav";
 
 const TIERS = [
   {
-    value: "pro",
-    name: "Pro",
-    price: "$29",
-    per: "/mo",
-    desc: "Full platform access across all 10 verticals.",
-    tag: "Most Popular",
-    accent: true,
-  },
-  {
-    value: "builder",
-    name: "Builder",
-    price: "$99",
-    per: "/mo",
-    desc: "Live builds, code repos, small group coaching.",
+    value: "free",
+    name: "Free",
+    price: "$0",
+    per: "forever",
+    desc: "Every module, repo, and tool across all 10 verticals. No paywall.",
     tag: null,
     accent: false,
   },
   {
     value: "consulting",
-    name: "1-on-1",
-    price: "$500",
-    per: "/hr",
-    desc: "Direct access. Limited to 5 hrs/week.",
-    tag: "Limited",
-    accent: false,
+    name: "1-on-1 with York",
+    price: "$99",
+    per: "/ hour",
+    desc: "Direct session — SaaS, AI agents, business, hardware, land deals.",
+    tag: "Most Popular",
+    accent: true,
   },
 ];
 
@@ -70,7 +61,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
+    <div className="min-h-screen bg-[#0c0a0a] text-white">
       <Nav />
 
       {/* ── HERO ── */}
@@ -98,7 +89,7 @@ export default function ContactPage() {
             Work With York
           </motion.p>
           <motion.h1
-            className="text-6xl md:text-7xl font-black tracking-tight leading-[0.95] text-center"
+            className="text-6xl md:text-7xl font-display font-extrabold tracking-tight leading-[0.95] text-center"
             style={{ marginTop: "32px", marginBottom: "40px" }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}

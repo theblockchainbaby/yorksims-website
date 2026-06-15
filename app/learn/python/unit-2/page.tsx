@@ -77,7 +77,7 @@ const TOTAL_MIN = LESSONS.reduce((s, l) => s + l.minutes, 0);
 
 export default function Unit2IndexPage() {
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
+    <div className="min-h-screen bg-[#0c0a0a] text-white">
       <Nav />
 
       {/* HERO */}
@@ -114,7 +114,7 @@ export default function Unit2IndexPage() {
             Unit 2 of 3 · Beginner → Intermediate · {TOTAL_MIN} min total
           </p>
           <motion.h1
-            className="text-4xl md:text-6xl font-black tracking-tight leading-[1.05] mb-6"
+            className="text-4xl md:text-6xl font-display font-extrabold tracking-tight leading-[1.05] mb-6"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
@@ -161,7 +161,7 @@ export default function Unit2IndexPage() {
                   </span>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-baseline justify-between gap-4 flex-wrap mb-2">
-                      <h2 className="text-lg md:text-xl font-black tracking-tight text-white group-hover:text-[#e63946] transition-colors">
+                      <h2 className="text-lg md:text-xl font-display font-extrabold tracking-tight text-white group-hover:text-[#e63946] transition-colors">
                         {l.title}
                       </h2>
                       <span className="text-[10px] font-mono uppercase tracking-widest text-white/30">
@@ -199,7 +199,7 @@ export default function Unit2IndexPage() {
             <p className="text-[10px] uppercase tracking-[0.3em] text-[#e63946] font-semibold mb-4">
               When you finish the lessons
             </p>
-            <h2 className="text-2xl md:text-3xl font-black tracking-tight mb-4">
+            <h2 className="text-2xl md:text-3xl font-display font-extrabold tracking-tight mb-4">
               Test what stuck. 20 questions, 5 minutes.
             </h2>
             <p className="text-white/55 leading-relaxed mb-6 max-w-2xl">
@@ -209,7 +209,7 @@ export default function Unit2IndexPage() {
             </p>
             <Link
               href="/tools/python-lists-loops-quiz"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold uppercase tracking-widest bg-[#e63946] text-white hover:bg-[#ff4d5a] transition-all hover:scale-105 shadow-[0_0_20px_rgba(230,57,70,0.3)]"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold uppercase tracking-widest bg-[#e63946] text-white hover:bg-[#ff4d5a] transition-all"
             >
               Take the Lists & Loops Quiz →
             </Link>

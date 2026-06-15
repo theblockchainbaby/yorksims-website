@@ -78,7 +78,7 @@ export default function PasscodeGate({ children }: { children: React.ReactNode }
   if (unlocked) return <>{children}</>;
 
   return (
-    <div className="fixed inset-0 z-[9999] bg-[#0a0a0a] flex items-center justify-center">
+    <div className="fixed inset-0 z-[9999] bg-[#0c0a0a] flex items-center justify-center">
       <div className="text-center">
         <h1 className="text-white text-2xl font-bold tracking-widest uppercase mb-2">
           Enter Access Code

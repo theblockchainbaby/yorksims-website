@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 export default function SuccessPage() {
   return (
-    <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center px-6">
+    <div className="min-h-screen bg-[#0c0a0a] flex items-center justify-center px-6">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -20,7 +20,7 @@ export default function SuccessPage() {
         >
           <span className="text-[#e63946] text-2xl">✓</span>
         </motion.div>
-        <h1 className="text-4xl font-black tracking-tight text-white mb-4">You&apos;re in.</h1>
+        <h1 className="text-4xl font-display font-extrabold tracking-tight text-white mb-4">You&apos;re in.</h1>
         <p className="text-white/40 text-sm leading-relaxed mb-10">
           Welcome to the York Sims platform. Check your email for access details and next steps.
         </p>

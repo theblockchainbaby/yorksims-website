@@ -19,7 +19,7 @@ export default function VerticalPage({
 
   if (!vertical) {
     return (
-      <div className="min-h-screen bg-[#0a0a0a] text-white flex items-center justify-center">
+      <div className="min-h-screen bg-[#0c0a0a] text-white flex items-center justify-center">
         <div className="text-center">
           <p className="text-white/40 mb-4 text-sm">Vertical not found</p>
           <Link
@@ -36,7 +36,7 @@ export default function VerticalPage({
   const accent = VERTICAL_COLORS[vertical.shortTitle] ?? "#e63946";
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
+    <div className="min-h-screen bg-[#0c0a0a] text-white">
       <Nav />
 
       {/* ── HERO ── */}
@@ -89,7 +89,7 @@ export default function VerticalPage({
           </motion.p>
 
           <motion.h1
-            className="text-5xl md:text-6xl font-black tracking-tight leading-[1] mb-8 max-w-4xl"
+            className="text-5xl md:text-6xl font-display font-extrabold tracking-tight leading-[1] mb-8 max-w-4xl"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -166,9 +166,8 @@ export default function VerticalPage({
             <div className="max-w-4xl mb-8">
               <p className="text-sm text-white/40 leading-relaxed">
                 Every module below is free to read and follow — the code, the
-                templates, the receipts. Pro ($29/mo) is for the monthly live
-                Q&amp;A and the private community. Builder ($499/mo) adds direct
-                email access and small-group coaching.
+                templates, the receipts. If you want a real opinion on
+                something specific, book a 1-on-1 session ($99/hr).
               </p>
             </div>
             <div className="flex flex-col gap-4 max-w-4xl">
@@ -223,7 +222,7 @@ export default function VerticalPage({
                             </>
                           )}
                         </div>
-                        <h3 className="text-xl font-black tracking-tight mb-2">
+                        <h3 className="text-xl font-display font-extrabold tracking-tight mb-2">
                           {m.title}
                         </h3>
                         <p className="text-sm text-white/40 leading-relaxed">
@@ -278,7 +277,7 @@ export default function VerticalPage({
               >
                 Live Build
               </p>
-              <h3 className="text-3xl font-black tracking-tight mb-4">
+              <h3 className="text-3xl font-display font-extrabold tracking-tight mb-4">
                 {content.caseStudy.name}
               </h3>
               <p className="text-white/50 leading-relaxed mb-8">
@@ -336,7 +335,7 @@ export default function VerticalPage({
                                   {p.readTime} read
                                 </span>
                               </div>
-                              <h4 className="text-lg font-black tracking-tight mb-2 leading-snug">
+                              <h4 className="text-lg font-display font-extrabold tracking-tight mb-2 leading-snug">
                                 {p.title}
                               </h4>
                               <p className="text-sm text-white/35 leading-relaxed">
@@ -368,14 +367,14 @@ export default function VerticalPage({
                 transition={{ duration: 0.8 }}
               >
                 <p className="text-xs text-white/20 font-mono mb-6">
-                  The modules are free. Pro is for the monthly live Q&amp;A and
-                  the community. Builder adds direct access and coaching.
+                  The modules are free. Book a 1-on-1 ($99/hr) when you want
+                  a real opinion on something specific.
                 </p>
                 <Link
                   href="/pricing"
-                  className="inline-block text-sm font-bold uppercase tracking-widest px-10 py-4 bg-[#e63946] text-white rounded-full hover:bg-[#ff4d5a] transition-all hover:scale-105 shadow-[0_0_30px_rgba(230,57,70,0.3)]"
+                  className="inline-block text-sm font-bold uppercase tracking-widest px-10 py-4 bg-[#e63946] text-white rounded-full hover:bg-[#ff4d5a] transition-all"
                 >
-                  Join Pro — Live Q&amp;A + Community
+                  Book a 1-on-1 session
                 </Link>
               </motion.div>
             </div>
@@ -388,15 +387,14 @@ export default function VerticalPage({
               Module content coming soon — and it&rsquo;ll be free.
             </p>
             <p className="text-xs text-white/40 mb-6">
-              Every module ships free to read and follow. Pro is for the
-              monthly live Q&amp;A and community. Join now and get notified the
-              moment this vertical launches.
+              Every module ships free to read and follow. If you want to
+              skip ahead, book a 1-on-1 with York at $99/hr.
             </p>
             <Link
               href="/pricing"
               className="inline-block px-6 py-2.5 bg-[#e63946] text-white text-xs font-semibold uppercase tracking-widest rounded hover:bg-[#ff4d5a] transition-colors"
             >
-              Join Pro — Live Q&amp;A + Community
+              Book a 1-on-1 session
             </Link>
           </div>
         </section>
@@ -474,7 +472,7 @@ function Section({
               className="h-[2px] w-10"
               style={{ backgroundColor: accent ?? "#e63946" }}
             />
-            <h2 className="text-2xl md:text-3xl font-black tracking-tight">
+            <h2 className="text-2xl md:text-3xl font-display font-extrabold tracking-tight">
               {title}
             </h2>
           </div>

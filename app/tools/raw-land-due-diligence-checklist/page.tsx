@@ -213,7 +213,7 @@ export default function RawLandChecklistPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
+    <div className="min-h-screen bg-[#0c0a0a] text-white">
       <Nav />
 
       {/* Hero */}
@@ -233,7 +233,7 @@ export default function RawLandChecklistPage() {
           </Link>
           <div style={{ height: "24px" }} />
           <p className="text-[11px] uppercase tracking-[0.3em] text-[#e63946] font-semibold mb-5">Land · Free Tool</p>
-          <motion.h1 className="text-4xl md:text-6xl font-black tracking-tight leading-[1] mb-6"
+          <motion.h1 className="text-4xl md:text-6xl font-display font-extrabold tracking-tight leading-[1] mb-6"
             initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: EASE }}>
             Raw Land Due Diligence <span className="text-white/20">Checklist</span>
@@ -285,7 +285,7 @@ export default function RawLandChecklistPage() {
                       <span className="text-xs font-mono text-white/25 w-5">{String(i + 1).padStart(2, "0")}</span>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-3 mb-1 flex-wrap">
-                          <h3 className="text-lg font-black tracking-tight">{item.title}</h3>
+                          <h3 className="text-lg font-display font-extrabold tracking-tight">{item.title}</h3>
                           <span className="text-[9px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-full"
                             style={{ color: sev.color, backgroundColor: sev.bg }}>
                             {sev.label}
@@ -368,12 +368,12 @@ export default function RawLandChecklistPage() {
             {/* Export */}
             <div className="flex-1 border border-white/[0.06] rounded-[20px] p-8">
               <p className="text-[10px] uppercase tracking-[0.3em] text-[#e63946] font-semibold mb-3">Export</p>
-              <h3 className="text-xl font-black tracking-tight mb-3">Download your checklist</h3>
+              <h3 className="text-xl font-display font-extrabold tracking-tight mb-3">Download your checklist</h3>
               <p className="text-sm text-white/40 mb-6 leading-relaxed">
                 Plain text file with all 8 items, your status marks, and your notes. Share it with your attorney, your lender, or yourself in 6 months.
               </p>
               <button onClick={handleExport} type="button"
-                className="inline-block text-sm font-bold uppercase tracking-widest px-8 py-3 bg-[#e63946] text-[#0a0a0a] rounded-full hover:bg-[#ffbb33] transition-all hover:scale-105">
+                className="inline-block text-sm font-bold uppercase tracking-widest px-8 py-3 bg-[#e63946] text-[#0c0a0a] rounded-full hover:bg-[#ffbb33] transition-all">
                 Download Checklist
               </button>
             </div>
@@ -381,7 +381,7 @@ export default function RawLandChecklistPage() {
             {/* Email */}
             <div className="flex-1 border border-white/[0.06] rounded-[20px] p-8" style={{ background: "rgba(230,57,70,0.02)" }}>
               <p className="text-[10px] uppercase tracking-[0.3em] text-[#e63946] font-semibold mb-3">Stay updated</p>
-              <h3 className="text-xl font-black tracking-tight mb-3">Get the full land development guide</h3>
+              <h3 className="text-xl font-display font-extrabold tracking-tight mb-3">Get the full land development guide</h3>
               <p className="text-sm text-white/40 mb-6 leading-relaxed">
                 The blog post behind this tool covers every item in depth — plus well costs, septic systems, and the full math on a real 10-acre development.
               </p>
@@ -393,7 +393,7 @@ export default function RawLandChecklistPage() {
                     placeholder="you@domain.com" required
                     className="flex-1 bg-white/[0.02] border border-white/[0.08] rounded-full px-5 py-3 text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-[#e63946]/50" />
                   <button type="submit" disabled={emailSubmitting}
-                    className="text-sm font-bold uppercase tracking-widest px-6 py-3 bg-[#e63946] text-[#0a0a0a] rounded-full hover:bg-[#ffbb33] transition-all disabled:opacity-40">
+                    className="text-sm font-bold uppercase tracking-widest px-6 py-3 bg-[#e63946] text-[#0c0a0a] rounded-full hover:bg-[#ffbb33] transition-all disabled:opacity-40">
                     {emailSubmitting ? "..." : "Send"}
                   </button>
                 </form>
@@ -417,7 +417,7 @@ export default function RawLandChecklistPage() {
         <div className="max-w-3xl mx-auto">
           <div className="flex items-center gap-4 mb-10">
             <div className="h-[2px] w-10 bg-[#e63946]" />
-            <h2 className="text-2xl md:text-3xl font-black tracking-tight">Questions</h2>
+            <h2 className="text-2xl md:text-3xl font-display font-extrabold tracking-tight">Questions</h2>
           </div>
           <div className="flex flex-col gap-4">
             {[

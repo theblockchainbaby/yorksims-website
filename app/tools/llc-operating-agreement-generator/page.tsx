@@ -197,7 +197,7 @@ export default function LlcGeneratorPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
+    <div className="min-h-screen bg-[#0c0a0a] text-white">
       <Nav />
 
       {/* ── HERO ── */}
@@ -234,7 +234,7 @@ export default function LlcGeneratorPage() {
           <p className="text-[11px] uppercase tracking-[0.3em] text-[#e63946] font-semibold mb-5">
             Business · Free Tool
           </p>
-          <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-[1] mb-6">
+          <h1 className="text-4xl md:text-6xl font-display font-extrabold tracking-tight leading-[1] mb-6">
             LLC Operating Agreement <span className="text-white/20">Generator</span>
           </h1>
           <p className="text-lg text-white/40 leading-relaxed max-w-2xl">
@@ -304,7 +304,7 @@ export default function LlcGeneratorPage() {
         <div className="max-w-3xl mx-auto">
           <div className="flex items-center gap-4 mb-10">
             <div className="h-[2px] w-10 bg-[#e63946]" />
-            <h2 className="text-2xl md:text-3xl font-black tracking-tight">
+            <h2 className="text-2xl md:text-3xl font-display font-extrabold tracking-tight">
               Questions & Answers
             </h2>
           </div>
@@ -716,7 +716,7 @@ function Wizard(props: WizardProps) {
             onClick={() => setStep(step + 1)}
             disabled={!canAdvance}
             type="button"
-            className="inline-block text-sm font-bold uppercase tracking-widest px-8 py-3 bg-[#e63946] text-[#0a0a0a] rounded-full hover:bg-[#ffae5c] transition-all hover:scale-105 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100"
+            className="inline-block text-sm font-bold uppercase tracking-widest px-8 py-3 bg-[#e63946] text-[#0c0a0a] rounded-full hover:bg-[#ffae5c] transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100"
           >
             Continue →
           </button>
@@ -725,7 +725,7 @@ function Wizard(props: WizardProps) {
             onClick={onGenerate}
             disabled={!canAdvance}
             type="button"
-            className="inline-block text-sm font-bold uppercase tracking-widest px-8 py-3 bg-[#e63946] text-white rounded-full hover:bg-[#ff4d5a] transition-all hover:scale-105 shadow-[0_0_30px_rgba(230,57,70,0.3)] disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100"
+            className="inline-block text-sm font-bold uppercase tracking-widest px-8 py-3 bg-[#e63946] text-white rounded-full hover:bg-[#ff4d5a] transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100"
           >
             Generate Agreement
           </button>
@@ -769,7 +769,7 @@ function StepFrame({
 }) {
   return (
     <div>
-      <h2 className="text-2xl md:text-3xl font-black tracking-tight mb-2">
+      <h2 className="text-2xl md:text-3xl font-display font-extrabold tracking-tight mb-2">
         {title}
       </h2>
       {subtitle && (
@@ -807,7 +807,7 @@ function OptionCard({
           : "transparent",
       }}
     >
-      <h3 className="text-lg font-black tracking-tight mb-2">{title}</h3>
+      <h3 className="text-lg font-display font-extrabold tracking-tight mb-2">{title}</h3>
       <p className="text-sm text-white/40 leading-relaxed">{body}</p>
     </button>
   );
@@ -850,7 +850,7 @@ function Result({
   return (
     <div>
       <div className="flex items-center justify-between mb-6 flex-wrap gap-4">
-        <h2 className="text-2xl md:text-3xl font-black tracking-tight">
+        <h2 className="text-2xl md:text-3xl font-display font-extrabold tracking-tight">
           Your Operating Agreement
         </h2>
         <button
@@ -880,7 +880,7 @@ function Result({
             style={{
               height: "160px",
               background:
-                "linear-gradient(to bottom, transparent 0%, rgba(10,10,10,0.9) 60%, #0a0a0a 100%)",
+                "linear-gradient(to bottom, transparent 0%, rgba(10,10,10,0.9) 60%, #0c0a0a 100%)",
             }}
           />
         )}
@@ -899,7 +899,7 @@ function Result({
           <p className="text-[10px] uppercase tracking-[0.3em] text-[#e63946] font-semibold mb-3">
             Unlock full agreement
           </p>
-          <h3 className="text-xl font-black tracking-tight mb-3">
+          <h3 className="text-xl font-display font-extrabold tracking-tight mb-3">
             Drop your email. Get the full agreement + the next free tool.
           </h3>
           <p className="text-sm text-white/40 mb-6 leading-relaxed">
@@ -920,7 +920,7 @@ function Result({
             <button
               type="submit"
               disabled={emailSubmitting}
-              className="inline-block text-sm font-bold uppercase tracking-widest px-8 py-3 bg-[#e63946] text-[#0a0a0a] rounded-full hover:bg-[#ffae5c] transition-all hover:scale-105 disabled:opacity-40"
+              className="inline-block text-sm font-bold uppercase tracking-widest px-8 py-3 bg-[#e63946] text-[#0c0a0a] rounded-full hover:bg-[#ffae5c] transition-all disabled:opacity-40"
             >
               {emailSubmitting ? "Unlocking..." : "Unlock"}
             </button>
@@ -951,7 +951,7 @@ function Result({
           <button
             onClick={downloadHtml}
             type="button"
-            className="inline-block text-sm font-bold uppercase tracking-widest px-8 py-4 bg-[#e63946] text-[#0a0a0a] rounded-full hover:bg-[#ffae5c] transition-all hover:scale-105"
+            className="inline-block text-sm font-bold uppercase tracking-widest px-8 py-4 bg-[#e63946] text-[#0c0a0a] rounded-full hover:bg-[#ffae5c] transition-all"
           >
             Download HTML
           </button>

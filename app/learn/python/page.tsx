@@ -83,7 +83,7 @@ const UNITS: Unit[] = [
 
 export default function LearnPythonPage() {
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
+    <div className="min-h-screen bg-[#0c0a0a] text-white">
       <Nav />
 
       {/* HERO */}
@@ -120,7 +120,7 @@ export default function LearnPythonPage() {
             Software · Free Learning Path
           </p>
           <motion.h1
-            className="text-5xl md:text-7xl font-black tracking-tight leading-[1] mb-6"
+            className="text-5xl md:text-7xl font-display font-extrabold tracking-tight leading-[1] mb-6"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
@@ -155,7 +155,7 @@ export default function LearnPythonPage() {
               The Path
             </p>
           </div>
-          <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-4">
+          <h2 className="text-3xl md:text-4xl font-display font-extrabold tracking-tight mb-4">
             From zero to writing your own classes.
           </h2>
           <p className="text-white/50 leading-relaxed max-w-2xl">
@@ -185,7 +185,7 @@ export default function LearnPythonPage() {
                   <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-[#e63946] mb-3">
                     Unit {u.number} · {u.level}
                   </p>
-                  <h3 className="text-2xl md:text-3xl font-black tracking-tight mb-3">
+                  <h3 className="text-2xl md:text-3xl font-display font-extrabold tracking-tight mb-3">
                     {u.title}
                   </h3>
                   <p className="text-white/55 leading-relaxed max-w-2xl">
@@ -220,7 +220,7 @@ export default function LearnPythonPage() {
               <div className="flex flex-wrap gap-3 mt-2">
                 <Link
                   href={u.indexHref}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold uppercase tracking-widest bg-[#e63946] text-white hover:bg-[#ff4d5a] transition-all hover:scale-105 shadow-[0_0_20px_rgba(230,57,70,0.3)]"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold uppercase tracking-widest bg-[#e63946] text-white hover:bg-[#ff4d5a] transition-all"
                 >
                   Start Unit {u.number} · {u.lessonCount} lessons →
                 </Link>
@@ -248,7 +248,7 @@ export default function LearnPythonPage() {
               Why This Path
             </p>
           </div>
-          <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-8">
+          <h2 className="text-3xl md:text-4xl font-display font-extrabold tracking-tight mb-8">
             Built for people who&rsquo;ll actually ship code.
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

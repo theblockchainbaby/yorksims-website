@@ -29,7 +29,7 @@ export default function SignUpPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white flex items-center justify-center px-6">
+    <div className="min-h-screen bg-[#0c0a0a] text-white flex items-center justify-center px-6">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -46,7 +46,7 @@ export default function SignUpPage() {
             <div className="w-16 h-16 rounded-full bg-[#e63946]/10 border border-[#e63946]/20 flex items-center justify-center mb-6 mx-auto">
               <span className="text-[#e63946] text-xl">✓</span>
             </div>
-            <h1 className="text-3xl font-black tracking-tight mb-3">Check your email</h1>
+            <h1 className="text-3xl font-display font-extrabold tracking-tight mb-3">Check your email</h1>
             <p className="text-sm text-white/30 mb-8">We sent a confirmation link to <strong className="text-white/60">{email}</strong></p>
             <Link href="/login" className="text-sm text-[#e63946] hover:text-white transition-colors">
               Back to sign in
@@ -54,7 +54,7 @@ export default function SignUpPage() {
           </div>
         ) : (
           <>
-            <h1 className="text-3xl font-black tracking-tight text-center mb-2">Start building</h1>
+            <h1 className="text-3xl font-display font-extrabold tracking-tight text-center mb-2">Start building</h1>
             <p className="text-sm text-white/30 text-center mb-10">Create your account. It&apos;s free.</p>
 
             {error && (

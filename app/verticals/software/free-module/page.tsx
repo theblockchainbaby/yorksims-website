@@ -98,7 +98,7 @@ function Section({
                   STEP {number}
                 </span>
               )}
-              <h2 className="text-3xl md:text-4xl font-black tracking-tight">
+              <h2 className="text-3xl md:text-4xl font-display font-extrabold tracking-tight">
                 {title}
               </h2>
             </div>
@@ -133,7 +133,7 @@ const OUTCOMES = [
 
 export default function FreeModulePage() {
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
+    <div className="min-h-screen bg-[#0c0a0a] text-white">
       <Nav />
 
       {/* HERO */}
@@ -183,7 +183,7 @@ export default function FreeModulePage() {
           </div>
 
           <motion.h1
-            className="text-5xl md:text-6xl font-black tracking-tight leading-[1] mb-6"
+            className="text-5xl md:text-6xl font-display font-extrabold tracking-tight leading-[1] mb-6"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
@@ -214,7 +214,7 @@ export default function FreeModulePage() {
               href={GITHUB_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold uppercase tracking-widest bg-[#e63946] text-white hover:bg-[#ff4d5a] transition-all hover:scale-105 shadow-[0_0_30px_rgba(230,57,70,0.3)]"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold uppercase tracking-widest bg-[#e63946] text-white hover:bg-[#ff4d5a] transition-all"
             >
               Clone Starter Repo <span>↗</span>
             </a>
@@ -222,7 +222,7 @@ export default function FreeModulePage() {
               href="/pricing"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold uppercase tracking-widest border border-white/15 text-white/70 hover:text-white hover:border-white/40 transition-all"
             >
-              Join Pro — Live Q&amp;A
+              Book a 1-on-1 session
             </Link>
           </motion.div>
         </div>
@@ -469,17 +469,16 @@ main().finally(() => prisma.$disconnect());`}</CodeBlock>
             You now have a multi-tenant schema you can&rsquo;t accidentally leak
             data across. Modules 02-06 build the rest of VitrOS — auth, the app
             shell, Stripe payments, the PWA layer, the admin panel — and
-            they&rsquo;re free too, dropping over the coming weeks. Pro
-            ($29/mo) is for the monthly live Q&amp;A and the private community;
-            Builder ($499/mo) adds direct email access and small-group
-            coaching.
+            they&rsquo;re free too, dropping over the coming weeks. If you
+            want a real opinion on your specific schema or architecture,
+            book a 1-on-1 with York at $99/hour.
           </p>
           <div className="flex flex-wrap gap-4">
             <Link
               href="/pricing"
-              className="inline-flex items-center gap-2 px-7 py-4 rounded-full text-sm font-bold uppercase tracking-widest bg-[#e63946] text-white hover:bg-[#ff4d5a] transition-all hover:scale-105 shadow-[0_0_30px_rgba(230,57,70,0.3)]"
+              className="inline-flex items-center gap-2 px-7 py-4 rounded-full text-sm font-bold uppercase tracking-widest bg-[#e63946] text-white hover:bg-[#ff4d5a] transition-all"
             >
-              Join Pro — Live Q&amp;A + Community
+              Book a 1-on-1 session
             </Link>
             <Link
               href="/verticals/software"

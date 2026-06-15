@@ -41,7 +41,7 @@ export function PortalTemplate({
   };
 
   return (
-    <main className="relative w-full min-h-screen bg-[#0a0a0a] text-white overflow-hidden">
+    <main className="relative w-full min-h-screen bg-[#0c0a0a] text-white overflow-hidden">
       <AnimatedBackground />
 
       <PlayerDashboard player={player} xpProgress={xpProgress} />
@@ -95,12 +95,12 @@ export function PortalTemplate({
               initial={{ scale: 0.94, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-[#0a0a0a] border border-white/[0.08] rounded-[20px] p-8 max-w-md w-full"
+              className="bg-[#0c0a0a] border border-white/[0.08] rounded-[20px] p-8 max-w-md w-full"
             >
               <p className="text-[10px] uppercase tracking-[0.3em] text-[#e63946] font-semibold mb-3">
                 {selectedItem.type}
               </p>
-              <h2 className="text-2xl font-black tracking-tight text-white mb-3">
+              <h2 className="text-2xl font-display font-extrabold tracking-tight text-white mb-3">
                 {selectedItem.title}
               </h2>
               <p className="text-white/55 mb-6 leading-relaxed text-sm">

@@ -25,7 +25,7 @@ function tier(pct: number): Tier {
           href: "/verticals/software/free-module",
           primary: true,
         },
-        { label: "Join Pro — Live Q&A", href: "/pricing" },
+        { label: "Book a 1-on-1 session", href: "/pricing" },
       ],
     };
   }

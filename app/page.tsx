@@ -64,50 +64,38 @@ const VERTICALS = [
 const PRICING = [
   {
     name: "Free",
-    price: { monthly: "$0", yearly: "$0" },
-    per: { monthly: "", yearly: "" },
-    desc: "Every module. No paywall.",
-    features: ["All modules across all 10 verticals", "Code repos, templates & contracts", "Weekly build newsletter", "Free blog breakdowns"],
-    cta: "Start Free",
+    price: "$0",
+    per: "forever",
+    desc:
+      "Every module, every repo, every tool across all 10 verticals. No login, no email gate, no upsell. The bulk of what's here costs nothing.",
+    features: [
+      "All 10 verticals — modules, code & contracts",
+      "All public GitHub repos with full history",
+      "Both learning paths (Python + Web Development)",
+      "Free tools: LLC generator, raw-land checklist, quizzes",
+      "Every blog breakdown",
+    ],
+    cta: "Browse the verticals",
     href: "/verticals",
     accent: false,
-    priceKey: { monthly: null, yearly: null },
   },
   {
-    name: "Pro",
-    price: { monthly: "$29", yearly: "$290" },
-    per: { monthly: "/mo", yearly: "/yr" },
-    desc: "Full platform access.",
-    features: ["All courses across 10 verticals", "Templates, contracts & SOPs", "Monthly live Q&A with York", "Private community", "Weekly new content"],
-    cta: "Join Pro",
+    name: "1-on-1 with York",
+    price: "$99",
+    per: "/ hour",
+    desc:
+      "One hour, your problem, a real opinion. SaaS architecture, AI agents, business structure, technical review. Booked by the session — no retainer.",
+    features: [
+      "SaaS architecture & technical review",
+      "AI agents — n8n, MCP, Claude Code, ElevenLabs",
+      "Hardware / RTL — SystemVerilog, FPGA",
+      "Business structure — LLC, contracts, equity",
+      "Land deals & raw-land development",
+      "48-hour refund if it doesn't deliver",
+    ],
+    cta: "Book a session",
     href: "/contact",
     accent: true,
-    priceKey: { monthly: "pro_monthly", yearly: "pro_yearly" },
-    yearlySavings: "2 months free",
-  },
-  {
-    name: "Builder",
-    price: { monthly: "$99", yearly: "$990" },
-    per: { monthly: "/mo", yearly: "/yr" },
-    desc: "Watch it happen live.",
-    features: ["Everything in Pro", "Live build sessions", "Full code repos & starters", "Small group coaching (20 max)", "Priority tool access"],
-    cta: "Join Builder",
-    href: "/contact",
-    accent: false,
-    priceKey: { monthly: "builder_monthly", yearly: "builder_yearly" },
-    yearlySavings: "2 months free",
-  },
-  {
-    name: "1-on-1",
-    price: { monthly: "$99", yearly: "$49" },
-    per: { monthly: "/hr", yearly: "/hr" },
-    desc: "Direct access. Limited.",
-    features: ["SaaS & AI consulting", "Business structure review", "Go-to-market strategy", "Hardware guidance", "Limited to 5 hrs/week"],
-    cta: "Book Session",
-    href: "/contact",
-    accent: false,
-    priceKey: { monthly: "one_on_one_monthly", yearly: "one_on_one_yearly" },
-    yearlySavings: "50% off w/ retainer",
   },
 ];
 
@@ -248,150 +236,111 @@ const staggerItem = {
 // ── MAIN ─────────────────────────────────────────────────────────────────────
 
 function PricingSection() {
-  const [billing, setBilling] = useState<"monthly" | "yearly">("monthly");
-  const [loadingPlan, setLoadingPlan] = useState<string | null>(null);
-
-  const handleCheckout = async (priceKey: string) => {
-    setLoadingPlan(priceKey);
-    try {
-      const res = await fetch("/api/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ priceKey }),
-      });
-      const data = await res.json();
-      if (data.url) window.location.href = data.url;
-      else alert("Something went wrong. Please try again.");
-    } catch {
-      alert("Something went wrong. Please try again.");
-    } finally {
-      setLoadingPlan(null);
-    }
-  };
-
   return (
-    <section id="pricing" className="px-6 md:px-16" style={{ zIndex: 1, background: "#0a0a0a", display: "flex", justifyContent: "center", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "176px", paddingBottom: "176px" }}>
+    <section
+      id="pricing"
+      className="px-6 md:px-16"
+      style={{
+        zIndex: 1,
+        background: "#0c0a0a",
+        display: "flex",
+        justifyContent: "center",
+        borderTop: "1px solid rgba(255,255,255,0.08)",
+        paddingTop: "160px",
+        paddingBottom: "160px",
+      }}
+    >
       <div style={{ width: "100%", maxWidth: "1100px" }}>
         <FlipIn>
-          <p className="text-[14px] uppercase tracking-[0.24em] text-[#e63946] mb-6 font-semibold text-center">Pricing</p>
+          <p className="text-[14px] uppercase tracking-[0.24em] text-[#e63946] mb-6 font-semibold text-center">
+            Pricing
+          </p>
         </FlipIn>
         <div style={{ height: "24px" }} />
         <Reveal delay={0.1}>
-          <h2 className="text-5xl md:text-6xl font-black tracking-tight mb-10 text-center">
-            Pick your level. Start building.
+          <h2 className="text-5xl md:text-6xl font-display font-extrabold tracking-tight mb-6 text-center leading-[1]">
+            Everything&rsquo;s free.{" "}
+            <span className="text-white/25">
+              Book a session when you want a real opinion.
+            </span>
           </h2>
         </Reveal>
+        <Reveal delay={0.18}>
+          <p className="text-base md:text-lg text-white/35 text-center max-w-2xl mx-auto leading-relaxed mb-14">
+            The modules, the repos, the tools &mdash; all free, forever. The
+            only paid thing is a 1-on-1 with York at $99/hour for when you
+            want a deep-dive on something specific.
+          </p>
+        </Reveal>
 
-        {/* Billing toggle */}
-        <div className="flex justify-center mb-12">
-          <div className="flex items-center gap-1 bg-white/[0.04] border border-white/[0.08] p-1 rounded-full">
-            <button
-              onClick={() => setBilling("monthly")}
-              className={`px-6 py-2 text-xs font-bold uppercase tracking-widest rounded-full transition-all ${billing === "monthly" ? "bg-white text-black" : "text-white/40 hover:text-white"}`}
-            >Monthly</button>
-            <button
-              onClick={() => setBilling("yearly")}
-              className={`px-6 py-2 text-xs font-bold uppercase tracking-widest rounded-full transition-all ${billing === "yearly" ? "bg-white text-black" : "text-white/40 hover:text-white"}`}
+        <div className="grid md:grid-cols-2 gap-6 max-w-[920px] mx-auto">
+          {PRICING.map((plan, i) => (
+            <motion.div
+              key={plan.name}
+              initial={{ opacity: 0, y: 36 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: i * 0.08 }}
+              className="group h-full"
             >
-              Yearly
-              <span className="ml-2 text-[#e63946]">Save</span>
-            </button>
-          </div>
-        </div>
-
-        <div className="flex flex-wrap items-stretch justify-center gap-5">
-          {PRICING.map((plan, i) => {
-            const priceKey = plan.priceKey[billing];
-            const isLoading = loadingPlan === priceKey;
-            return (
-              <motion.div
-                key={plan.name}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: i * 0.1 }}
-                whileHover={{ y: -8, transition: { duration: 0.3, ease: "easeOut" } }}
-                className="group w-full sm:w-[265px]"
+              <div
+                className={`relative h-full flex flex-col border transition-colors overflow-hidden ${
+                  plan.accent
+                    ? "border-[#e63946]/30 group-hover:border-[#e63946]/55"
+                    : "border-white/[0.08] group-hover:border-white/[0.18] bg-white/[0.015]"
+                }`}
+                style={{
+                  borderRadius: "28px",
+                  padding: "44px 32px 32px",
+                  background: plan.accent
+                    ? "linear-gradient(135deg, rgba(230,57,70,0.05), rgba(255,255,255,0.005))"
+                    : undefined,
+                }}
               >
-                <div
-                  className={`relative h-full flex flex-col backdrop-blur-xl border transition-all duration-500 overflow-hidden ${
-                    plan.accent
-                      ? "bg-[#e63946]/[0.06] border-[#e63946]/20 group-hover:border-[#e63946]/50 group-hover:shadow-[0_0_60px_-12px_rgba(230,57,70,0.3)]"
-                      : "bg-white/[0.02] border-white/[0.06] group-hover:border-white/[0.12] group-hover:shadow-[0_0_60px_-12px_rgba(255,255,255,0.06)]"
+                <p
+                  className={`text-[11px] uppercase tracking-[0.28em] font-semibold mb-5 ${
+                    plan.accent ? "text-[#e63946]" : "text-white/45"
                   }`}
-                  style={{ borderRadius: "32px", padding: "48px 28px 32px" }}
                 >
-                  {plan.accent && <BorderBeam colorFrom="#e63946" colorTo="#ff8c94" duration={4} />}
-                  {plan.accent && (
-                    <span className="absolute top-4 left-7 inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-widest text-[#e63946] bg-[#e63946]/10 px-3 py-1.5 rounded-full">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#e63946] animate-pulse" />
-                      Most Popular
-                    </span>
-                  )}
-                  <div className="mb-7">
-                    <p className="text-xs uppercase tracking-[0.2em] text-white/25 font-medium mb-4">{plan.name}</p>
-                    <div style={{ display: "flex", alignItems: "baseline", gap: "4px" }}>
-                      <span className="text-5xl font-black tracking-tight">{plan.price[billing]}</span>
-                      {plan.per[billing] && <span className="text-sm text-white/20 font-medium">{plan.per[billing]}</span>}
-                    </div>
-                    {"yearlySavings" in plan && billing === "yearly" && (
-                      <span className="inline-block mt-2 text-[10px] font-semibold uppercase tracking-widest text-[#e63946] bg-[#e63946]/10 px-2 py-1 rounded-full">
-                        {plan.yearlySavings}
-                      </span>
-                    )}
-                    <p className="text-[13px] text-white/30 mt-3 leading-relaxed">{plan.desc}</p>
-                  </div>
-                  <div className="w-full h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent mb-7" />
-                  <motion.ul
-                    variants={staggerContainer}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true }}
-                    className="space-y-3.5 mb-9 flex-1"
-                  >
-                    {plan.features.map((f) => (
-                      <motion.li key={f} variants={staggerItem} className="flex gap-3 text-[13px] text-white/40 items-start">
-                        <span className={`shrink-0 mt-0.5 text-xs ${plan.accent ? "text-[#e63946]" : "text-white/20"}`}>{"\u2192"}</span>
-                        {f}
-                      </motion.li>
-                    ))}
-                  </motion.ul>
-                  {priceKey ? (
-                    <motion.button
-                      onClick={() => handleCheckout(priceKey)}
-                      disabled={isLoading}
-                      className={`w-full relative text-sm font-bold uppercase tracking-widest py-4 text-center overflow-hidden disabled:opacity-60 ${
-                        plan.accent
-                          ? "bg-[#e63946] text-white"
-                          : "border border-white/10 text-white/60 hover:text-white hover:border-white/25"
-                      }`}
-                      style={{ borderRadius: "100px" }}
-                      whileHover={{ scale: 1.05, boxShadow: plan.accent ? "0 0 30px rgba(230,57,70,0.5)" : undefined }}
-                      whileTap={{ scale: 0.95 }}
-                      transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                    >
-                      {plan.accent && (
-                        <motion.div
-                          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                          animate={{ x: ["-100%", "100%"] }}
-                          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", repeatDelay: 1 }}
-                        />
-                      )}
-                      <span className="relative z-10">{isLoading ? "Redirecting…" : plan.cta}</span>
-                    </motion.button>
-                  ) : (
-                    <Link
-                      href={plan.href}
-                      className="block w-full text-sm font-bold uppercase tracking-widest py-4 text-center border border-white/10 text-white/60 hover:text-white hover:border-white/25 hover:scale-105 transition-all"
-                      style={{ borderRadius: "100px" }}
-                    >
-                      {plan.cta}
-                    </Link>
-                  )}
+                  {plan.name}
+                </p>
+                <div className="flex items-baseline gap-3 mb-3">
+                  <span className="text-6xl font-display font-extrabold tracking-tight">
+                    {plan.price}
+                  </span>
+                  <span className="text-base text-white/30">{plan.per}</span>
                 </div>
-              </motion.div>
-            );
-          })}
+                <p className="text-sm text-white/50 leading-relaxed mb-8">
+                  {plan.desc}
+                </p>
+                <div className="w-full h-px bg-white/[0.06] mb-7" />
+                <ul className="flex-1 flex flex-col gap-3 mb-10">
+                  {plan.features.map((f) => (
+                    <li key={f} className="flex items-start gap-3">
+                      <span
+                        className={`mt-[7px] w-[5px] h-[5px] rounded-full flex-shrink-0 ${
+                          plan.accent ? "bg-[#e63946]" : "bg-white/30"
+                        }`}
+                      />
+                      <span className="text-[14.5px] text-white/65 leading-relaxed">
+                        {f}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href={plan.href}
+                  className={`block text-center text-sm font-bold uppercase tracking-widest py-4 rounded-full transition-colors ${
+                    plan.accent
+                      ? "bg-[#e63946] text-white hover:bg-[#ff4d5a]"
+                      : "border border-white/12 text-white/80 hover:text-white hover:border-white/30"
+                  }`}
+                >
+                  {plan.cta}
+                </Link>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
@@ -399,12 +348,10 @@ function PricingSection() {
 }
 
 export default function Home() {
-  const heroRef    = useRef<HTMLDivElement>(null);
+  const heroRef     = useRef<HTMLDivElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
-  const taglineRef = useRef<HTMLParagraphElement>(null);
-  const scrollHintRef = useRef<HTMLDivElement>(null);
 
-  // GSAP hero entrance
+  // GSAP hero entrance — one orchestrated entrance on load, nothing else.
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
@@ -414,7 +361,7 @@ export default function Home() {
         .from(".hero-line-2",   { y: 60, opacity: 0, duration: 0.9 }, "-=0.6")
         .from(".hero-sub",      { y: 24, opacity: 0, duration: 0.7 }, "-=0.5")
         .from(".hero-ctas > *", { y: 20, opacity: 0, duration: 0.6, stagger: 0.12 }, "-=0.4")
-        .from(".scroll-hint",   { opacity: 0, duration: 0.8 }, "-=0.2");
+        .from(".hero-proof",    { x: 28, opacity: 0, duration: 0.8 }, "-=0.6");
     }, heroRef);
 
     return () => ctx.revert();
@@ -464,86 +411,146 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="bg-[#0a0a0a] text-white overflow-x-hidden">
+    <div className="bg-[#0c0a0a] text-white overflow-x-hidden">
       {/* Three.js background — fixed, only in hero viewport */}
       <div className="fixed inset-0 h-screen pointer-events-none" style={{ zIndex: 0 }}>
         <HeroScene />
         {/* Radial vignette to fade edges */}
         <div
           className="absolute inset-0"
-          style={{ background: "radial-gradient(ellipse 80% 60% at 50% 50%, transparent 40%, #0a0a0a 100%)" }}
+          style={{ background: "radial-gradient(ellipse 80% 60% at 50% 50%, transparent 40%, #0c0a0a 100%)" }}
         />
       </div>
 
       <Nav />
 
-      {/* ── HERO ──────────────────────────────────────────────────────────── */}
-      <section ref={heroRef} className="relative min-h-screen flex flex-col items-center justify-center px-8 md:px-16 text-center overflow-hidden" style={{ zIndex: 1 }}>
-        <Meteors number={18} />
+      {/* ── HERO — content-height, left-biased, proof on the right ────────── */}
+      <section
+        ref={heroRef}
+        className="relative px-6 md:px-16 overflow-hidden"
+        style={{ zIndex: 1, paddingTop: "172px", paddingBottom: "112px" }}
+      >
+        <div className="w-full max-w-[1180px] mx-auto grid lg:grid-cols-[1.4fr_1fr] gap-x-14 gap-y-14 items-start">
 
-        <div className="w-full max-w-6xl mx-auto flex flex-col items-center">
-          <p className="hero-label text-sm md:text-base font-mono uppercase tracking-[0.2em] text-[#e63946] mb-16">
-            Teaching Execution, Not Theory — Built by a Builder, for Builders
-          </p>
+          {/* LEFT — the statement */}
+          <div>
+            <p className="hero-label inline-flex items-center gap-2.5 text-xs md:text-sm font-mono uppercase tracking-[0.18em] text-[#e63946]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#e63946]" />
+              Teaching execution, not theory
+            </p>
 
-          <div style={{ height: "48px" }} />
-          <h1 ref={headlineRef} className="font-black tracking-tight leading-[0.92]">
-            <span className="hero-line-1 block text-[clamp(52px,8vw,120px)] text-white">
-              Stop learning.
-            </span>
-            <span className="hero-line-2 block text-[clamp(52px,8vw,120px)] text-[#e63946]">
-              Start building.
-            </span>
-          </h1>
-          <div style={{ height: "48px" }} />
+            <h1
+              ref={headlineRef}
+              className="font-display font-extrabold tracking-tight leading-[0.93] mt-7"
+            >
+              <span className="hero-line-1 block text-[clamp(46px,6.6vw,98px)] text-white">
+                Stop learning.
+              </span>
+              <span className="hero-line-2 block text-[clamp(46px,6.6vw,98px)] text-[#e63946]">
+                Start building.
+              </span>
+            </h1>
 
-          <p ref={taglineRef} className="hero-sub text-lg md:text-xl text-white/40 max-w-2xl leading-relaxed">
-            Competitors tell you <span className="text-white font-semibold">what</span> to do.
-            York teaches you <span className="text-white font-semibold">how</span>.
-            Real code. Real contracts. Real hardware. Every course ends with
-            something you use today.
-          </p>
-          <div style={{ height: "40px" }} />
+            <p className="hero-sub text-lg text-white/55 leading-relaxed max-w-xl mt-8">
+              Competitors tell you <span className="text-white font-semibold">what</span> to
+              do. York teaches you <span className="text-white font-semibold">how</span> —
+              with real code, real contracts, real hardware. Every course ends with
+              something you ship that day.
+            </p>
 
-          <div className="hero-ctas flex justify-center">
-            <Link href="/hub">
-              <ShimmerButton
-                shimmerColor="#ff8c94"
-                background="rgba(230,57,70,1)"
-                borderRadius="10px"
-                className="text-xs font-bold uppercase tracking-widest"
+            <div className="hero-ctas flex flex-wrap items-center gap-x-7 gap-y-4 mt-10">
+              <Link href="/hub">
+                <ShimmerButton
+                  shimmerColor="#ff8c94"
+                  background="rgba(230,57,70,1)"
+                  borderRadius="10px"
+                  className="text-xs font-bold uppercase tracking-widest"
+                >
+                  Explore the platform
+                </ShimmerButton>
+              </Link>
+              <Link
+                href="/verticals"
+                className="group inline-flex items-center gap-2 text-sm font-semibold text-white/55 hover:text-white transition-colors"
               >
-                Explore Platform
-              </ShimmerButton>
-            </Link>
+                See the 10 verticals
+                <span className="text-[#e63946] transition-transform group-hover:translate-x-0.5">
+                  →
+                </span>
+              </Link>
+            </div>
           </div>
-        </div>
 
-        {/* Scroll hint */}
-        <div ref={scrollHintRef} className="scroll-hint absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-          <motion.div
-            animate={{ y: [0, 6, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            className="w-px h-12 bg-gradient-to-b from-transparent to-[#e63946]"
-          />
-          <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white/20">Scroll</span>
+          {/* RIGHT — receipts, real numbers, no invented metrics */}
+          <aside className="hero-proof lg:mt-2">
+            <div className="border border-white/[0.08] rounded-[20px] bg-white/[0.015] p-7">
+              <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-white/35 mb-6">
+                The receipts
+              </p>
+
+              <div className="flex items-end gap-7 mb-7">
+                <div>
+                  <div className="font-display text-5xl font-extrabold leading-none text-white">
+                    10
+                  </div>
+                  <div className="text-xs text-white/40 mt-2">verticals shipped</div>
+                </div>
+                <div className="w-px h-12 bg-white/10" />
+                <div>
+                  <div className="font-display text-5xl font-extrabold leading-none text-white">
+                    15
+                  </div>
+                  <div className="text-xs text-white/40 mt-2">public repos</div>
+                </div>
+              </div>
+
+              <ul className="flex flex-col border-t border-white/[0.06]">
+                {[
+                  "SaaS platforms",
+                  "AI voice agents",
+                  "Semiconductor RTL",
+                  "Blockchain gaming",
+                  "Automotive AI",
+                  "Raw land, developed",
+                  "Physical products on retail shelves",
+                ].map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-center gap-3 py-2.5 border-b border-white/[0.06] text-sm text-white/65"
+                  >
+                    <span className="w-1 h-1 rounded-full bg-[#e63946] flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+
+              <a
+                href="https://github.com/theblockchainbaby"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 mt-5 text-xs font-mono text-white/40 hover:text-white transition-colors"
+              >
+                github.com/theblockchainbaby
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </aside>
         </div>
       </section>
 
       {/* ── PROOF COUNTERS ────────────────────────────────────────────────── */}
-      <section className="relative border-t border-white/[0.08] py-16 md:py-20 px-8 md:px-16" style={{ zIndex: 1, background: "#0a0a0a" }}>
-        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+      <section className="relative border-t border-white/[0.08] py-8 md:py-10 px-8 md:px-16" style={{ zIndex: 1, background: "#0c0a0a" }}>
+        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
           {PROOF.map((p, i) => (
             <ScaleUp key={p.label} delay={i * 0.1}>
               <motion.div
                 className="text-center"
-                whileHover={{ scale: 1.08 }}
                 transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
               >
-                <div className="text-5xl font-black text-[#e63946] mb-2 tabular-nums">
+                <div className="font-display font-extrabold text-4xl md:text-5xl text-[#e63946] mb-1 tabular-nums leading-none">
                   <Counter value={p.value} suffix={p.suffix} format={p.format} />
                 </div>
-                <div className="text-xs uppercase tracking-[0.15em] text-white/25 font-mono">{p.label}</div>
+                <div className="text-[10px] md:text-xs uppercase tracking-[0.15em] text-white/25 font-mono">{p.label}</div>
               </motion.div>
             </ScaleUp>
           ))}
@@ -551,7 +558,7 @@ export default function Home() {
       </section>
 
       {/* ── TECH MARQUEE ──────────────────────────────────────────────────── */}
-      <div className="relative border-t border-white/[0.04] py-6 overflow-hidden" style={{ zIndex: 1, background: "#0a0a0a" }}>
+      <div className="relative border-t border-white/[0.04] py-6 overflow-hidden" style={{ zIndex: 1, background: "#0c0a0a" }}>
         <motion.div
           className="flex whitespace-nowrap"
           animate={{ x: ["0%", "-50%"] }}
@@ -570,7 +577,7 @@ export default function Home() {
       </div>
 
       {/* ── PROBLEM / SOLUTION ────────────────────────────────────────────── */}
-      <section className="px-6 md:px-16" style={{ zIndex: 1, background: "#0a0a0a", display: "flex", justifyContent: "center", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "120px", paddingBottom: "120px" }}>
+      <section className="px-6 md:px-16" style={{ zIndex: 1, background: "#0c0a0a", display: "flex", justifyContent: "center", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "120px", paddingBottom: "120px" }}>
         <div style={{ width: "100%", maxWidth: "1100px", textAlign: "center" }}>
 
           <Reveal>
@@ -796,7 +803,7 @@ export default function Home() {
                   >
                     {/* Gradient border effect */}
                     <div className="absolute inset-0 rounded-[24px] bg-gradient-to-b from-white/[0.08] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ padding: "1px" }}>
-                      <div className="w-full h-full rounded-[23px] bg-[#0a0a0a]" />
+                      <div className="w-full h-full rounded-[23px] bg-[#0c0a0a]" />
                     </div>
                     {/* Bottom accent line */}
                     <div className="absolute bottom-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-[#e63946]/30 to-transparent group-hover:via-[#e63946]/60 transition-all duration-500" />
@@ -818,14 +825,14 @@ export default function Home() {
       </section>
 
       {/* ── ABOUT ─────────────────────────────────────────────────────────── */}
-      <section className="px-6 md:px-16" style={{ zIndex: 1, background: "#0a0a0a", display: "flex", justifyContent: "center", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "120px", paddingBottom: "120px" }}>
+      <section className="px-6 md:px-16" style={{ zIndex: 1, background: "#0c0a0a", display: "flex", justifyContent: "center", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "120px", paddingBottom: "120px" }}>
         <div style={{ width: "100%", maxWidth: "1100px" }}>
           <FlipIn>
             <p className="text-[14px] uppercase tracking-[0.24em] text-[#e63946] mb-8 font-semibold">Built by a Builder</p>
           </FlipIn>
           <div style={{ height: "40px" }} />
           <Reveal delay={0.1}>
-            <h2 className="text-5xl md:text-6xl font-black tracking-tight leading-[1.05]">
+            <h2 className="text-5xl md:text-6xl font-display font-extrabold tracking-tight leading-[1.05]">
               Not a course creator who read a book.
             </h2>
           </Reveal>
@@ -874,7 +881,7 @@ export default function Home() {
               { label: "Land Development",     sub: "Raw land \u2192 built from scratch" },
             ].map((item, i) => (
               <FlipIn key={item.label} delay={0.1 + i * 0.08}>
-                <MagicCard className="rounded-[16px] p-6 cursor-default bg-[#0a0a0a]">
+                <MagicCard className="rounded-[16px] p-6 cursor-default bg-[#0c0a0a]">
                   <p className="text-sm font-semibold text-white mb-2">{item.label}</p>
                   <p className="text-xs text-white/25 font-mono">{item.sub}</p>
                 </MagicCard>
@@ -889,13 +896,13 @@ export default function Home() {
       <PricingSection />
 
       {/* ── BOOK ─────────────────────────────────────────────────────────── */}
-      <section className="px-6 md:px-16" style={{ zIndex: 1, background: "#0a0a0a", display: "flex", justifyContent: "center", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "120px", paddingBottom: "120px" }}>
+      <section className="px-6 md:px-16" style={{ zIndex: 1, background: "#0c0a0a", display: "flex", justifyContent: "center", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "120px", paddingBottom: "120px" }}>
         <div style={{ width: "100%", maxWidth: "896px", textAlign: "center" }}>
           <FlipIn>
             <p className="text-[11px] uppercase tracking-[0.24em] text-[#e63946] mb-6">The Book</p>
           </FlipIn>
           <Reveal delay={0.1}>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tight mb-4">YORK</h2>
+            <h2 className="text-4xl md:text-6xl font-display font-extrabold tracking-tight mb-4">YORK</h2>
           </Reveal>
           <Reveal delay={0.15}>
             <p className="text-[17px] text-white/40 mb-12">by York W. Sims Jr.</p>
@@ -904,7 +911,7 @@ export default function Home() {
             <div style={{ maxWidth: "550px", margin: "0 auto", marginBottom: "48px", position: "relative" }}>
               <div style={{
                 position: "absolute", inset: 0, zIndex: 1, pointerEvents: "none",
-                background: "radial-gradient(ellipse at center, transparent 40%, #0a0a0a 85%)",
+                background: "radial-gradient(ellipse at center, transparent 40%, #0c0a0a 85%)",
               }} />
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -916,7 +923,7 @@ export default function Home() {
             </div>
           </ScaleUp>
           <Reveal delay={0.3}>
-            <p className="text-2xl md:text-3xl font-black tracking-tight text-white mb-4">Coming Soon</p>
+            <p className="text-2xl md:text-3xl font-display font-extrabold tracking-tight text-white mb-4">Coming Soon</p>
             <p className="text-sm text-white/30 font-mono italic">&ldquo;I am most dangerous when I am desperate.&rdquo;</p>
           </Reveal>
         </div>
@@ -940,7 +947,7 @@ export default function Home() {
 
           <div style={{ height: "48px" }} />
           <Reveal delay={0.05}>
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.0]">
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-display font-extrabold tracking-tight leading-[1.0]">
               Nobody else can teach across 10 verticals with real shipped projects in every one.
             </h2>
           </Reveal>
@@ -971,7 +978,7 @@ export default function Home() {
       </section>
 
       {/* ── FOOTER ────────────────────────────────────────────────────────── */}
-      <footer style={{ zIndex: 1, background: "#0a0a0a", display: "flex", justifyContent: "center", borderTop: "1px solid rgba(255,255,255,0.08)", padding: "64px" }}>
+      <footer style={{ zIndex: 1, background: "#0c0a0a", display: "flex", justifyContent: "center", borderTop: "1px solid rgba(255,255,255,0.08)", padding: "64px" }}>
         <motion.div
           style={{ width: "100%", maxWidth: "896px", display: "flex", justifyContent: "space-between", alignItems: "center", gap: "24px" }}
           variants={staggerContainer}

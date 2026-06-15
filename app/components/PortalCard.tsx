@@ -93,7 +93,7 @@ export function PortalCard({ portal, index, onHover }: PortalCardProps) {
         whileHover={{ opacity: 1, y: 0 }}
         className="absolute top-full mt-4 left-1/2 transform -translate-x-1/2 whitespace-nowrap"
       >
-        <div className="px-3 py-2 rounded text-xs text-white/70 font-mono border border-white/[0.08] bg-[#0a0a0a]/80 backdrop-blur-sm">
+        <div className="px-3 py-2 rounded text-xs text-white/70 font-mono border border-white/[0.08] bg-[#0c0a0a]/80 backdrop-blur-sm">
           {portal.name}
         </div>
       </motion.div>
