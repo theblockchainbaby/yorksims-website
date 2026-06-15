@@ -15,7 +15,7 @@ export function PlayerDashboard({ player, xpProgress }: PlayerDashboardProps) {
     <motion.div
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="fixed top-4 right-4 z-50 border border-white/[0.08] bg-[#0a0a0a]/85 backdrop-blur-sm px-5 py-4 rounded-[14px] max-w-sm"
+      className="fixed top-4 right-4 z-50 border border-white/[0.08] bg-[#0c0a0a]/85 backdrop-blur-sm px-5 py-4 rounded-[14px] max-w-sm"
     >
       {/* Player Header */}
       <div className="flex items-center justify-between mb-4 gap-6">

@@ -6,7 +6,7 @@ import Nav from "../../components/Nav";
 
 export default function BlogPost() {
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
+    <div className="min-h-screen bg-[#0c0a0a] text-white">
       <Nav />
 
       <article className="px-6 md:px-16" style={{ maxWidth: "780px", margin: "0 auto", paddingTop: "24px", paddingBottom: "120px" }}>
@@ -39,7 +39,7 @@ export default function BlogPost() {
 
         {/* Title */}
         <motion.h1
-          className="text-4xl md:text-5xl font-black tracking-tight leading-[1.1] mb-10"
+          className="text-4xl md:text-5xl font-display font-extrabold tracking-tight leading-[1.1] mb-10"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
@@ -248,9 +248,9 @@ export default function BlogPost() {
             </p>
             <Link
               href="/#pricing"
-              className="inline-block text-sm font-bold uppercase tracking-widest px-10 py-4 bg-[#e63946] text-white rounded-full hover:bg-[#ff4d5a] transition-all hover:scale-105 shadow-[0_0_30px_rgba(230,57,70,0.3)]"
+              className="inline-block text-sm font-bold uppercase tracking-widest px-10 py-4 bg-[#e63946] text-white rounded-full hover:bg-[#ff4d5a] transition-all"
             >
-              Join Pro
+              Book a session
             </Link>
           </div>
         </motion.div>

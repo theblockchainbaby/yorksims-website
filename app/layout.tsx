@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "./components/SmoothScroll";
 import PasscodeGate from "./components/PasscodeGate";
@@ -20,6 +20,15 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+// Display face — paired with Geist for body. Bricolage Grotesque has genuine
+// character (variable optical sizing, slight quirk) and is recent enough not
+// to read as an over-trained default. Headlines only.
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["600", "700", "800"],
 });
 
 export const viewport: Viewport = {
@@ -81,7 +90,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#0a0a0a] text-white`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${bricolage.variable} antialiased bg-[#0c0a0a] text-white`}>
         <JsonLd data={[organizationSchema(), websiteSchema(), personSchema()]} />
         <AuthProvider>
           <PasscodeGate>

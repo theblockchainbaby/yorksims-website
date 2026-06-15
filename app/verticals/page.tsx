@@ -127,7 +127,7 @@ function VerticalRow({ v, index }: { v: typeof VERTICALS[0]; index: number }) {
                 </motion.span>
                 <div>
                   <p className="text-[10px] uppercase tracking-[0.3em] text-[#e63946] font-semibold mb-1">{v.tag}</p>
-                  <h2 className="text-2xl md:text-3xl font-black tracking-tight text-white group-hover:text-white transition-colors">
+                  <h2 className="text-2xl md:text-3xl font-display font-extrabold tracking-tight text-white group-hover:text-white transition-colors">
                     {v.title}
                   </h2>
                 </div>
@@ -196,7 +196,7 @@ export default function VerticalsPage() {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
+    <div className="min-h-screen bg-[#0c0a0a] text-white">
       <Nav />
 
       {/* ── HERO ── */}
@@ -225,7 +225,7 @@ export default function VerticalsPage() {
             10 Verticals
           </motion.p>
           <motion.h1
-            className="text-6xl md:text-8xl font-black tracking-tight leading-[0.95]"
+            className="text-6xl md:text-8xl font-display font-extrabold tracking-tight leading-[0.95]"
             style={{ marginTop: "48px", marginBottom: "48px" }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -287,7 +287,7 @@ export default function VerticalsPage() {
           Ready to Build
         </motion.p>
         <motion.h2
-          className="text-4xl md:text-6xl font-black tracking-tight mb-10"
+          className="text-4xl md:text-6xl font-display font-extrabold tracking-tight mb-10"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -303,7 +303,7 @@ export default function VerticalsPage() {
         >
           <Link
             href="/#pricing"
-            className="inline-block text-sm font-bold uppercase tracking-widest px-12 py-5 bg-[#e63946] text-white rounded-full hover:bg-[#ff4d5a] transition-all hover:scale-105 shadow-[0_0_30px_rgba(230,57,70,0.3)] hover:shadow-[0_0_50px_rgba(230,57,70,0.5)]"
+            className="inline-block text-sm font-bold uppercase tracking-widest px-12 py-5 bg-[#e63946] text-white rounded-full hover:bg-[#ff4d5a] transition-all"
           >
             Join Now
           </Link>

@@ -33,7 +33,7 @@ export default function CertificatePage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#0a0a0a] text-white flex items-center justify-center">
+      <div className="min-h-screen bg-[#0c0a0a] text-white flex items-center justify-center">
         <div className="w-6 h-6 border-2 border-[#e63946] border-t-transparent rounded-full animate-spin" />
       </div>
     );
@@ -41,7 +41,7 @@ export default function CertificatePage() {
 
   if (!cert) {
     return (
-      <div className="min-h-screen bg-[#0a0a0a] text-white flex items-center justify-center">
+      <div className="min-h-screen bg-[#0c0a0a] text-white flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-black mb-2">Certificate not found</h1>
           <p className="text-sm text-white/30 mb-6">This certificate does not exist or has been revoked.</p>
@@ -58,7 +58,7 @@ export default function CertificatePage() {
   });
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white flex items-center justify-center px-6 py-16">
+    <div className="min-h-screen bg-[#0c0a0a] text-white flex items-center justify-center px-6 py-16">
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -94,7 +94,7 @@ export default function CertificatePage() {
 
             <p className="text-[10px] uppercase tracking-[0.3em] text-[#e63946] font-semibold mb-6">Certificate of Completion</p>
 
-            <h1 className="text-3xl md:text-4xl font-black tracking-tight mb-3">
+            <h1 className="text-3xl md:text-4xl font-display font-extrabold tracking-tight mb-3">
               {cert.verticals.title}
             </h1>
 

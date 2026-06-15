@@ -29,12 +29,12 @@ const FEATURES = [
   {
     icon: "⟁",
     title: "Full Code Repos",
-    desc: "Every build session ships with the full repo. Fork it, modify it, launch it. Builder tier gets priority access.",
+    desc: "Every build session ships with the full repo. Fork it, modify it, launch it. All public, all free.",
   },
   {
     icon: "◇",
-    title: "Small Group Coaching",
-    desc: "Builder tier is capped at 20. You're not a number — you're getting real feedback on your actual project.",
+    title: "1-on-1 Sessions",
+    desc: "Want a real opinion on your project? Book a 1-on-1 at $99/hour — SaaS, AI, business, hardware, land.",
   },
 ];
 
@@ -75,7 +75,7 @@ export default function HubPage() {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
+    <div className="min-h-screen bg-[#0c0a0a] text-white">
       <Nav />
 
       {/* ── HERO ── */}
@@ -108,7 +108,7 @@ export default function HubPage() {
             The Platform
           </motion.p>
           <motion.h1
-            className="text-6xl md:text-8xl font-black tracking-tight leading-[0.95] text-center"
+            className="text-6xl md:text-8xl font-display font-extrabold tracking-tight leading-[0.95] text-center"
             style={{ marginBottom: "32px" }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -133,7 +133,7 @@ export default function HubPage() {
           >
             <Link
               href="/#pricing"
-              className="inline-block text-sm font-bold uppercase tracking-widest px-10 py-4 bg-[#e63946] text-white rounded-full hover:bg-[#ff4d5a] transition-all hover:scale-105 shadow-[0_0_30px_rgba(230,57,70,0.3)]"
+              className="inline-block text-sm font-bold uppercase tracking-widest px-10 py-4 bg-[#e63946] text-white rounded-full hover:bg-[#ff4d5a] transition-all"
             >
               Join Now
             </Link>
@@ -166,8 +166,8 @@ export default function HubPage() {
         <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-px bg-white/[0.04]">
           {STATS.map((s, i) => (
             <FadeIn key={s.label} delay={i * 0.06}>
-              <div className="bg-[#0a0a0a] px-10 py-10 text-center">
-                <p className="text-4xl md:text-5xl font-black tracking-tight text-white mb-2">{s.value}</p>
+              <div className="bg-[#0c0a0a] px-10 py-10 text-center">
+                <p className="text-4xl md:text-5xl font-display font-extrabold tracking-tight text-white mb-2">{s.value}</p>
                 <p className="text-[10px] uppercase tracking-[0.2em] text-white/25 font-semibold">{s.label}</p>
               </div>
             </FadeIn>
@@ -181,7 +181,7 @@ export default function HubPage() {
           <p className="text-[11px] uppercase tracking-[0.3em] text-[#e63946] font-semibold mb-4 text-center">What&apos;s Inside</p>
         </FadeIn>
         <FadeIn delay={0.06}>
-          <h2 className="text-4xl md:text-6xl font-black tracking-tight text-center mb-20">
+          <h2 className="text-4xl md:text-6xl font-display font-extrabold tracking-tight text-center mb-20">
             Built for execution,<br /><span className="text-white/20">not consumption.</span>
           </h2>
         </FadeIn>
@@ -190,7 +190,7 @@ export default function HubPage() {
           {FEATURES.map((f, i) => (
             <FadeIn key={f.title} delay={i * 0.07}>
               <motion.div
-                className="group bg-[#0a0a0a] border border-transparent hover:border-white/[0.08] transition-all duration-500 relative overflow-hidden"
+                className="group bg-[#0c0a0a] border border-transparent hover:border-white/[0.08] transition-all duration-500 relative overflow-hidden"
                 style={{ padding: "48px 40px", borderRadius: "0" }}
                 whileHover={{ backgroundColor: "rgba(255,255,255,0.01)" }}
               >
@@ -198,7 +198,7 @@ export default function HubPage() {
                   className="absolute top-0 left-0 right-0 h-px bg-[#e63946] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"
                 />
                 <p className="text-2xl mb-6 text-[#e63946]/60 group-hover:text-[#e63946] transition-colors duration-300">{f.icon}</p>
-                <h3 className="text-base font-black tracking-tight text-white mb-3">{f.title}</h3>
+                <h3 className="text-base font-display font-extrabold tracking-tight text-white mb-3">{f.title}</h3>
                 <p className="text-sm text-white/30 leading-relaxed">{f.desc}</p>
               </motion.div>
             </FadeIn>
@@ -213,7 +213,7 @@ export default function HubPage() {
             <p className="text-[11px] uppercase tracking-[0.3em] text-[#e63946] font-semibold mb-4 text-center">How It Works</p>
           </FadeIn>
           <FadeIn delay={0.06}>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tight text-center mb-20">
+            <h2 className="text-4xl md:text-6xl font-display font-extrabold tracking-tight text-center mb-20">
               Four steps.<br /><span className="text-white/20">Zero fluff.</span>
             </h2>
           </FadeIn>
@@ -232,7 +232,7 @@ export default function HubPage() {
                     style={{ borderRadius: "2px" }}
                   />
                   <p className="text-[60px] font-black text-white/[0.04] leading-none mb-4 select-none">{step.num}</p>
-                  <h3 className="text-xl font-black tracking-tight text-white mb-3">{step.title}</h3>
+                  <h3 className="text-xl font-display font-extrabold tracking-tight text-white mb-3">{step.title}</h3>
                   <p className="text-sm text-white/30 leading-relaxed">{step.desc}</p>
                 </motion.div>
               </FadeIn>
@@ -253,19 +253,19 @@ export default function HubPage() {
           <p className="text-[11px] uppercase tracking-[0.3em] text-[#e63946] font-semibold mb-6">Start Building</p>
         </FadeIn>
         <FadeIn delay={0.06}>
-          <h2 className="text-4xl md:text-6xl font-black tracking-tight mb-4">
-            Pro starts at $29/mo.
+          <h2 className="text-4xl md:text-6xl font-display font-extrabold tracking-tight mb-4">
+            Everything&rsquo;s free.
           </h2>
         </FadeIn>
         <FadeIn delay={0.1}>
-          <p className="text-sm text-white/30 mb-12 max-w-md">Full access to all 10 verticals, templates, live Q&A, and the private community.</p>
+          <p className="text-sm text-white/30 mb-12 max-w-md">All 10 verticals, every module, every repo, every tool — no paywall. Book a 1-on-1 at $99/hr when you want a real opinion on something specific.</p>
         </FadeIn>
         <FadeIn delay={0.14}>
           <Link
-            href="/#pricing"
-            className="inline-block text-sm font-bold uppercase tracking-widest px-12 py-5 bg-[#e63946] text-white rounded-full hover:bg-[#ff4d5a] transition-all hover:scale-105 shadow-[0_0_30px_rgba(230,57,70,0.3)] hover:shadow-[0_0_50px_rgba(230,57,70,0.5)]"
+            href="/pricing"
+            className="inline-block text-sm font-bold uppercase tracking-widest px-12 py-5 bg-[#e63946] text-white rounded-full hover:bg-[#ff4d5a] transition-all"
           >
-            See All Plans
+            See pricing
           </Link>
         </FadeIn>
       </section>

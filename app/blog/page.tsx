@@ -4,92 +4,7 @@ import { useRef } from "react";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import Nav from "../components/Nav";
-
-const POSTS = [
-  {
-    slug: "business-runs-without-me",
-    vertical: "Business",
-    title: "How I Built a Business That Runs Without Me",
-    excerpt: "The real systems behind Caipher AI LLC. AI agents, automated workflows, and the architecture that lets me build across 10 verticals without burning out.",
-    date: "Mar 26, 2026",
-    readTime: "14 min",
-  },
-  {
-    slug: "building-vitros-saas",
-    vertical: "Software",
-    title: "Building VitrOS: From Zero to Production SaaS in 30 Days",
-    excerpt: "Next.js 16, Prisma, PostgreSQL, NextAuth v5, multi-tenant RBAC, PWA offline capability — and it's live. Here's the full build breakdown.",
-    date: "Mar 10, 2026",
-    readTime: "12 min",
-  },
-  {
-    slug: "moltbot-autonomous-ai-agent",
-    vertical: "AI Agents",
-    title: "MoltBot: Building a 20-Skill Autonomous AI Agent for Business",
-    excerpt: "How I built an AI that handles CMO/CEO functions — email, research, outreach, reporting — without touching it. Full architecture breakdown.",
-    date: "Mar 5, 2026",
-    readTime: "9 min",
-  },
-  {
-    slug: "hbm-memory-systemverilog",
-    vertical: "Hardware",
-    title: "HBM Memory Subsystem Design in SystemVerilog",
-    excerpt: "Building an HBM-style controller with interleaving, ECC, and power states from scratch. What I learned building semiconductor-grade RTL on my own.",
-    date: "Feb 28, 2026",
-    readTime: "15 min",
-  },
-  {
-    slug: "dualpay-xrp-ledger",
-    vertical: "Blockchain",
-    title: "Building DualPay: Multi-Payment on the XRP Ledger",
-    excerpt: "Crypto + fiat in one system. How DualPay handles XRPL transactions, stablecoins, and fiat rails simultaneously — the full technical walkthrough.",
-    date: "Feb 20, 2026",
-    readTime: "11 min",
-  },
-  {
-    slug: "llc-operating-agreement",
-    vertical: "Business",
-    title: "How I Structured Caipher AI LLC — and What I'd Do Differently",
-    excerpt: "Entity setup, operating agreements, equity splits, and exit strategies. The real decisions behind building a holding company for multiple SaaS products.",
-    date: "Feb 14, 2026",
-    readTime: "8 min",
-  },
-  {
-    slug: "raw-land-development",
-    vertical: "Land",
-    title: "Developing Raw Land From Scratch: Well, Septic, Power, Permits",
-    excerpt: "Nobody teaches this. Buying a piece of raw land and turning it into something livable — the permits, the contractors, the county fights, the math.",
-    date: "Feb 6, 2026",
-    readTime: "10 min",
-  },
-  {
-    slug: "d1-to-entrepreneur",
-    vertical: "Athlete",
-    title: "From D1 Basketball to Ankara, Turkey to Building a Tech Company",
-    excerpt: "What playing pro basketball overseas teaches you about business — and why the discipline you built in athletics is your biggest unfair advantage.",
-    date: "Jan 30, 2026",
-    readTime: "7 min",
-  },
-  {
-    slug: "animation-engine-fal-ai",
-    vertical: "Creative Tech",
-    title: "The Animation Engine: Turning Product Images into Scroll-Driven Websites",
-    excerpt: "engine.py: an automated pipeline using fal.ai Nano Banana 2 + Kling 3.0 + ffmpeg. From a product photo to a full Apple-style launch page — with code.",
-    date: "Jan 22, 2026",
-    readTime: "13 min",
-  },
-];
-
-const VERTICAL_COLORS: Record<string, string> = {
-  "Software":     "#60a5fa",
-  "AI Agents":    "#c084fc",
-  "Hardware":     "#eab308",
-  "Blockchain":   "#4ade80",
-  "Business":     "#fb923c",
-  "Land":         "#f59e0b",
-  "Athlete":      "#22d3ee",
-  "Creative Tech": "#f472b6",
-};
+import { POSTS, VERTICAL_COLORS } from "../lib/blog";
 
 function PostCard({ post, index }: { post: typeof POSTS[0]; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -127,7 +42,7 @@ function PostCard({ post, index }: { post: typeof POSTS[0]; index: number }) {
                 <span className="text-white/10">·</span>
                 <span className="text-[10px] font-mono text-white/20">{post.readTime} read</span>
               </div>
-              <h2 className="text-lg font-black tracking-tight text-white group-hover:text-white transition-colors mb-3 leading-snug">
+              <h2 className="text-lg font-display font-extrabold tracking-tight text-white group-hover:text-white transition-colors mb-3 leading-snug">
                 {post.title}
               </h2>
               <p className="text-sm text-white/30 leading-relaxed">{post.excerpt}</p>
@@ -146,7 +61,7 @@ function PostCard({ post, index }: { post: typeof POSTS[0]; index: number }) {
 
 export default function BlogPage() {
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
+    <div className="min-h-screen bg-[#0c0a0a] text-white">
       <Nav />
 
       {/* ── HERO ── */}
@@ -177,7 +92,7 @@ export default function BlogPage() {
             The Build Blog
           </motion.p>
           <motion.h1
-            className="text-6xl md:text-7xl font-black tracking-tight leading-[0.95] text-center"
+            className="text-6xl md:text-7xl font-display font-extrabold tracking-tight leading-[0.95] text-center"
             style={{ marginBottom: "24px" }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -215,9 +130,9 @@ export default function BlogPage() {
           <p className="text-xs text-white/20 mb-6 font-mono">Pro members get full breakdowns, code repos, and templates with every post.</p>
           <Link
             href="/#pricing"
-            className="inline-block text-sm font-bold uppercase tracking-widest px-10 py-4 bg-[#e63946] text-white rounded-full hover:bg-[#ff4d5a] transition-all hover:scale-105 shadow-[0_0_30px_rgba(230,57,70,0.3)]"
+            className="inline-block text-sm font-bold uppercase tracking-widest px-10 py-4 bg-[#e63946] text-white rounded-full hover:bg-[#ff4d5a] transition-all"
           >
-            Join Pro — $29/mo
+            Book a session — $99/hr
           </Link>
         </motion.div>
       </section>

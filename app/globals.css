@@ -1,11 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background:  #0a0a0a;
+  /* Near-blacks tinted a hair warm so the neutral relates to the red anchor
+     instead of reading as flat synthetic #0a0a0a. */
+  --background:  #0c0a0a;
   --foreground:  #ffffff;
-  --surface:     #111111;
-  --card:        #161616;
-  --border:      #1e1e1e;
+  --surface:     #141111;
+  --card:        #181414;
+  --border:      #241e1e;
   --accent:      #e63946;
   --muted:       #666666;
   --muted-light: #999999;
@@ -18,11 +20,11 @@
   --font-mono: var(--font-geist-mono);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* NOTE: do not add a bare `* { margin:0; padding:0 }` here.
+   Tailwind v4's preflight already resets margin/padding/box-sizing inside
+   @layer base. An unlayered universal rule would beat every Tailwind
+   margin/padding utility (mx-auto, px-*, mb-*, ...) site-wide and break
+   all centering and spacing. */
 
 html {
   scroll-behavior: smooth;
@@ -55,6 +57,15 @@ body {
   width: 40px;
   height: 2px;
   background: var(--accent);
+}
+
+/* Display face — headlines only. Paired with Geist for body so the page
+   reads as authored, not single-font templated. Tighten tracking + optical
+   size for the heavier weights. */
+.font-display {
+  font-family: var(--font-display), var(--font-geist-sans), sans-serif;
+  font-optical-sizing: auto;
+  letter-spacing: -0.018em;
 }
 
 /* Scrollbar */

@@ -28,7 +28,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white flex items-center justify-center px-6">
+    <div className="min-h-screen bg-[#0c0a0a] text-white flex items-center justify-center px-6">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -40,7 +40,7 @@ export default function LoginPage() {
           <img src="/york-state-logo.png" alt="York State University" className="h-16 mx-auto" />
         </Link>
 
-        <h1 className="text-3xl font-black tracking-tight text-center mb-2">Welcome back</h1>
+        <h1 className="text-3xl font-display font-extrabold tracking-tight text-center mb-2">Welcome back</h1>
         <p className="text-sm text-white/30 text-center mb-10">Sign in to continue building.</p>
 
         {error && (

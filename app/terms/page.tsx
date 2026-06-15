@@ -10,7 +10,7 @@ const EFFECTIVE_DATE = "May 14, 2026";
 
 export default function TermsPage() {
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
+    <div className="min-h-screen bg-[#0c0a0a] text-white">
       <Nav />
 
       {/* HERO */}
@@ -39,7 +39,7 @@ export default function TermsPage() {
             Legal
           </p>
           <motion.h1
-            className="text-4xl md:text-6xl font-black tracking-tight leading-[1.05] mb-6"
+            className="text-4xl md:text-6xl font-display font-extrabold tracking-tight leading-[1.05] mb-6"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
@@ -110,24 +110,25 @@ export default function TermsPage() {
             />
           </Section>
 
-          <Section title="06 · Free content & paid content">
+          <Section title="06 · Free content & paid services">
             <P>
-              Some content on YorkSims is free (the learn paths, the
-              quizzes, several tools, free modules). Some content is paid
-              (currently the Pro subscription described on the pricing page).
-              Paid features are described at point of purchase. Free content
+              All content on YorkSims &mdash; the learn paths, the quizzes,
+              the free tools, every module across all 10 verticals &mdash;
+              is free to read, clone, and use. The only paid service is a
+              1-on-1 consulting session with York at $99 per hour, booked
+              on an ad-hoc basis. There is no subscription. Free content
               may be discontinued or changed at any time.
             </P>
           </Section>
 
-          <Section title="07 · Pricing, billing & refunds">
+          <Section title="07 · 1-on-1 sessions: booking, billing & refunds">
             <List
               items={[
-                "Prices are stated on the pricing page and are charged in U.S. dollars.",
-                "Subscriptions renew automatically on the same cadence (e.g. monthly) until you cancel.",
-                "You can cancel at any time from your account — cancellation takes effect at the end of the current billing period.",
-                "We offer a 14-day refund window for first-time paid subscriptions if you've used less than 25% of the included content. Email contact@yorksims.com to request a refund.",
-                "We don't refund partial months on cancellation.",
+                "Sessions are $99 per hour, charged in U.S. dollars via Stripe before the session.",
+                "Sessions are scoped over email first — you tell York what you want to work on, York confirms the slot, then payment is collected.",
+                "There is no recurring billing. Each session is a one-time charge for the booked hour(s).",
+                "If a session doesn't deliver value, email contact@yorksims.com within 48 hours of the session and you'll get a full refund. No questions, no friction.",
+                "Cancellations made more than 24 hours before the scheduled start time are refunded in full. Cancellations within 24 hours are subject to a 50% session fee.",
               ]}
             />
           </Section>
@@ -334,7 +335,7 @@ function Section({
 }) {
   return (
     <section className="mb-12">
-      <h2 className="text-xl md:text-2xl font-black tracking-tight mb-5 text-white/90">
+      <h2 className="text-xl md:text-2xl font-display font-extrabold tracking-tight mb-5 text-white/90">
         {title}
       </h2>
       {children}

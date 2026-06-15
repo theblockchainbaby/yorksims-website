@@ -55,7 +55,7 @@ const TRACKS: Track[] = [
 
 export default function LearnIndexPage() {
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
+    <div className="min-h-screen bg-[#0c0a0a] text-white">
       <Nav />
 
       {/* HERO */}
@@ -92,7 +92,7 @@ export default function LearnIndexPage() {
             Free Learning Paths
           </p>
           <motion.h1
-            className="text-5xl md:text-7xl font-black tracking-tight leading-[1] mb-6"
+            className="text-5xl md:text-7xl font-display font-extrabold tracking-tight leading-[1] mb-6"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
@@ -134,7 +134,7 @@ export default function LearnIndexPage() {
                     {t.level} · {t.lessonCount} lessons · {t.quizCount}{" "}
                     quizzes
                   </p>
-                  <h3 className="text-2xl md:text-3xl font-black tracking-tight mb-3">
+                  <h3 className="text-2xl md:text-3xl font-display font-extrabold tracking-tight mb-3">
                     {t.name}
                   </h3>
                   <p className="text-white/55 leading-relaxed max-w-2xl">
@@ -168,7 +168,7 @@ export default function LearnIndexPage() {
               <div className="flex flex-wrap gap-3 mt-2">
                 <Link
                   href={t.href}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold uppercase tracking-widest bg-[#e63946] text-white hover:bg-[#ff4d5a] transition-all hover:scale-105 shadow-[0_0_20px_rgba(230,57,70,0.3)]"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold uppercase tracking-widest bg-[#e63946] text-white hover:bg-[#ff4d5a] transition-all"
                 >
                   Start the {t.name} path →
                 </Link>
@@ -190,7 +190,7 @@ export default function LearnIndexPage() {
               How YorkSims teaches
             </p>
           </div>
-          <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-8">
+          <h2 className="text-3xl md:text-4xl font-display font-extrabold tracking-tight mb-8">
             Practical, terse, free.
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

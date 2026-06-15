@@ -10,7 +10,7 @@ const EFFECTIVE_DATE = "May 14, 2026";
 
 export default function PrivacyPage() {
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
+    <div className="min-h-screen bg-[#0c0a0a] text-white">
       <Nav />
 
       {/* HERO */}
@@ -39,7 +39,7 @@ export default function PrivacyPage() {
             Legal
           </p>
           <motion.h1
-            className="text-4xl md:text-6xl font-black tracking-tight leading-[1.05] mb-6"
+            className="text-4xl md:text-6xl font-display font-extrabold tracking-tight leading-[1.05] mb-6"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
@@ -291,7 +291,7 @@ function Section({
 }) {
   return (
     <section className="mb-12">
-      <h2 className="text-xl md:text-2xl font-black tracking-tight mb-5 text-white/90">
+      <h2 className="text-xl md:text-2xl font-display font-extrabold tracking-tight mb-5 text-white/90">
         {title}
       </h2>
       {children}

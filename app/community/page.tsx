@@ -172,14 +172,14 @@ export default function CommunityPage() {
 
   if (loading || !user) {
     return (
-      <div className="min-h-screen bg-[#0a0a0a] text-white flex items-center justify-center">
+      <div className="min-h-screen bg-[#0c0a0a] text-white flex items-center justify-center">
         <div className="w-6 h-6 border-2 border-[#e63946] border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
+    <div className="min-h-screen bg-[#0c0a0a] text-white">
       {/* Top bar */}
       <div className="border-b border-white/[0.06] px-6 md:px-12 py-4 flex items-center justify-between">
         <Link href="/" className="flex items-center">
@@ -198,7 +198,7 @@ export default function CommunityPage() {
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-3xl font-black tracking-tight mb-1">Community</h1>
+            <h1 className="text-3xl font-display font-extrabold tracking-tight mb-1">Community</h1>
             <p className="text-sm text-white/30">Share what you are building. Learn from other builders.</p>
           </div>
           <motion.button

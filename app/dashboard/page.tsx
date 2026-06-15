@@ -100,7 +100,7 @@ export default function DashboardPage() {
 
   if (loading || !user) {
     return (
-      <div className="min-h-screen bg-[#0a0a0a] text-white flex items-center justify-center">
+      <div className="min-h-screen bg-[#0c0a0a] text-white flex items-center justify-center">
         <div className="w-6 h-6 border-2 border-[#e63946] border-t-transparent rounded-full animate-spin" />
       </div>
     );
@@ -111,7 +111,7 @@ export default function DashboardPage() {
   const totalModules = modules.length;
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
+    <div className="min-h-screen bg-[#0c0a0a] text-white">
       {/* Top bar */}
       <div className="border-b border-white/[0.06] px-6 md:px-12 py-4 flex items-center justify-between">
         <Link href="/" className="flex items-center">
@@ -145,7 +145,7 @@ export default function DashboardPage() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="mb-12"
         >
-          <h1 className="text-4xl font-black tracking-tight mb-2">Your Dashboard</h1>
+          <h1 className="text-4xl font-display font-extrabold tracking-tight mb-2">Your Dashboard</h1>
           <p className="text-sm text-white/30">Track your progress across all 10 verticals.</p>
 
           <div className="grid grid-cols-3 gap-4 mt-8 max-w-lg">
