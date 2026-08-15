@@ -10,7 +10,6 @@ const DUALACADEMY_ITEMS: Item[] = [
     description: 'Introduction to cryptocurrency and blockchain',
     category: 'dualacademy',
     type: 'course',
-    price: 49,
     xpReward: 100,
   },
   {
@@ -19,7 +18,6 @@ const DUALACADEMY_ITEMS: Item[] = [
     description: 'Develop the mindset of a successful entrepreneur',
     category: 'dualacademy',
     type: 'course',
-    price: 79,
     xpReward: 150,
   },
   {
@@ -28,7 +26,6 @@ const DUALACADEMY_ITEMS: Item[] = [
     description: 'Build unbreakable mental resilience',
     category: 'dualacademy',
     type: 'course',
-    price: 69,
     xpReward: 125,
   },
   {
@@ -37,7 +34,6 @@ const DUALACADEMY_ITEMS: Item[] = [
     description: 'Learn to build modern web applications',
     category: 'dualacademy',
     type: 'course',
-    price: 199,
     xpReward: 250,
   },
   {
@@ -46,7 +42,6 @@ const DUALACADEMY_ITEMS: Item[] = [
     description: 'Core principles of building a business',
     category: 'dualacademy',
     type: 'course',
-    price: 89,
     xpReward: 140,
   },
   {
@@ -55,7 +50,6 @@ const DUALACADEMY_ITEMS: Item[] = [
     description: 'Master crypto and traditional trading',
     category: 'dualacademy',
     type: 'course',
-    price: 149,
     xpReward: 200,
   },
 ];

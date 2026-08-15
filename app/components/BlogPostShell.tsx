@@ -30,7 +30,8 @@ export default function BlogPostShell({ post, children, ctaCopy }: Props) {
         style={{
           maxWidth: "780px",
           margin: "0 auto",
-          paddingTop: "24px",
+          // Clear the fixed 72px nav — anything less buries the back link under it.
+          paddingTop: "110px",
           paddingBottom: "120px",
         }}
       >

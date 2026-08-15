@@ -9,6 +9,7 @@
 import { SITE, absoluteUrl } from "../lib/seo";
 import type { BlogPost } from "../lib/blog";
 import type { Vertical } from "../lib/portals";
+import type { Book } from "../lib/books";
 
 type Schema = Record<string, unknown>;
 
@@ -154,11 +155,10 @@ export function courseSchema(vertical: Vertical): Schema {
     },
     offers: {
       "@type": "Offer",
-      price: "29",
+      price: "0",
       priceCurrency: "USD",
-      category: "subscription",
       availability: "https://schema.org/InStock",
-      url: `${SITE.url}/#pricing`,
+      url: `${SITE.url}/pricing`,
     },
   };
 }
@@ -167,41 +167,41 @@ export function productSchema(): Schema {
   return {
     "@type": "Product",
     "@id": `${SITE.url}/#product`,
-    name: `${SITE.name} Pro`,
+    name: SITE.name,
     description: SITE.description,
     brand: { "@id": `${SITE.url}/#organization` },
-    offers: [
-      {
-        "@type": "Offer",
-        name: "Pro Membership",
-        price: "29",
-        priceCurrency: "USD",
-        availability: "https://schema.org/InStock",
-        priceSpecification: {
-          "@type": "UnitPriceSpecification",
-          price: "29",
-          priceCurrency: "USD",
-          unitCode: "MON",
-          unitText: "monthly subscription",
-        },
-        url: `${SITE.url}/#pricing`,
-      },
-      {
-        "@type": "Offer",
-        name: "Builder Membership",
-        price: "499",
-        priceCurrency: "USD",
-        availability: "https://schema.org/InStock",
-        priceSpecification: {
-          "@type": "UnitPriceSpecification",
-          price: "499",
-          priceCurrency: "USD",
-          unitCode: "MON",
-          unitText: "monthly subscription",
-        },
-        url: `${SITE.url}/#pricing`,
-      },
-    ],
+    offers: {
+      "@type": "Offer",
+      name: "Full platform access",
+      price: "0",
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
+      url: `${SITE.url}/pricing`,
+    },
+  };
+}
+
+export function bookSchema(book: Book): Schema {
+  return {
+    "@type": "Book",
+    "@id": `${SITE.url}/books#${book.id}`,
+    name: book.title,
+    description: book.description,
+    author: {
+      "@type": "Person",
+      name: SITE.author.name,
+      url: SITE.author.url,
+    },
+    bookFormat: "https://schema.org/EBook",
+    image: absoluteUrl(book.cover),
+    inLanguage: SITE.language,
+    offers: {
+      "@type": "Offer",
+      price: (book.priceCents / 100).toFixed(2),
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
+      url: `${SITE.url}/books`,
+    },
   };
 }
 

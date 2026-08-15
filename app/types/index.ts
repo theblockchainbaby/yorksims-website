@@ -76,12 +76,3 @@ export interface Product {
   tier: 'free' | 'builder' | 'hustler' | 'founder';
 }
 
-export interface Subscription {
-  id: string;
-  tier: 'free' | 'builder' | 'hustler' | 'founder';
-  name: string;
-  price: number;
-  features: string[];
-  description: string;
-}
-

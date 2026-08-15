@@ -20,9 +20,19 @@ export function ItemCard({ item, index, onSelect }: ItemCardProps) {
       className="group cursor-pointer"
     >
       <div className="relative rounded-[16px] overflow-hidden h-full flex flex-col border border-white/[0.06] bg-white/[0.02] hover:border-white/20 transition-colors">
-        {/* Image placeholder */}
-        <div className="w-full h-40 flex items-center justify-center relative overflow-hidden border-b border-white/[0.06] bg-[#0c0a0a]">
-          <div className="text-4xl opacity-30">📦</div>
+        {/* Cover / image */}
+        <div className="w-full h-48 flex items-center justify-center relative overflow-hidden border-b border-white/[0.06] bg-[#0c0a0a]">
+          {item.image ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={item.image}
+              alt={item.title}
+              loading="lazy"
+              className="absolute inset-0 w-full h-full object-cover object-top"
+            />
+          ) : (
+            <div className="text-4xl opacity-30">📦</div>
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-[#0c0a0a] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         </div>
 

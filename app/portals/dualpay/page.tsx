@@ -10,7 +10,6 @@ const DUALPAY_ITEMS: Item[] = [
     description: 'Send, receive, and manage payments with DualPay.',
     category: 'dualpay',
     type: 'tool',
-    price: 0,
     xpReward: 50,
   },
   {
@@ -19,7 +18,6 @@ const DUALPAY_ITEMS: Item[] = [
     description: 'Point-of-sale system for merchants accepting DualPay.',
     category: 'dualpay',
     type: 'tool',
-    price: 99,
     xpReward: 100,
   },
   {
@@ -28,7 +26,6 @@ const DUALPAY_ITEMS: Item[] = [
     description: 'Complete guide to DPX tokenomics, distribution, and utility.',
     category: 'dualpay',
     type: 'ebook',
-    price: 29,
     xpReward: 75,
   },
   {
@@ -37,7 +34,6 @@ const DUALPAY_ITEMS: Item[] = [
     description: 'Technical documentation for the DPUSD stablecoin.',
     category: 'dualpay',
     type: 'blueprint',
-    price: 49,
     xpReward: 150,
   },
   {
@@ -46,7 +42,6 @@ const DUALPAY_ITEMS: Item[] = [
     description: 'How to integrate DualPay with your blockchain rails.',
     category: 'dualpay',
     type: 'blueprint',
-    price: 199,
     xpReward: 200,
   },
   {
@@ -55,7 +50,6 @@ const DUALPAY_ITEMS: Item[] = [
     description: 'Onboard merchants to DualPay end-to-end.',
     category: 'dualpay',
     type: 'course',
-    price: 79,
     xpReward: 125,
   },
 ];

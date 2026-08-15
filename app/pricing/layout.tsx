@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: `Pricing — ${SITE.name}`,
     description:
-      "Every module across all 10 verticals — code, contracts, templates, both learning paths — is free. The only paid thing is a 1-on-1 session with York at $99/hour for when you want a deep-dive on something specific.",
+      "Every module across all 10 verticals — code, contracts, templates, both learning paths — is free. The paid things: three book PDFs ($19–$50) and a 1-on-1 session with York at $99/hour.",
     path: "/pricing",
     ogImage: `/api/og?title=${encodeURIComponent("Pricing — Free + $99/hr 1-on-1")}&vertical=${encodeURIComponent("YorkSims")}`,
   }),
@@ -27,6 +27,11 @@ const FAQS = [
     question: "How do I book a 1-on-1?",
     answer:
       "Email contact@yorksims.com or use the Contact page. Tell me what you want to work on; I'll send back available slots. Payment via Stripe before the session.",
+  },
+  {
+    question: "Are the books free too?",
+    answer:
+      "No — the three books (YORK, Built For More, Figure It Out) are paid PDFs at $19–$50 each. Buy on the Books page, pay with card via Stripe, download instantly. Everything else on the site is free.",
   },
   {
     question: "Do I need to know how to code to use the free modules?",

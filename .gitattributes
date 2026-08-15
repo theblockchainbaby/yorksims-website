@@ -1,0 +1,8 @@
+# Never apply text/line-ending conversion to binary assets.
+# (The YORK memoir PDF has no early null bytes, so git guesses "text" —
+# without this, a checkout with autocrlf enabled would corrupt it.)
+*.pdf -text
+*.png -text
+*.webp -text
+*.jpg -text
+*.ico -text

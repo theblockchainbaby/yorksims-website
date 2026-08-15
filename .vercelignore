@@ -1,0 +1,28 @@
+# Dev tooling — not needed for production builds.
+# Keep these out of the upload so Vercel doesn't try to typecheck them
+# against deps that aren't in the production package.json.
+
+# Test infrastructure
+playwright.config.ts
+playwright.config.js
+vitest.config.ts
+vitest.config.js
+tests/
+**/__tests__/
+**/*.test.ts
+**/*.test.tsx
+**/*.spec.ts
+**/*.spec.tsx
+
+# Internal docs / notes
+docs/
+CLAUDE.md
+
+# Supabase migrations directory — applied via the Supabase MCP, not Vercel
+supabase/
+
+# Local-only
+.env.local
+.env.development.local
+.next/
+node_modules/

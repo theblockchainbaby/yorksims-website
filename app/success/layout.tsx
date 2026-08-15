@@ -3,8 +3,8 @@ import { pageMetadata } from "../lib/seo";
 
 export const metadata: Metadata = {
   ...pageMetadata({
-    title: "Welcome — YorkSims.com",
-    description: "Your YorkSims subscription is active.",
+    title: "Order confirmed — YorkSims.com",
+    description: "Your purchase is confirmed. Download your PDF.",
     path: "/success",
     noIndex: true,
   }),

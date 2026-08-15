@@ -27,16 +27,41 @@ export function PortalTemplate({
 }: PortalTemplateProps) {
   const { player, addXP, getXPProgress } = useGameification();
   const [selectedItem, setSelectedItem] = useState<Item | null>(null);
+  const [checkoutLoading, setCheckoutLoading] = useState(false);
+  const [checkoutError, setCheckoutError] = useState<string | null>(null);
   const xpProgress = getXPProgress();
 
   const handleItemSelect = (item: Item) => {
     setSelectedItem(item);
+    setCheckoutError(null);
     if (item.xpReward) {
       addXP({
         type: 'item_download',
         xpAmount: item.xpReward,
         description: `Downloaded ${item.title}`,
       });
+    }
+  };
+
+  // Priced items are books — the checkout API resolves the price server-side
+  // from app/lib/books.ts and rejects ids it doesn't know.
+  const handlePurchase = async (item: Item) => {
+    setCheckoutLoading(true);
+    setCheckoutError(null);
+    try {
+      const res = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ bookId: item.id }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.url) throw new Error(data.error || 'Checkout failed');
+      window.location.href = data.url;
+    } catch {
+      setCheckoutError(
+        'Couldn’t start checkout. Try again, or email contact@yorksims.com.'
+      );
+      setCheckoutLoading(false);
     }
   };
 
@@ -97,6 +122,14 @@ export function PortalTemplate({
               onClick={(e) => e.stopPropagation()}
               className="bg-[#0c0a0a] border border-white/[0.08] rounded-[20px] p-8 max-w-md w-full"
             >
+              {selectedItem.image && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={selectedItem.image}
+                  alt={selectedItem.title}
+                  className="w-full h-56 object-contain rounded-[12px] mb-5 bg-black/30"
+                />
+              )}
               <p className="text-[10px] uppercase tracking-[0.3em] text-[#e63946] font-semibold mb-3">
                 {selectedItem.type}
               </p>
@@ -122,9 +155,23 @@ export function PortalTemplate({
                 )}
               </div>
 
+              {checkoutError && (
+                <p className="text-xs text-[#e63946] mb-4 leading-relaxed">{checkoutError}</p>
+              )}
+
               <div className="flex gap-3">
-                <button className="flex-1 px-4 py-2.5 bg-[#e63946] text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-[#ff4d5a] transition-colors">
-                  {selectedItem.price ? 'Purchase' : 'Download'}
+                <button
+                  onClick={() => {
+                    if (selectedItem.price) handlePurchase(selectedItem);
+                  }}
+                  disabled={checkoutLoading}
+                  className="flex-1 px-4 py-2.5 bg-[#e63946] text-white text-sm font-bold uppercase tracking-widest rounded-full hover:bg-[#ff4d5a] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {checkoutLoading
+                    ? 'Redirecting…'
+                    : selectedItem.price
+                      ? `Buy — $${selectedItem.price}`
+                      : 'Download'}
                 </button>
                 <button
                   onClick={() => setSelectedItem(null)}

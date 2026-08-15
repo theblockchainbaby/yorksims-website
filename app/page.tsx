@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 
 import dynamic from "next/dynamic";
@@ -10,7 +10,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Nav from "./components/Nav";
 import { Meteors } from "./components/magicui/meteors";
 import { ShimmerButton } from "./components/magicui/shimmer-button";
-import { BorderBeam } from "./components/magicui/border-beam";
 import { MagicCard } from "./components/magicui/magic-card";
 
 
@@ -268,8 +267,8 @@ function PricingSection() {
         <Reveal delay={0.18}>
           <p className="text-base md:text-lg text-white/35 text-center max-w-2xl mx-auto leading-relaxed mb-14">
             The modules, the repos, the tools &mdash; all free, forever. The
-            only paid thing is a 1-on-1 with York at $99/hour for when you
-            want a deep-dive on something specific.
+            paid things: the book PDFs and a 1-on-1 with York at $99/hour
+            for when you want a deep-dive on something specific.
           </p>
         </Reveal>
 

@@ -18,7 +18,7 @@ export default function BlogPost() {
     <div className="min-h-screen bg-[#0c0a0a] text-white">
       <Nav />
 
-      <article className="px-6 md:px-16" style={{ maxWidth: "780px", margin: "0 auto", paddingTop: "24px", paddingBottom: "120px" }}>
+      <article className="px-6 md:px-16" style={{ maxWidth: "780px", margin: "0 auto", paddingTop: "110px", paddingBottom: "120px" }}>
         {/* Back link */}
         <motion.div
           initial={{ opacity: 0, x: -12 }}

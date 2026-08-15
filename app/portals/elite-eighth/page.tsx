@@ -10,7 +10,6 @@ const ELITE_EIGHTH_ITEMS: Item[] = [
     description: 'Complete branding and positioning guide',
     category: 'elite-eighth',
     type: 'blueprint',
-    price: 79,
     xpReward: 100,
   },
   {
@@ -19,7 +18,6 @@ const ELITE_EIGHTH_ITEMS: Item[] = [
     description: 'Case studies and learnings from previous ventures',
     category: 'elite-eighth',
     type: 'ebook',
-    price: 49,
     xpReward: 85,
   },
   {
@@ -28,7 +26,6 @@ const ELITE_EIGHTH_ITEMS: Item[] = [
     description: 'Industry trends and opportunities',
     category: 'elite-eighth',
     type: 'blueprint',
-    price: 99,
     xpReward: 125,
   },
   {
@@ -37,7 +34,6 @@ const ELITE_EIGHTH_ITEMS: Item[] = [
     description: 'Step-by-step guide to launching new products',
     category: 'elite-eighth',
     type: 'ebook',
-    price: 59,
     xpReward: 110,
   },
   {
@@ -46,7 +42,6 @@ const ELITE_EIGHTH_ITEMS: Item[] = [
     description: 'Professional pitch deck for fundraising',
     category: 'elite-eighth',
     type: 'blueprint',
-    price: 149,
     xpReward: 175,
   },
   {
@@ -55,7 +50,6 @@ const ELITE_EIGHTH_ITEMS: Item[] = [
     description: 'Exclusive look at upcoming launches',
     category: 'elite-eighth',
     type: 'ebook',
-    price: 199,
     xpReward: 250,
   },
 ];

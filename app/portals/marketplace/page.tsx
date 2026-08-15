@@ -10,7 +10,6 @@ const MARKETPLACE_ITEMS: Item[] = [
     description: 'Premium physical DualPay card',
     category: 'marketplace',
     type: 'merch',
-    price: 29,
     xpReward: 50,
   },
   {
@@ -19,7 +18,6 @@ const MARKETPLACE_ITEMS: Item[] = [
     description: 'Limited edition YorkVerse merchandise',
     category: 'marketplace',
     type: 'merch',
-    price: 49,
     xpReward: 75,
   },
   {
@@ -28,7 +26,6 @@ const MARKETPLACE_ITEMS: Item[] = [
     description: 'Premium YorkVerse branded hat',
     category: 'marketplace',
     type: 'merch',
-    price: 29,
     xpReward: 50,
   },
   {
@@ -37,7 +34,6 @@ const MARKETPLACE_ITEMS: Item[] = [
     description: 'All digital products at a discount',
     category: 'marketplace',
     type: 'tool',
-    price: 299,
     xpReward: 300,
   },
   {
@@ -46,7 +42,6 @@ const MARKETPLACE_ITEMS: Item[] = [
     description: 'Exclusive access to all premium content',
     category: 'marketplace',
     type: 'tool',
-    price: 199,
     xpReward: 250,
   },
   {
@@ -55,7 +50,6 @@ const MARKETPLACE_ITEMS: Item[] = [
     description: 'Lifetime access to all current and future content',
     category: 'marketplace',
     type: 'tool',
-    price: 999,
     xpReward: 500,
   },
 ];

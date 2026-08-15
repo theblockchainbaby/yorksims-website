@@ -5,12 +5,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useAuth } from "./AuthProvider";
 
-// Four destinations that matter. Blog + Contact live in the footer — a nav
+// The destinations that matter. Blog + Contact live in the footer — a nav
 // that lists everything is a sitemap, not a nav.
 const links = [
   { label: "Platform",   href: "/hub",       anchor: null },
   { label: "Verticals",  href: "/verticals", anchor: null },
   { label: "Tools",      href: "/tools",     anchor: null },
+  { label: "Books",      href: "/books",     anchor: null },
   { label: "Pricing",    href: "/pricing",   anchor: null },
 ];
 

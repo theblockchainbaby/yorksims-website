@@ -10,7 +10,6 @@ const NINETY_STRAIGHT_ITEMS: Item[] = [
     description: 'Track your 90-day fitness and mental challenge',
     category: '90straight',
     type: 'tool',
-    price: 0,
     xpReward: 50,
   },
   {
@@ -19,7 +18,6 @@ const NINETY_STRAIGHT_ITEMS: Item[] = [
     description: 'Complete workout and nutrition plan',
     category: '90straight',
     type: 'ebook',
-    price: 29,
     xpReward: 75,
   },
   {
@@ -28,7 +26,6 @@ const NINETY_STRAIGHT_ITEMS: Item[] = [
     description: 'Build unbreakable mental resilience in 90 days',
     category: '90straight',
     type: 'ebook',
-    price: 39,
     xpReward: 100,
   },
   {
@@ -37,7 +34,6 @@ const NINETY_STRAIGHT_ITEMS: Item[] = [
     description: 'Personalized nutrition for peak performance',
     category: '90straight',
     type: 'blueprint',
-    price: 49,
     xpReward: 85,
   },
   {
@@ -46,7 +42,6 @@ const NINETY_STRAIGHT_ITEMS: Item[] = [
     description: 'Advanced workout routines for athletes',
     category: '90straight',
     type: 'course',
-    price: 99,
     xpReward: 150,
   },
   {
@@ -55,7 +50,6 @@ const NINETY_STRAIGHT_ITEMS: Item[] = [
     description: 'Join the 90Straight community and leaderboard',
     category: '90straight',
     type: 'tool',
-    price: 19,
     xpReward: 60,
   },
 ];

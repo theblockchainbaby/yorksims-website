@@ -4,6 +4,7 @@ import { useRef } from "react";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import Nav from "../components/Nav";
+import { BOOKS, formatBookPrice } from "../lib/books";
 
 const EASE = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
@@ -36,6 +37,10 @@ const FAQS = [
   {
     q: "How do I book?",
     a: "Email contact@yorksims.com or hit the Contact page. Tell me what you want to work on; I'll send back available slots. Payment via Stripe before the session.",
+  },
+  {
+    q: "Are the books free too?",
+    a: "No — the three books (YORK, Built For More, Figure It Out) are paid PDFs at $19–$50 each. Buy on the Books page, pay with card via Stripe, download instantly. Everything else on the site is free.",
   },
   {
     q: "Do I need to know how to code to use the free modules?",
@@ -103,9 +108,10 @@ export default function PricingPage() {
             transition={{ duration: 0.8, ease: EASE, delay: 0.16 }}
           >
             Every module across all 10 verticals — code, contracts, templates,
-            both learning paths — is free to read, clone, and use. The only
-            paid thing is a 1-on-1 session with York at $99/hour for when you
-            want the deep-dive on something specific.
+            both learning paths — is free to read, clone, and use. The paid
+            things: the three book PDFs ($19–$50 each) and a 1-on-1 session
+            with York at $99/hour for when you want the deep-dive on something
+            specific.
           </motion.p>
         </div>
       </section>
@@ -190,6 +196,65 @@ export default function PricingPage() {
               <p className="text-xs text-white/30 text-center mt-4">
                 48-hour refund if the session doesn&rsquo;t deliver value.
               </p>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* The books */}
+      <section
+        className="px-6 md:px-16 border-t border-white/[0.06]"
+        style={{ paddingTop: "80px", paddingBottom: "60px" }}
+      >
+        <div className="max-w-4xl mx-auto">
+          <FadeIn>
+            <div className="flex items-center gap-4 mb-4">
+              <div className="h-[2px] w-10 bg-[#e63946]" />
+              <h2 className="text-2xl md:text-3xl font-display font-extrabold tracking-tight">
+                The books
+              </h2>
+            </div>
+            <p className="text-sm text-white/40 mb-10 max-w-xl leading-relaxed">
+              Three books, sold as PDFs. Pay with card, download on the next
+              screen.
+            </p>
+          </FadeIn>
+
+          <div className="grid md:grid-cols-3 gap-4">
+            {BOOKS.map((book, i) => (
+              <FadeIn key={book.id} delay={i * 0.06}>
+                <Link
+                  href="/books"
+                  className="group flex items-center gap-4 border border-white/[0.06] rounded-[16px] px-5 py-4 hover:border-white/20 transition-colors"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={book.cover}
+                    alt={`${book.title} — book cover`}
+                    loading="lazy"
+                    className="w-12 h-16 object-cover rounded-[6px] flex-shrink-0"
+                  />
+                  <div className="min-w-0">
+                    <p className="text-sm font-bold text-white group-hover:text-[#e63946] transition-colors truncate">
+                      {book.title}
+                    </p>
+                    <p className="text-xs text-white/40 mt-1">
+                      {formatBookPrice(book.priceCents)} · PDF
+                    </p>
+                  </div>
+                </Link>
+              </FadeIn>
+            ))}
+          </div>
+
+          <FadeIn delay={0.15}>
+            <div className="text-center mt-8">
+              <Link
+                href="/books"
+                className="text-sm text-white/30 hover:text-[#e63946] transition-colors font-mono"
+              >
+                See the books →
+              </Link>
             </div>
           </FadeIn>
         </div>

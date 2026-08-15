@@ -10,7 +10,6 @@ const CRYPTO_ITEMS: Item[] = [
     description: 'How to set up a Bitcoin legacy trust',
     category: 'crypto',
     type: 'blueprint',
-    price: 99,
     xpReward: 150,
   },
   {
@@ -19,7 +18,6 @@ const CRYPTO_ITEMS: Item[] = [
     description: 'Complete guide to XRPL escrow implementation',
     category: 'crypto',
     type: 'blueprint',
-    price: 79,
     xpReward: 125,
   },
   {
@@ -28,7 +26,6 @@ const CRYPTO_ITEMS: Item[] = [
     description: 'Secure your crypto with cold storage',
     category: 'crypto',
     type: 'ebook',
-    price: 29,
     xpReward: 75,
   },
   {
@@ -37,7 +34,6 @@ const CRYPTO_ITEMS: Item[] = [
     description: 'Optimize your crypto taxes legally',
     category: 'crypto',
     type: 'ebook',
-    price: 49,
     xpReward: 100,
   },
   {
@@ -46,7 +42,6 @@ const CRYPTO_ITEMS: Item[] = [
     description: 'Advanced DeFi yield farming strategies',
     category: 'crypto',
     type: 'course',
-    price: 149,
     xpReward: 200,
   },
   {
@@ -55,7 +50,6 @@ const CRYPTO_ITEMS: Item[] = [
     description: 'Technical guide for wallet integration',
     category: 'crypto',
     type: 'blueprint',
-    price: 199,
     xpReward: 250,
   },
 ];

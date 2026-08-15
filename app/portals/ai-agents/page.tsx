@@ -10,7 +10,6 @@ const AI_AGENTS_ITEMS: Item[] = [
     description: 'Intelligent automation for routine business workflows.',
     category: 'ai-agents',
     type: 'tool',
-    price: 0,
     xpReward: 50,
   },
   {
@@ -19,7 +18,6 @@ const AI_AGENTS_ITEMS: Item[] = [
     description: 'Build custom AI agents on top of AgentZero primitives.',
     category: 'ai-agents',
     type: 'tool',
-    price: 149,
     xpReward: 100,
   },
   {
@@ -28,7 +26,6 @@ const AI_AGENTS_ITEMS: Item[] = [
     description: 'AI-powered retail management — orders, inventory, support.',
     category: 'ai-agents',
     type: 'tool',
-    price: 199,
     xpReward: 125,
   },
   {
@@ -37,7 +34,6 @@ const AI_AGENTS_ITEMS: Item[] = [
     description: 'How to deploy AI employees in your organization without breaking things.',
     category: 'ai-agents',
     type: 'ebook',
-    price: 39,
     xpReward: 75,
   },
   {
@@ -46,7 +42,6 @@ const AI_AGENTS_ITEMS: Item[] = [
     description: 'Learn to build and deploy production-grade AI agents.',
     category: 'ai-agents',
     type: 'course',
-    price: 99,
     xpReward: 150,
   },
   {
@@ -55,7 +50,6 @@ const AI_AGENTS_ITEMS: Item[] = [
     description: 'Technical guide for integrating AI into your existing stack.',
     category: 'ai-agents',
     type: 'blueprint',
-    price: 249,
     xpReward: 200,
   },
 ];
