@@ -7,31 +7,32 @@ import Nav from "../components/Nav";
 
 const TIERS = [
   {
-    value: "free",
-    name: "Free",
-    price: "$0",
-    per: "forever",
-    desc: "Every module, repo, and tool across all 10 verticals. No paywall.",
+    value: "general",
+    name: "Questions & Feedback",
+    price: "",
+    per: "",
+    desc: "Anything about the free modules, learn paths, or tools. All of it is free — ask away.",
     tag: null,
     accent: false,
   },
   {
-    value: "consulting",
-    name: "1-on-1 with York",
-    price: "$99",
-    per: "/ hour",
-    desc: "Direct session — SaaS, AI agents, business, hardware, land deals.",
-    tag: "Most Popular",
+    value: "books",
+    name: "The Books",
+    price: "",
+    per: "",
+    desc: "Order help, a broken download, refunds, or bulk copies of the three books.",
+    tag: null,
     accent: true,
   },
-];
-
-const CONSULTING_ITEMS = [
-  "SaaS architecture & tech stack decisions",
-  "AI product development & go-to-market",
-  "Business structure, entity setup, equity splits",
-  "Hardware / semiconductor project guidance",
-  "Physical product development & sourcing",
+  {
+    value: "partnership",
+    name: "Partnerships & Press",
+    price: "",
+    per: "",
+    desc: "Collaborations, speaking, interviews, media inquiries.",
+    tag: null,
+    accent: false,
+  },
 ];
 
 function FadeIn({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
@@ -52,7 +53,7 @@ function FadeIn({ children, delay = 0, className = "" }: { children: React.React
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
-  const [selected, setSelected] = useState<string>("pro");
+  const [selected, setSelected] = useState<string>("general");
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
   function handleSubmit(e: React.FormEvent) {
@@ -103,7 +104,7 @@ export default function ContactPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.16 }}
           >
-            Pick your tier, drop a message, and I&apos;ll get back to you within 24 hours.
+            Pick a topic, drop a message, and I&apos;ll get back to you within 24 hours.
           </motion.p>
         </div>
       </section>
@@ -115,7 +116,7 @@ export default function ContactPage() {
           {/* Left — tier selector + consulting info */}
           <div className="flex flex-col gap-5">
             <FadeIn>
-              <p className="text-[10px] uppercase tracking-[0.3em] text-white/20 font-semibold mb-1">Choose Your Path</p>
+              <p className="text-[10px] uppercase tracking-[0.3em] text-white/20 font-semibold mb-1">What&apos;s It About</p>
             </FadeIn>
 
             {/* Tier cards */}
@@ -167,46 +168,16 @@ export default function ContactPage() {
                       </div>
                       <p className="text-xs text-white/30 leading-relaxed max-w-xs">{tier.desc}</p>
                     </div>
-                    <div className="text-right shrink-0 ml-4">
-                      <span className="text-2xl font-black">{tier.price}</span>
-                      <span className="text-xs text-white/20 ml-0.5">{tier.per}</span>
-                    </div>
+                    {tier.price && (
+                      <div className="text-right shrink-0 ml-4">
+                        <span className="text-2xl font-black">{tier.price}</span>
+                        <span className="text-xs text-white/20 ml-0.5">{tier.per}</span>
+                      </div>
+                    )}
                   </div>
                 </motion.button>
               </FadeIn>
             ))}
-
-            {/* Consulting scope — shown when consulting selected */}
-            <AnimatePresence>
-              {selected === "consulting" && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                  style={{ overflow: "hidden" }}
-                >
-                  <div
-                    className="relative overflow-hidden"
-                    style={{
-                      borderRadius: "24px", padding: "28px 32px",
-                      background: "rgba(230,57,70,0.03)",
-                      border: "1px solid rgba(230,57,70,0.12)",
-                    }}
-                  >
-                    <p className="text-[10px] uppercase tracking-[0.25em] text-white/20 font-semibold mb-4">What We Can Cover</p>
-                    <ul className="space-y-2.5">
-                      {CONSULTING_ITEMS.map((item) => (
-                        <li key={item} className="flex gap-3 text-xs text-white/35">
-                          <span className="text-[#e63946]/50 shrink-0">→</span>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
 
             {/* Direct contact */}
             <FadeIn delay={0.2} className="mt-auto">

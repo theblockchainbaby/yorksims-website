@@ -239,7 +239,7 @@ export default function Page() {
         <p>
           30 days from empty repo to production. First paying customer on day
           18. First $1k MRR on day 27. As of this post: $4,200 MRR and
-          climbing. The full repo is available to Pro members along with the
+          climbing. The full repo is public on GitHub along with the
           Prisma schema, the Stripe webhook handlers, and the NextAuth v5
           config.
         </p>

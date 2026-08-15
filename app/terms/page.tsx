@@ -110,25 +110,25 @@ export default function TermsPage() {
             />
           </Section>
 
-          <Section title="06 · Free content & paid services">
+          <Section title="06 · Free content & paid products">
             <P>
               All content on YorkSims &mdash; the learn paths, the quizzes,
               the free tools, every module across all 10 verticals &mdash;
-              is free to read, clone, and use. The only paid service is a
-              1-on-1 consulting session with York at $99 per hour, booked
-              on an ad-hoc basis. There is no subscription. Free content
-              may be discontinued or changed at any time.
+              is free to read, clone, and use. The only paid products are
+              digital books, sold as one-time PDF downloads. There is no
+              subscription and no recurring billing. Free content may be
+              discontinued or changed at any time.
             </P>
           </Section>
 
-          <Section title="07 · 1-on-1 sessions: booking, billing & refunds">
+          <Section title="07 · Book purchases: payment, delivery & refunds">
             <List
               items={[
-                "Sessions are $99 per hour, charged in U.S. dollars via Stripe before the session.",
-                "Sessions are scoped over email first — you tell York what you want to work on, York confirms the slot, then payment is collected.",
-                "There is no recurring billing. Each session is a one-time charge for the booked hour(s).",
-                "If a session doesn't deliver value, email contact@yorksims.com within 48 hours of the session and you'll get a full refund. No questions, no friction.",
-                "Cancellations made more than 24 hours before the scheduled start time are refunded in full. Cancellations within 24 hours are subject to a 50% session fee.",
+                "Books are one-time purchases in U.S. dollars, processed by Stripe. We never see or store your card details.",
+                "Delivery is digital: your PDF download is available on the confirmation screen immediately after payment. Keep that page's link — it keeps working if you need the file again.",
+                "There is no recurring billing. Buying a book charges you exactly once.",
+                "If your file is corrupted, won't download, or you were charged more than once, email contact@yorksims.com and we'll fix it or refund you. No questions, no friction.",
+                "Book PDFs are licensed for your personal use — don't redistribute, share, or resell them (see Intellectual property below).",
               ]}
             />
           </Section>

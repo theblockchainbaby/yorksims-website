@@ -28,7 +28,7 @@ function getBaseUrl(req: NextRequest): string {
  * Price is resolved server-side from the catalog; the client never sends an amount.
  *
  * Subscriptions were removed on purpose — everything on the site is free
- * except the book PDFs and 1-on-1 sessions (booked by email, not here).
+ * except the book PDFs, which are the only paid product.
  */
 export async function POST(req: NextRequest) {
   try {

@@ -499,15 +499,15 @@ open .   # or just browse the .md files`}</CodeBlock>
             structure when you outgrow one entity, equity &amp; vesting
             mechanics, contracts &amp; sales, pricing without undercharging —
             and they&rsquo;re free too, dropping over the coming weeks. If
-            you want a real opinion on your specific entity structure, book
-            a 1-on-1 with York at $99/hour.
+            you have a question about your specific entity setup, send it
+            over &mdash; no charge.
           </p>
           <div className="flex flex-wrap gap-4">
             <Link
-              href="/pricing"
+              href="/contact"
               className="inline-flex items-center gap-2 px-7 py-4 rounded-full text-sm font-bold uppercase tracking-widest bg-[#e63946] text-white hover:bg-[#ff4d5a] transition-all"
             >
-              Book a 1-on-1 session
+              Ask a question
             </Link>
             <Link
               href="/verticals/business"

@@ -283,13 +283,7 @@ export default function DashboardPage() {
                       </div>
                     </div>
 
-                    {m.is_free ? (
-                      <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-1 rounded-full bg-white/[0.06] text-white/30">Free</span>
-                    ) : profile?.tier === "free" ? (
-                      <Link href="/#pricing" className="text-[9px] font-bold uppercase tracking-wider px-2 py-1 rounded-full bg-[#e63946]/10 text-[#e63946]">
-                        Pro
-                      </Link>
-                    ) : null}
+                    <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-1 rounded-full bg-white/[0.06] text-white/30">Free</span>
                   </div>
                 );
               })}

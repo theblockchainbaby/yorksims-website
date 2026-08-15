@@ -489,13 +489,13 @@ export default function BlogPost() {
           {/* ── CTA ── */}
           <div className="mt-16 pt-8 border-t border-white/[0.06]">
             <p className="text-xs text-white/20 font-mono mb-6">
-              Pro members get install scripts, CLAUDE.md templates, and MCP server configs for every tool on this list.
+              Everything on this list is free to set up yourself — the posts and repos walk through it. The story behind the stack is in the books.
             </p>
             <Link
-              href="/#pricing"
+              href="/books"
               className="inline-block text-sm font-bold uppercase tracking-widest px-10 py-4 bg-[#e63946] text-white rounded-full hover:bg-[#ff4d5a] transition-all"
             >
-              Book a session
+              Get the books
             </Link>
           </div>
         </motion.div>

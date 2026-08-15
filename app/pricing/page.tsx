@@ -16,31 +16,18 @@ const FREE_INCLUDES = [
   "Every blog post, every breakdown, no signup wall",
 ];
 
-const ONE_ON_ONE_INCLUDES = [
-  "SaaS architecture & technical review",
-  "AI agents — n8n, MCP, ElevenLabs, Claude Code workflows",
-  "Hardware / RTL — SystemVerilog, FPGA, semiconductor walkthroughs",
-  "Business structure — LLC formation, contracts, equity",
-  "Land deals & raw-land development",
-  "Go-to-market strategy for technical products",
-];
-
 const FAQS = [
   {
     q: "Wait — the modules are really free?",
     a: "Yes. Every walkthrough, every code repo, every template across all 10 verticals — free to read, clone, and use. No login, no paywall, no email gate. The site exists to be useful first.",
   },
   {
-    q: "What does the $99/hr session actually cover?",
-    a: "Whatever you bring. Most sessions are SaaS architecture, AI agent design, business structure (LLC, contracts), or technical review of code you're shipping. If you want the deep-dive instead of figuring it out from the free modules, book a session.",
-  },
-  {
-    q: "How do I book?",
-    a: "Email contact@yorksims.com or hit the Contact page. Tell me what you want to work on; I'll send back available slots. Payment via Stripe before the session.",
-  },
-  {
     q: "Are the books free too?",
-    a: "No — the three books (YORK, Built For More, Figure It Out) are paid PDFs at $19–$50 each. Buy on the Books page, pay with card via Stripe, download instantly. Everything else on the site is free.",
+    a: "No — the three books (YORK, Built For More, Figure It Out) are paid PDFs at $19–$50 each. They're the only thing on this site with a price tag.",
+  },
+  {
+    q: "How do I get the books?",
+    a: "Buy on the Books page. Card checkout via Stripe; your PDF download is on the confirmation screen right after payment. No account needed.",
   },
   {
     q: "Do I need to know how to code to use the free modules?",
@@ -48,11 +35,11 @@ const FAQS = [
   },
   {
     q: "Why give everything away for free?",
-    a: "Because the bottleneck isn't access to information — it's execution. The modules are the ground game. The 1-on-1 is for when you're stuck on something specific and want a real opinion fast.",
+    a: "Because the bottleneck isn't access to information — it's execution. The modules are the ground game. The books are the story behind them — that's the only thing for sale.",
   },
   {
     q: "What about refunds?",
-    a: "If a 1-on-1 session doesn't deliver value, email contact@yorksims.com within 48 hours and I'll refund it. No questions, no friction.",
+    a: "If a book file is broken, won't download, or you were charged twice, email contact@yorksims.com and I'll fix it or refund it. No questions, no friction.",
   },
 ];
 
@@ -98,7 +85,7 @@ export default function PricingPage() {
           >
             Everything&rsquo;s free.{" "}
             <span className="text-white/25">
-              Book a session when you want a real opinion.
+              The books are the only thing for sale.
             </span>
           </motion.h1>
           <motion.p
@@ -108,15 +95,14 @@ export default function PricingPage() {
             transition={{ duration: 0.8, ease: EASE, delay: 0.16 }}
           >
             Every module across all 10 verticals — code, contracts, templates,
-            both learning paths — is free to read, clone, and use. The paid
-            things: the three book PDFs ($19–$50 each) and a 1-on-1 session
-            with York at $99/hour for when you want the deep-dive on something
-            specific.
+            both learning paths — is free to read, clone, and use. The only
+            paid thing on this site is the three books, $19–$50 each,
+            delivered as instant PDF downloads.
           </motion.p>
         </div>
       </section>
 
-      {/* Two cards: Free + 1-on-1 */}
+      {/* Two cards: Free + Books */}
       <section
         className="px-6 md:px-16"
         style={{ paddingTop: "60px", paddingBottom: "80px" }}
@@ -156,7 +142,7 @@ export default function PricingPage() {
             </div>
           </FadeIn>
 
-          {/* 1-on-1 */}
+          {/* Books */}
           <FadeIn delay={0.08}>
             <div
               className="relative border border-[#e63946]/30 rounded-[28px] p-10 h-full flex flex-col"
@@ -166,95 +152,49 @@ export default function PricingPage() {
               }}
             >
               <p className="text-[11px] uppercase tracking-[0.28em] text-[#e63946] font-semibold mb-5">
-                1-on-1 with York
+                The books
               </p>
               <div className="flex items-baseline gap-3 mb-3">
                 <span className="text-6xl font-display font-extrabold tracking-tight">
-                  $99
+                  $19&ndash;$50
                 </span>
-                <span className="text-base text-white/35">/ hour</span>
+                <span className="text-base text-white/35">per PDF</span>
               </div>
               <p className="text-sm text-white/55 mb-9 leading-relaxed">
-                One hour, your problem, a real opinion. Booked by the
-                session — no subscription, no minimum, no retainer. Email
-                first to scope what we cover.
+                Three books — the memoir and two field guides. Pay once with
+                a card, download the PDF on the next screen. No account, no
+                subscription.
               </p>
-              <ul className="flex-1 flex flex-col gap-3 mb-10">
-                {ONE_ON_ONE_INCLUDES.map((f) => (
-                  <li key={f} className="flex items-start gap-3">
-                    <span className="mt-[7px] w-[5px] h-[5px] rounded-full bg-[#e63946] flex-shrink-0" />
-                    <span className="text-[15px] text-white/65">{f}</span>
+              <ul className="flex-1 flex flex-col gap-4 mb-10">
+                {BOOKS.map((book) => (
+                  <li key={book.id} className="flex items-center gap-4">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={book.cover}
+                      alt={`${book.title} — book cover`}
+                      loading="lazy"
+                      className="w-10 h-14 object-cover rounded-[6px] flex-shrink-0"
+                    />
+                    <div className="min-w-0">
+                      <p className="text-[15px] text-white/80 font-bold truncate">
+                        {book.title}
+                      </p>
+                      <p className="text-xs text-white/35">
+                        {formatBookPrice(book.priceCents)} &middot; PDF
+                      </p>
+                    </div>
                   </li>
                 ))}
               </ul>
               <Link
-                href="/contact"
+                href="/books"
                 className="block text-center text-sm font-bold uppercase tracking-widest px-8 py-4 bg-[#e63946] text-white rounded-full hover:bg-[#ff4d5a] transition-colors"
               >
-                Book a session
+                Get the books
               </Link>
               <p className="text-xs text-white/30 text-center mt-4">
-                48-hour refund if the session doesn&rsquo;t deliver value.
+                Secure checkout by Stripe. Instant download.
               </p>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* The books */}
-      <section
-        className="px-6 md:px-16 border-t border-white/[0.06]"
-        style={{ paddingTop: "80px", paddingBottom: "60px" }}
-      >
-        <div className="max-w-4xl mx-auto">
-          <FadeIn>
-            <div className="flex items-center gap-4 mb-4">
-              <div className="h-[2px] w-10 bg-[#e63946]" />
-              <h2 className="text-2xl md:text-3xl font-display font-extrabold tracking-tight">
-                The books
-              </h2>
-            </div>
-            <p className="text-sm text-white/40 mb-10 max-w-xl leading-relaxed">
-              Three books, sold as PDFs. Pay with card, download on the next
-              screen.
-            </p>
-          </FadeIn>
-
-          <div className="grid md:grid-cols-3 gap-4">
-            {BOOKS.map((book, i) => (
-              <FadeIn key={book.id} delay={i * 0.06}>
-                <Link
-                  href="/books"
-                  className="group flex items-center gap-4 border border-white/[0.06] rounded-[16px] px-5 py-4 hover:border-white/20 transition-colors"
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={book.cover}
-                    alt={`${book.title} — book cover`}
-                    loading="lazy"
-                    className="w-12 h-16 object-cover rounded-[6px] flex-shrink-0"
-                  />
-                  <div className="min-w-0">
-                    <p className="text-sm font-bold text-white group-hover:text-[#e63946] transition-colors truncate">
-                      {book.title}
-                    </p>
-                    <p className="text-xs text-white/40 mt-1">
-                      {formatBookPrice(book.priceCents)} · PDF
-                    </p>
-                  </div>
-                </Link>
-              </FadeIn>
-            ))}
-          </div>
-
-          <FadeIn delay={0.15}>
-            <div className="text-center mt-8">
-              <Link
-                href="/books"
-                className="text-sm text-white/30 hover:text-[#e63946] transition-colors font-mono"
-              >
-                See the books →
-              </Link>
             </div>
           </FadeIn>
         </div>

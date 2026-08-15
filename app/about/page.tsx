@@ -129,11 +129,11 @@ export default function AboutPage() {
             <li><strong>GitHub:</strong> 15+ public repos, all real production code</li>
             <li><strong>YorkSims.com:</strong> you are here</li>
             <li><strong>Discord:</strong> the private community for Pro and Builder members</li>
-            <li><strong>Monthly Q&amp;A:</strong> live with every Pro member, every month</li>
+            <li><strong>Monthly Q&amp;A:</strong> live, open to everyone, every month</li>
           </ul>
 
           <p>
-            If you want to work with me directly, book a 1-on-1 session at $99/hour &mdash; SaaS architecture, AI agents, business structure, technical review of code you&rsquo;re shipping. Otherwise, every module across all 10 verticals is free to read, clone, and use.
+            Every module across all 10 verticals is free to read, clone, and use. If you want the full story &mdash; how all of it got built and what it cost &mdash; the three books are on the Books page as instant PDF downloads.
           </p>
 
           <div className="mt-16 pt-8 border-t border-white/[0.06] flex flex-col md:flex-row gap-4">

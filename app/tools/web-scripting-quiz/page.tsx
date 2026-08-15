@@ -25,7 +25,7 @@ function tier(pct: number): Tier {
           href: "/verticals/software/free-module",
           primary: true,
         },
-        { label: "Book a 1-on-1 session", href: "/pricing" },
+        { label: "Browse the books", href: "/books" },
       ],
     };
   }

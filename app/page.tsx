@@ -11,6 +11,7 @@ import Nav from "./components/Nav";
 import { Meteors } from "./components/magicui/meteors";
 import { ShimmerButton } from "./components/magicui/shimmer-button";
 import { MagicCard } from "./components/magicui/magic-card";
+import { BOOKS, formatBookPrice } from "./lib/books";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -79,21 +80,20 @@ const PRICING = [
     accent: false,
   },
   {
-    name: "1-on-1 with York",
-    price: "$99",
-    per: "/ hour",
+    name: "The Books",
+    price: "$19–$50",
+    per: "per PDF",
     desc:
-      "One hour, your problem, a real opinion. SaaS architecture, AI agents, business structure, technical review. Booked by the session — no retainer.",
+      "Three books — the memoir and two field guides. Pay once with a card, download the PDF on the next screen. No account, no subscription.",
     features: [
-      "SaaS architecture & technical review",
-      "AI agents — n8n, MCP, Claude Code, ElevenLabs",
-      "Hardware / RTL — SystemVerilog, FPGA",
-      "Business structure — LLC, contracts, equity",
-      "Land deals & raw-land development",
-      "48-hour refund if it doesn't deliver",
+      "YORK: Built in Silence, Proven in Pressure — $50",
+      "Built For More — $19",
+      "Figure It Out — $19",
+      "Instant download after checkout",
+      "Secure card payment via Stripe",
     ],
-    cta: "Book a session",
-    href: "/contact",
+    cta: "Get the books",
+    href: "/books",
     accent: true,
   },
 ];
@@ -260,15 +260,15 @@ function PricingSection() {
           <h2 className="text-5xl md:text-6xl font-display font-extrabold tracking-tight mb-6 text-center leading-[1]">
             Everything&rsquo;s free.{" "}
             <span className="text-white/25">
-              Book a session when you want a real opinion.
+              The books are the only thing for sale.
             </span>
           </h2>
         </Reveal>
         <Reveal delay={0.18}>
           <p className="text-base md:text-lg text-white/35 text-center max-w-2xl mx-auto leading-relaxed mb-14">
             The modules, the repos, the tools &mdash; all free, forever. The
-            paid things: the book PDFs and a 1-on-1 with York at $99/hour
-            for when you want a deep-dive on something specific.
+            only thing for sale on this site is the three books, delivered
+            as instant PDF downloads.
           </p>
         </Reveal>
 
@@ -894,35 +894,45 @@ export default function Home() {
       {/* ── PRICING ───────────────────────────────────────────────────────── */}
       <PricingSection />
 
-      {/* ── BOOK ─────────────────────────────────────────────────────────── */}
+      {/* ── THE BOOKS ────────────────────────────────────────────────────── */}
       <section className="px-6 md:px-16" style={{ zIndex: 1, background: "#0c0a0a", display: "flex", justifyContent: "center", borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "120px", paddingBottom: "120px" }}>
-        <div style={{ width: "100%", maxWidth: "896px", textAlign: "center" }}>
+        <div style={{ width: "100%", maxWidth: "1100px", textAlign: "center" }}>
           <FlipIn>
-            <p className="text-[11px] uppercase tracking-[0.24em] text-[#e63946] mb-6">The Book</p>
+            <p className="text-[11px] uppercase tracking-[0.24em] text-[#e63946] mb-6">The Books</p>
           </FlipIn>
           <Reveal delay={0.1}>
-            <h2 className="text-4xl md:text-6xl font-display font-extrabold tracking-tight mb-4">YORK</h2>
+            <h2 className="text-4xl md:text-6xl font-display font-extrabold tracking-tight mb-4">Three books. Instant PDFs.</h2>
           </Reveal>
           <Reveal delay={0.15}>
-            <p className="text-[17px] text-white/40 mb-12">by York W. Sims Jr.</p>
+            <p className="text-[17px] text-white/40 mb-12">by York W. Sims Jr. &mdash; pay with card, download on the next screen.</p>
           </Reveal>
-          <ScaleUp delay={0.2}>
-            <div style={{ maxWidth: "550px", margin: "0 auto", marginBottom: "48px", position: "relative" }}>
-              <div style={{
-                position: "absolute", inset: 0, zIndex: 1, pointerEvents: "none",
-                background: "radial-gradient(ellipse at center, transparent 40%, #0c0a0a 85%)",
-              }} />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/york-book.png"
-                alt="YORK — by York W. Sims Jr."
-                className="w-full"
-                style={{ boxShadow: "0 20px 80px rgba(230,57,70,0.15), 0 0 120px rgba(0,0,0,0.5)" }}
-              />
-            </div>
-          </ScaleUp>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-[920px] mx-auto" style={{ marginBottom: "48px" }}>
+            {BOOKS.map((book, i) => (
+              <ScaleUp key={book.id} delay={0.15 + i * 0.08}>
+                <Link href="/books" className="block group">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={book.cover}
+                    alt={`${book.title} — book cover`}
+                    loading="lazy"
+                    className="w-full rounded-[12px]"
+                    style={{ boxShadow: "0 20px 80px rgba(230,57,70,0.12), 0 0 60px rgba(0,0,0,0.5)" }}
+                  />
+                  <p className="text-sm font-bold text-white mt-5 group-hover:text-[#e63946] transition-colors">{book.title}</p>
+                  <p className="text-xs text-white/35 font-mono mt-1">{formatBookPrice(book.priceCents)} &middot; PDF</p>
+                </Link>
+              </ScaleUp>
+            ))}
+          </div>
           <Reveal delay={0.3}>
-            <p className="text-2xl md:text-3xl font-display font-extrabold tracking-tight text-white mb-4">Coming Soon</p>
+            <div className="flex justify-center" style={{ marginBottom: "32px" }}>
+              <Link
+                href="/books"
+                className="inline-block text-xs font-bold uppercase tracking-widest px-12 py-5 bg-[#e63946] text-white rounded-full hover:bg-[#ff4d5a] transition-colors"
+              >
+                Get the books
+              </Link>
+            </div>
             <p className="text-sm text-white/30 font-mono italic">&ldquo;I am most dangerous when I am desperate.&rdquo;</p>
           </Reveal>
         </div>

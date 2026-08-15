@@ -219,10 +219,10 @@ export default function FreeModulePage() {
               Clone Starter Repo <span>↗</span>
             </a>
             <Link
-              href="/pricing"
+              href="/contact"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold uppercase tracking-widest border border-white/15 text-white/70 hover:text-white hover:border-white/40 transition-all"
             >
-              Book a 1-on-1 session
+              Ask a question
             </Link>
           </motion.div>
         </div>
@@ -470,15 +470,15 @@ main().finally(() => prisma.$disconnect());`}</CodeBlock>
             data across. Modules 02-06 build the rest of VitrOS — auth, the app
             shell, Stripe payments, the PWA layer, the admin panel — and
             they&rsquo;re free too, dropping over the coming weeks. If you
-            want a real opinion on your specific schema or architecture,
-            book a 1-on-1 with York at $99/hour.
+            have a question about your specific schema or architecture,
+            send it over &mdash; no charge.
           </p>
           <div className="flex flex-wrap gap-4">
             <Link
-              href="/pricing"
+              href="/contact"
               className="inline-flex items-center gap-2 px-7 py-4 rounded-full text-sm font-bold uppercase tracking-widest bg-[#e63946] text-white hover:bg-[#ff4d5a] transition-all"
             >
-              Book a 1-on-1 session
+              Ask a question
             </Link>
             <Link
               href="/verticals/software"

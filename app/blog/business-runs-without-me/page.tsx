@@ -244,13 +244,13 @@ export default function BlogPost() {
 
           <div className="mt-16 pt-8 border-t border-white/[0.06]">
             <p className="text-xs text-white/20 font-mono mb-6">
-              Pro members get the full MoltBot architecture breakdown, n8n workflow templates, and the Otto voice agent setup guide.
+              Every breakdown here is free — the architecture, the workflows, the receipts. The story behind all of it is in the books.
             </p>
             <Link
-              href="/#pricing"
+              href="/books"
               className="inline-block text-sm font-bold uppercase tracking-widest px-10 py-4 bg-[#e63946] text-white rounded-full hover:bg-[#ff4d5a] transition-all"
             >
-              Book a session
+              Get the books
             </Link>
           </div>
         </motion.div>

@@ -166,8 +166,7 @@ export default function VerticalPage({
             <div className="max-w-4xl mb-8">
               <p className="text-sm text-white/40 leading-relaxed">
                 Every module below is free to read and follow — the code, the
-                templates, the receipts. If you want a real opinion on
-                something specific, book a 1-on-1 session ($99/hr).
+                templates, the receipts. No paywall, no upsell.
               </p>
             </div>
             <div className="flex flex-col gap-4 max-w-4xl">
@@ -367,14 +366,14 @@ export default function VerticalPage({
                 transition={{ duration: 0.8 }}
               >
                 <p className="text-xs text-white/20 font-mono mb-6">
-                  The modules are free. Book a 1-on-1 ($99/hr) when you want
-                  a real opinion on something specific.
+                  The modules are free. The only thing for sale is the books
+                  — the story behind the builds.
                 </p>
                 <Link
-                  href="/pricing"
+                  href="/books"
                   className="inline-block text-sm font-bold uppercase tracking-widest px-10 py-4 bg-[#e63946] text-white rounded-full hover:bg-[#ff4d5a] transition-all"
                 >
-                  Book a 1-on-1 session
+                  Get the books
                 </Link>
               </motion.div>
             </div>
@@ -387,14 +386,14 @@ export default function VerticalPage({
               Module content coming soon — and it&rsquo;ll be free.
             </p>
             <p className="text-xs text-white/40 mb-6">
-              Every module ships free to read and follow. If you want to
-              skip ahead, book a 1-on-1 with York at $99/hr.
+              Every module ships free to read and follow. In the meantime,
+              the three books are available as instant PDF downloads.
             </p>
             <Link
-              href="/pricing"
+              href="/books"
               className="inline-block px-6 py-2.5 bg-[#e63946] text-white text-xs font-semibold uppercase tracking-widest rounded hover:bg-[#ff4d5a] transition-colors"
             >
-              Book a 1-on-1 session
+              Get the books
             </Link>
           </div>
         </section>

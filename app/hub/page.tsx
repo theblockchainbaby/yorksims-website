@@ -33,8 +33,8 @@ const FEATURES = [
   },
   {
     icon: "◇",
-    title: "1-on-1 Sessions",
-    desc: "Want a real opinion on your project? Book a 1-on-1 at $99/hour — SaaS, AI, business, hardware, land.",
+    title: "The Books",
+    desc: "Three books — the memoir and two field guides. Instant PDF downloads, the only paid thing on the site.",
   },
 ];
 
@@ -258,7 +258,7 @@ export default function HubPage() {
           </h2>
         </FadeIn>
         <FadeIn delay={0.1}>
-          <p className="text-sm text-white/30 mb-12 max-w-md">All 10 verticals, every module, every repo, every tool — no paywall. Book a 1-on-1 at $99/hr when you want a real opinion on something specific.</p>
+          <p className="text-sm text-white/30 mb-12 max-w-md">All 10 verticals, every module, every repo, every tool — no paywall. The only thing for sale is the three books.</p>
         </FadeIn>
         <FadeIn delay={0.14}>
           <Link

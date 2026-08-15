@@ -127,12 +127,12 @@ export default function BlogPage() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <p className="text-xs text-white/20 mb-6 font-mono">Pro members get full breakdowns, code repos, and templates with every post.</p>
+          <p className="text-xs text-white/20 mb-6 font-mono">Every post is free — full breakdowns, code repos, and templates. The story behind them is in the books.</p>
           <Link
-            href="/#pricing"
+            href="/books"
             className="inline-block text-sm font-bold uppercase tracking-widest px-10 py-4 bg-[#e63946] text-white rounded-full hover:bg-[#ff4d5a] transition-all"
           >
-            Book a session — $99/hr
+            Get the books
           </Link>
         </motion.div>
       </section>

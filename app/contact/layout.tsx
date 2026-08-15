@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   ...pageMetadata({
     title: "Contact — YorkSims.com",
     description:
-      "Get in touch with York Sims. Book a 1-on-1 session at $99/hour, ask questions about the free modules, or send partnership / press inquiries.",
+      "Get in touch with York Sims. Ask about the free modules, get help with a book order, or send partnership / press inquiries.",
     path: "/contact",
   }),
 };
