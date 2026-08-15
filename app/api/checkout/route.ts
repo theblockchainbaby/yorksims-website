@@ -6,6 +6,21 @@ function getStripe() {
   return new Stripe(process.env.STRIPE_SECRET_KEY!);
 }
 
+// Stripe rejects the whole session if success_url isn't a valid URL, so never
+// trust NEXT_PUBLIC_APP_URL blindly — a stray "\n" pasted into the Vercel env
+// var once took checkout down. Sanitize it, and fall back to the request origin.
+function getBaseUrl(req: NextRequest): string {
+  const raw = (process.env.NEXT_PUBLIC_APP_URL ?? '').replace(/\\n/g, '').trim();
+  if (raw) {
+    try {
+      return new URL(raw).origin;
+    } catch {
+      // fall through to request origin
+    }
+  }
+  return req.nextUrl.origin;
+}
+
 /**
  * Creates a Stripe Checkout session for a one-time book (PDF) purchase.
  *
@@ -24,7 +39,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Unknown book' }, { status: 400 });
     }
 
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+    const baseUrl = getBaseUrl(req);
 
     const session = await getStripe().checkout.sessions.create({
       mode: 'payment',
