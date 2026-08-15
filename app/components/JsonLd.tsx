@@ -195,13 +195,24 @@ export function bookSchema(book: Book): Schema {
     bookFormat: "https://schema.org/EBook",
     image: absoluteUrl(book.cover),
     inLanguage: SITE.language,
-    offers: {
-      "@type": "Offer",
-      price: (book.priceCents / 100).toFixed(2),
-      priceCurrency: "USD",
-      availability: "https://schema.org/InStock",
-      url: `${SITE.url}/books`,
-    },
+    offers: [
+      {
+        "@type": "Offer",
+        name: "PDF",
+        price: (book.priceCents / 100).toFixed(2),
+        priceCurrency: "USD",
+        availability: "https://schema.org/InStock",
+        url: `${SITE.url}/books`,
+      },
+      {
+        "@type": "Offer",
+        name: book.printFormat === "hardcover" ? "Hardcover" : "Paperback",
+        price: (book.printPriceCents / 100).toFixed(2),
+        priceCurrency: "USD",
+        availability: "https://schema.org/InStock",
+        url: `${SITE.url}/books`,
+      },
+    ],
   };
 }
 

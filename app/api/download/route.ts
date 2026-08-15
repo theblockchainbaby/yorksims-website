@@ -63,6 +63,7 @@ export async function GET(req: NextRequest) {
       paid,
       bookId: book?.id ?? null,
       title: book?.title ?? null,
+      format: session.metadata?.format === 'print' ? 'print' : 'pdf',
       fileReady,
     });
   }

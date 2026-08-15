@@ -81,15 +81,15 @@ const PRICING = [
   },
   {
     name: "The Books",
-    price: "$19–$50",
-    per: "per PDF",
+    price: "$19–$100",
+    per: "PDF or print",
     desc:
-      "Three books — the memoir and two field guides. Pay once with a card, download the PDF on the next screen. No account, no subscription.",
+      "Three books — the memoir and two field guides. Instant PDF download, or a printed copy shipped to your door with the PDF included.",
     features: [
-      "YORK: Built in Silence, Proven in Pressure — $50",
-      "Built For More — $19",
-      "Figure It Out — $19",
-      "Instant download after checkout",
+      "YORK — $50 PDF / $100 hardcover",
+      "Built For More — $19 PDF / $30 paperback",
+      "Figure It Out — $19 PDF / $30 paperback",
+      "Printed copies ship free (US) in 5–10 business days",
       "Secure card payment via Stripe",
     ],
     cta: "Get the books",
@@ -267,8 +267,8 @@ function PricingSection() {
         <Reveal delay={0.18}>
           <p className="text-base md:text-lg text-white/35 text-center max-w-2xl mx-auto leading-relaxed mb-14">
             The modules, the repos, the tools &mdash; all free, forever. The
-            only thing for sale on this site is the three books, delivered
-            as instant PDF downloads.
+            only thing for sale on this site is the three books &mdash;
+            instant PDFs, or printed copies shipped to your door.
           </p>
         </Reveal>
 
@@ -919,7 +919,9 @@ export default function Home() {
                     style={{ boxShadow: "0 20px 80px rgba(230,57,70,0.12), 0 0 60px rgba(0,0,0,0.5)" }}
                   />
                   <p className="text-sm font-bold text-white mt-5 group-hover:text-[#e63946] transition-colors">{book.title}</p>
-                  <p className="text-xs text-white/35 font-mono mt-1">{formatBookPrice(book.priceCents)} &middot; PDF</p>
+                  <p className="text-xs text-white/35 font-mono mt-1">
+                    PDF {formatBookPrice(book.priceCents)} &middot; {book.printFormat === "hardcover" ? "Hardcover" : "Paperback"} {formatBookPrice(book.printPriceCents)}
+                  </p>
                 </Link>
               </ScaleUp>
             ))}

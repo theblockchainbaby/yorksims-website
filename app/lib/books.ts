@@ -22,8 +22,16 @@ export interface Book {
   description: string;
   /** Cover image path under /public. */
   cover: string;
-  /** Price in USD cents — the server-side amount sent to Stripe. */
+  /** PDF price in USD cents — the server-side amount sent to Stripe. */
   priceCents: number;
+  /**
+   * Physical copy price in USD cents, shipping included (US only).
+   * Fulfilled manually: each paid order lands in the Stripe dashboard with
+   * the buyer's shipping address; York places a Lulu print order to that
+   * address. Print costs (2026-08): YORK $27.68, BFM $7.87, FIO $9.02.
+   */
+  printPriceCents: number;
+  printFormat: "hardcover" | "paperback";
   /** PDF filename inside app/private/books/. */
   fileName: string;
   /** ISBN or year published, if known. Optional display metadata. */
@@ -39,6 +47,8 @@ export const BOOKS: Book[] = [
       "The full story of building, losing, and rebuilding when no one was watching. From D1 basketball to pro ball in Ankara to founding companies across 10 industries.",
     cover: "/books/york.webp",
     priceCents: 5000,
+    printPriceCents: 10000,
+    printFormat: "hardcover",
     fileName: "york-built-in-silence.pdf",
   },
   {
@@ -49,6 +59,8 @@ export const BOOKS: Book[] = [
       "Why every athlete's career ends, and how to build an identity that doesn't. For every athlete, every sport, every level.",
     cover: "/books/built-for-more.webp",
     priceCents: 1900,
+    printPriceCents: 3000,
+    printFormat: "paperback",
     fileName: "built-for-more.pdf",
   },
   {
@@ -59,6 +71,8 @@ export const BOOKS: Book[] = [
       "Resilience and self-reliance when no one hands you the answers. Twelve rules for building something from nothing.",
     cover: "/books/figure-it-out.webp",
     priceCents: 1900,
+    printPriceCents: 3000,
+    printFormat: "paperback",
     fileName: "figure-it-out.pdf",
   },
 ];

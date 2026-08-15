@@ -23,11 +23,11 @@ const FAQS = [
   },
   {
     q: "Are the books free too?",
-    a: "No — the three books (YORK, Built For More, Figure It Out) are paid PDFs at $19–$50 each. They're the only thing on this site with a price tag.",
+    a: "No — the three books (YORK, Built For More, Figure It Out) are the only thing on this site with a price tag: $19–$50 as PDFs, or $30–$100 as printed copies shipped to your door with the PDF included.",
   },
   {
     q: "How do I get the books?",
-    a: "Buy on the Books page. Card checkout via Stripe; your PDF download is on the confirmation screen right after payment. No account needed.",
+    a: "Buy on the Books page. Card checkout via Stripe; PDFs download on the confirmation screen right after payment. Printed copies collect your shipping address at checkout and arrive in 5–10 business days (US). No account needed.",
   },
   {
     q: "Do I need to know how to code to use the free modules?",
@@ -39,7 +39,7 @@ const FAQS = [
   },
   {
     q: "What about refunds?",
-    a: "If a book file is broken, won't download, or you were charged twice, email contact@yorksims.com and I'll fix it or refund it. No questions, no friction.",
+    a: "If a book file is broken, won't download, you were charged twice, or a printed copy shows up damaged, email contact@yorksims.com and I'll replace it, fix it, or refund it. No questions, no friction.",
   },
 ];
 
@@ -96,8 +96,8 @@ export default function PricingPage() {
           >
             Every module across all 10 verticals — code, contracts, templates,
             both learning paths — is free to read, clone, and use. The only
-            paid thing on this site is the three books, $19–$50 each,
-            delivered as instant PDF downloads.
+            paid thing on this site is the three books — instant PDFs
+            ($19–$50) or printed copies shipped to your door ($30–$100).
           </motion.p>
         </div>
       </section>
@@ -156,14 +156,14 @@ export default function PricingPage() {
               </p>
               <div className="flex items-baseline gap-3 mb-3">
                 <span className="text-6xl font-display font-extrabold tracking-tight">
-                  $19&ndash;$50
+                  $19&ndash;$100
                 </span>
-                <span className="text-base text-white/35">per PDF</span>
+                <span className="text-base text-white/35">PDF or print</span>
               </div>
               <p className="text-sm text-white/55 mb-9 leading-relaxed">
-                Three books — the memoir and two field guides. Pay once with
-                a card, download the PDF on the next screen. No account, no
-                subscription.
+                Three books — the memoir and two field guides. Instant PDF
+                download, or a printed copy shipped to your door (US,
+                shipping included, PDF comes with it).
               </p>
               <ul className="flex-1 flex flex-col gap-4 mb-10">
                 {BOOKS.map((book) => (
@@ -180,7 +180,9 @@ export default function PricingPage() {
                         {book.title}
                       </p>
                       <p className="text-xs text-white/35">
-                        {formatBookPrice(book.priceCents)} &middot; PDF
+                        PDF {formatBookPrice(book.priceCents)} &middot;{" "}
+                        {book.printFormat === "hardcover" ? "Hardcover" : "Paperback"}{" "}
+                        {formatBookPrice(book.printPriceCents)}
                       </p>
                     </div>
                   </li>

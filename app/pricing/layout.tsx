@@ -21,12 +21,12 @@ const FAQS = [
   {
     question: "Are the books free too?",
     answer:
-      "No — the three books (YORK, Built For More, Figure It Out) are paid PDFs at $19–$50 each. They're the only thing on this site with a price tag.",
+      "No — the three books (YORK, Built For More, Figure It Out) are the only thing on this site with a price tag: $19–$50 as PDFs, or $30–$100 as printed copies shipped to your door with the PDF included.",
   },
   {
     question: "How do I get the books?",
     answer:
-      "Buy on the Books page. Card checkout via Stripe; your PDF download is on the confirmation screen right after payment. No account needed.",
+      "Buy on the Books page. Card checkout via Stripe; PDFs download on the confirmation screen right after payment. Printed copies collect your shipping address at checkout and arrive in 5–10 business days (US). No account needed.",
   },
   {
     question: "Do I need to know how to code to use the free modules?",
@@ -41,7 +41,7 @@ const FAQS = [
   {
     question: "What about refunds?",
     answer:
-      "If a book file is broken, won't download, or you were charged twice, email contact@yorksims.com and I'll fix it or refund it. No questions, no friction.",
+      "If a book file is broken, won't download, you were charged twice, or a printed copy shows up damaged, email contact@yorksims.com and I'll replace it, fix it, or refund it. No questions, no friction.",
   },
 ];
 

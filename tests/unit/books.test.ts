@@ -31,6 +31,16 @@ describe("BOOKS catalog", () => {
     }
   });
 
+  it("print variants have a valid format and cost more than the PDF", () => {
+    for (const book of BOOKS) {
+      expect(["hardcover", "paperback"]).toContain(book.printFormat);
+      expect(book.printPriceCents % 100).toBe(0);
+      expect(book.printPriceCents).toBeGreaterThan(book.priceCents);
+      // must clear the known Lulu print cost (max $27.68) + shipping
+      expect(book.printPriceCents).toBeGreaterThanOrEqual(3000);
+    }
+  });
+
   it("cover images exist in /public", () => {
     for (const book of BOOKS) {
       const coverPath = path.join(process.cwd(), "public", book.cover);

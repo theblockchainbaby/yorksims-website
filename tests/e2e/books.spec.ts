@@ -20,6 +20,15 @@ test.describe("Books storefront", () => {
     await expect(buyButtons).toHaveCount(3);
   });
 
+  test("each book offers a physical copy", async ({ page }) => {
+    await page.goto("/books");
+    await expect(
+      page.getByRole("button", { name: /hardcover — \$100/i })
+    ).toBeVisible();
+    const paperbacks = page.getByRole("button", { name: /paperback — \$30/i });
+    await expect(paperbacks).toHaveCount(2);
+  });
+
   test("nav links to the books page", async ({ page }) => {
     await page.goto("/");
     await expect(
@@ -37,6 +46,13 @@ test.describe("Books storefront", () => {
   test("checkout API rejects unknown books", async ({ request }) => {
     const res = await request.post("/api/checkout", {
       data: { bookId: "not-a-real-book" },
+    });
+    expect(res.status()).toBe(400);
+  });
+
+  test("checkout API rejects unknown formats", async ({ request }) => {
+    const res = await request.post("/api/checkout", {
+      data: { bookId: "figure-it-out", format: "vinyl" },
     });
     expect(res.status()).toBe(400);
   });

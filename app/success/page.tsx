@@ -9,6 +9,7 @@ interface OrderInfo {
   paid: boolean;
   bookId: string | null;
   title: string | null;
+  format: 'pdf' | 'print';
   fileReady: boolean;
 }
 
@@ -66,13 +67,15 @@ function SuccessContent() {
         ) : isBookOrder ? (
           <>
             <h1 className="text-4xl font-display font-extrabold tracking-tight text-white mb-4">
-              Your book is ready.
+              {order?.format === 'print' ? 'Order received.' : 'Your book is ready.'}
             </h1>
             <p className="text-white/40 text-sm leading-relaxed mb-10">
               Thanks for the purchase{order?.title ? ` of ${order.title}` : ''}.
+              {order?.format === 'print' &&
+                ' Your copy is printed on demand and ships to the address you gave at checkout — allow 5–10 business days.'}
               {order?.fileReady
-                ? ' Hit the button below to download your PDF. Save this page’s link — it keeps working if you need the file again.'
-                : ' The download link is being finalized — email contact@yorksims.com with your receipt and you’ll get the PDF directly.'}
+                ? ` ${order?.format === 'print' ? 'The PDF is included — download it now while you wait.' : 'Hit the button below to download your PDF.'} Save this page’s link — it keeps working if you need the file again.`
+                : ' The PDF download is being finalized — email contact@yorksims.com with your receipt and you’ll get it directly.'}
             </p>
             {order?.fileReady ? (
               <a

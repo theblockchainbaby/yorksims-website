@@ -24,17 +24,17 @@ function FadeIn({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 }
 
 export default function BooksPage() {
-  const [loadingId, setLoadingId] = useState<string | null>(null);
+  const [loadingKey, setLoadingKey] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const buy = async (bookId: string) => {
-    setLoadingId(bookId);
+  const buy = async (bookId: string, format: "pdf" | "print") => {
+    setLoadingKey(`${bookId}:${format}`);
     setError(null);
     try {
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ bookId }),
+        body: JSON.stringify({ bookId, format }),
       });
       const data = await res.json();
       if (!res.ok || !data.url) throw new Error(data.error || "Checkout failed");
@@ -43,7 +43,7 @@ export default function BooksPage() {
       setError(
         "Couldn't start checkout. Try again in a minute, or email contact@yorksims.com and I'll sort it out."
       );
-      setLoadingId(null);
+      setLoadingKey(null);
     }
   };
 
@@ -80,8 +80,9 @@ export default function BooksPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: EASE, delay: 0.16 }}
           >
-            Instant PDF download. Pay with card via Stripe, get the file on the
-            next screen. No account needed.
+            Instant PDF download, or a printed copy shipped to your door —
+            every printed order includes the PDF. Pay with card via Stripe.
+            No account needed.
           </motion.p>
         </div>
       </section>
@@ -129,11 +130,20 @@ export default function BooksPage() {
                       </span>
                     </div>
                     <button
-                      onClick={() => buy(book.id)}
-                      disabled={loadingId !== null}
+                      onClick={() => buy(book.id, "pdf")}
+                      disabled={loadingKey !== null}
                       className="w-full text-center text-sm font-bold uppercase tracking-widest px-8 py-4 bg-[#e63946] text-white rounded-full hover:bg-[#ff4d5a] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      {loadingId === book.id ? "Redirecting…" : "Buy the PDF"}
+                      {loadingKey === `${book.id}:pdf` ? "Redirecting…" : "Buy the PDF"}
+                    </button>
+                    <button
+                      onClick={() => buy(book.id, "print")}
+                      disabled={loadingKey !== null}
+                      className="w-full text-center text-sm font-bold uppercase tracking-widest px-8 py-4 mt-3 border border-white/15 text-white/80 rounded-full hover:text-white hover:border-white/40 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {loadingKey === `${book.id}:print`
+                        ? "Redirecting…"
+                        : `${book.printFormat === "hardcover" ? "Hardcover" : "Paperback"} — ${formatBookPrice(book.printPriceCents)}`}
                     </button>
                   </div>
                 </div>
@@ -143,7 +153,10 @@ export default function BooksPage() {
 
           <FadeIn delay={0.2}>
             <p className="text-center text-xs text-white/30 mt-10 leading-relaxed">
-              Secure checkout by Stripe. Something wrong with an order? Email{" "}
+              Secure checkout by Stripe. Printed copies are printed on demand
+              and ship to US addresses in 5&ndash;10 business days &mdash;
+              shipping included, and the PDF comes with them. Something wrong
+              with an order? Email{" "}
               <a
                 href="mailto:contact@yorksims.com"
                 className="text-white/50 hover:text-[#e63946] transition-colors"
