@@ -87,6 +87,12 @@ export async function POST(request: Request) {
       source: payload.source,
     });
 
+    // The database being down shouldn't lose the lead: if York got the
+    // email, the visitor's submission still counts.
+    if (await notifyLead(payload.email, payload.source, payload.metadata, false, false)) {
+      return NextResponse.json({ ok: true, saved: false });
+    }
+
     return NextResponse.json(
       { ok: false, error: "Could not save lead" },
       { status: 500 }
