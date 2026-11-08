@@ -14,7 +14,9 @@ export default function PasscodeGate({ children }: { children: React.ReactNode }
   useEffect(() => {
     if (typeof window !== "undefined") {
       const stored = sessionStorage.getItem("site-unlocked");
-      if (stored === "true") setUnlocked(true);
+      // Buyers land on /success straight from Stripe; never gate them.
+      const isPublicPath = /^\/(success|privacy|terms)(\/|$)/.test(window.location.pathname);
+      if (stored === "true" || isPublicPath) setUnlocked(true);
     }
   }, []);
 

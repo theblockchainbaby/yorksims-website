@@ -58,8 +58,8 @@ export const BOOKS: Book[] = [
     description:
       "Why every athlete's career ends, and how to build an identity that doesn't. For every athlete, every sport, every level.",
     cover: "/books/built-for-more.webp",
-    priceCents: 1900,
-    printPriceCents: 3000,
+    priceCents: 1299,
+    printPriceCents: 2399,
     printFormat: "paperback",
     fileName: "built-for-more.pdf",
   },
@@ -70,8 +70,8 @@ export const BOOKS: Book[] = [
     description:
       "Resilience and self-reliance when no one hands you the answers. Twelve rules for building something from nothing.",
     cover: "/books/figure-it-out.webp",
-    priceCents: 1900,
-    printPriceCents: 3000,
+    priceCents: 1299,
+    printPriceCents: 2399,
     printFormat: "paperback",
     fileName: "figure-it-out.pdf",
   },
@@ -81,7 +81,7 @@ export function getBookById(id: string): Book | undefined {
   return BOOKS.find((b) => b.id === id);
 }
 
-/** "$24" — whole dollars, no trailing zeros (all books are whole-dollar). */
+/** "$50" for whole dollars, "$12.99" otherwise. */
 export function formatBookPrice(priceCents: number): string {
-  return `$${Math.round(priceCents / 100)}`;
+  return priceCents % 100 === 0 ? `$${priceCents / 100}` : `$${(priceCents / 100).toFixed(2)}`;
 }
