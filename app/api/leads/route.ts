@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getServerSupabase } from "../../lib/supabase-server";
+import { notifyLead } from "../../lib/notify-lead";
 
 /**
  * Lead capture endpoint.
@@ -76,6 +77,7 @@ export async function POST(request: Request) {
     // Unique violation on (lower(email), source) — treat as success so users
     // don't see an error for submitting the same email twice.
     if (error.code === "23505") {
+      await notifyLead(payload.email, payload.source, payload.metadata, true);
       return NextResponse.json({ ok: true, duplicate: true });
     }
 
@@ -91,5 +93,6 @@ export async function POST(request: Request) {
     );
   }
 
+  await notifyLead(payload.email, payload.source, payload.metadata);
   return NextResponse.json({ ok: true });
 }
