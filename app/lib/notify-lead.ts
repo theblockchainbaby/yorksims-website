@@ -22,7 +22,7 @@ export async function notifyLead(
   saved = true
 ): Promise<boolean> {
   const user = process.env.LEAD_NOTIFY_USER;
-  const pass = process.env.LEAD_NOTIFY_PASS;
+  const pass = process.env.LEAD_NOTIFY_PASS?.replace(/\s+/g, "");
   const to = process.env.LEAD_NOTIFY_TO || user;
   if (!user || !pass || !to) return false;
 
