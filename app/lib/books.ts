@@ -45,7 +45,7 @@ export const BOOKS: Book[] = [
     tagline: "The memoir.",
     description:
       "The full story of building, losing, and rebuilding when no one was watching. From D1 basketball to pro ball in Ankara to founding companies across 10 industries.",
-    cover: "/books/york.webp",
+    cover: "/img/cover-york.webp",
     priceCents: 5000,
     printPriceCents: 10000,
     printFormat: "hardcover",
@@ -57,7 +57,7 @@ export const BOOKS: Book[] = [
     tagline: "Life after the game.",
     description:
       "Why every athlete's career ends, and how to build an identity that doesn't. For every athlete, every sport, every level.",
-    cover: "/books/built-for-more.webp",
+    cover: "/img/book-built-for-more.webp",
     priceCents: 1299,
     printPriceCents: 2399,
     printFormat: "paperback",
@@ -69,7 +69,7 @@ export const BOOKS: Book[] = [
     tagline: "Twelve rules for building from nothing.",
     description:
       "Resilience and self-reliance when no one hands you the answers. Twelve rules for building something from nothing.",
-    cover: "/books/figure-it-out.webp",
+    cover: "/img/book-figure-it-out.webp",
     priceCents: 1299,
     printPriceCents: 2399,
     printFormat: "paperback",
