@@ -100,26 +100,18 @@ h3 { font-size: 24px; letter-spacing: .01em; }
 .preview-note { font-size: 14px; color: var(--accent); margin: 8px 0 0; min-height: 1.4em; }
 .read-link { display: inline-block; margin-top: 18px; font-family: var(--font-display); font-weight: 800; text-transform: uppercase; letter-spacing: .1em; font-size: 17px; color: var(--accent); }
 
-/* ---------- Cover object ---------- */
-.cover {
-  position: relative; background: var(--ink);
-  box-shadow: 0 1px 0 rgba(29,26,23,.25), 0 14px 26px -12px rgba(29,26,23,.45);
-}
-.cover::before { /* one honest spine edge */
-  content: ""; position: absolute; inset: 0 auto 0 0; width: 5%;
-  background: linear-gradient(90deg, rgba(0,0,0,.28), rgba(255,255,255,.08) 40%, rgba(0,0,0,0));
-  pointer-events: none;
-}
-.cover img { width: 100%; aspect-ratio: 2 / 3; object-fit: cover; }
+/* ---------- Cover object: rendered paperback photo (see mockup/render_book.py) ---------- */
+.cover { position: relative; background: transparent; box-shadow: none; }
+.cover img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: contain; }
 .cover.york img { aspect-ratio: 6.375 / 9.25; }
 
 /* ---------- Home: lead story ---------- */
-.lead { display: grid; grid-template-columns: minmax(0, 8fr) 1px minmax(0, 3.4fr); gap: 0 clamp(20px, 3vw, 44px); padding: 34px 0 48px; }
+.lead { display: grid; grid-template-columns: minmax(0, 8fr) 1px minmax(0, 3.4fr); gap: 0 clamp(20px, 3vw, 44px); padding: 34px var(--gutter) 48px; }
 .lead > .vr { background: var(--ink); }
 .lead-main { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(20px, 3vw, 40px); align-items: start; }
 .lead-main .cover { margin-top: -58px; z-index: 1; } /* crosses the masthead rule on purpose */
 .also h2 { font-size: 22px; letter-spacing: .1em; border-bottom: 1px solid var(--ink); padding-bottom: 8px; margin-bottom: 4px; }
-.also-item { display: grid; grid-template-columns: 84px 1fr; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--rule); text-decoration: none; }
+.also-item { display: grid; grid-template-columns: 112px 1fr; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--rule); text-decoration: none; }
 .also-item:hover h3 { color: var(--accent); }
 .also-item h3 { font-size: 22px; line-height: 1; }
 .also-item p { margin: 6px 0 0; font-size: 15.5px; line-height: 1.4; color: var(--ink-soft); }
@@ -390,4 +382,52 @@ body { line-height: 1.6; }
   .mast-nav, .compact-buy, .end-block, .progress, .colophon, .skip, .title-block .note { display: none !important; }
   body { background: #fff; }
   @page { margin: 0.8in; }
+}
+
+/* Open section rhythm: whitespace replaces decorative newspaper rules. */
+.dateline, .nameplate, .mast-nav,
+.buy, .also, .also h2, .also-item,
+.record, .excerpt .label, .facts,
+.section-h, .shelf-head, .shelf-item,
+.title-block, .compact-buy, .colophon,
+.guide, .years, .papers, .after-excerpt,
+.contents li, .contents .part {
+  border: 0;
+}
+.rule, .rule-thick { border: 0; }
+.masthead { padding-top: 28px; }
+.mast-nav { padding: 16px 0; }
+.lead { padding-top: 40px; padding-bottom: 64px; }
+.also { margin-top: 64px; padding-top: 0; }
+.buy { padding-top: 0; }
+.buy-row:last-child { border-bottom: 0; }
+.record { padding-top: 64px; padding-bottom: 64px; }
+.excerpt { padding-top: 72px; padding-bottom: 72px; }
+.guide { padding-top: 0; }
+.coaches { padding-top: 56px; padding-bottom: 80px; }
+.colophon { background: var(--paper-deep); padding-top: 36px; padding-bottom: 36px; }
+.section-h { padding-top: 0; }
+.shelf-item { padding-top: 48px; padding-bottom: 48px; }
+.contents .part { padding-top: 24px; padding-bottom: 10px; }
+@media (max-width: 640px) {
+  .masthead { padding-top: 20px; }
+  .lead { padding-top: 24px; padding-bottom: 48px; }
+  .also { margin-top: 44px; }
+  .record, .excerpt { padding-top: 48px; padding-bottom: 48px; }
+  .coaches { padding-top: 40px; padding-bottom: 56px; }
+}
+
+/* Introduce the book before presenting purchase options. */
+.intro-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 18px 24px; margin-top: 28px; }
+.intro-actions .read-link { margin-top: 0; }
+.book-outcomes, .purchase-section { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px 64px; padding-top: 48px; padding-bottom: 64px; }
+.book-outcomes p, .purchase-section p { max-width: 44ch; }
+.book-outcomes .label { margin-top: 0; color: var(--muted); }
+.book-outcomes .takeaways { margin-top: 0; padding-left: 22px; }
+.book-outcomes li { margin-bottom: 18px; }
+.purchase-section { scroll-margin-top: 32px; }
+.purchase-section .buy { margin-top: 0; width: 100%; max-width: none; }
+.more-books .also { margin-top: 16px; }
+@media (max-width: 760px) {
+  .book-outcomes, .purchase-section { grid-template-columns: 1fr; gap: 20px; padding-top: 32px; padding-bottom: 40px; }
 }
