@@ -79,7 +79,7 @@ export async function POST(req: NextRequest) {
       }),
       metadata: { bookId: book.id, format },
       success_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${baseUrl}/books.html`,
+      cancel_url: `${baseUrl}/books`,
     });
 
     return NextResponse.json({ url: session.url });
