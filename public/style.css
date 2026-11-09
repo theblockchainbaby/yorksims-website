@@ -504,3 +504,7 @@ body { line-height: 1.6; }
 .record-action { margin: 0; }
 .record-action img { width: 100%; height: auto; display: block; }
 .record-action .caption { margin-top: 12px; }
+/* On phones the covers sit in a single column; center them. */
+@media (max-width: 760px) {
+  .lead-main .cover, .shelf-item .cover, .shelf-item.featured .cover { margin-left: auto; margin-right: auto; }
+}
