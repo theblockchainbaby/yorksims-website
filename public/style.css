@@ -490,3 +490,17 @@ body { line-height: 1.6; }
 @media (max-width: 560px) {
   .about .prose p:first-of-type::first-letter { font-size: 3.4em; }
 }
+
+/* Career photographs retain their original portrait and team-photo framing. */
+.playing-photos { display: grid; grid-template-columns: minmax(0, 1fr); gap: 30px; align-items: start; }
+.playing-photos figure { margin: 0; }
+.playing-action { width: 100%; }
+.playing-photos img { width: 100%; height: auto; }
+.playing-photos .caption { text-align: left; }
+
+.playing-high-school { width: min(100%, 260px); justify-self: center; }
+
+/* Rupp Arena action photo in the home archive column. */
+.record-action { margin: 0; }
+.record-action img { width: 100%; height: auto; display: block; }
+.record-action .caption { margin-top: 12px; }
