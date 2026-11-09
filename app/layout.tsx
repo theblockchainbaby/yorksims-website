@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "./components/SmoothScroll";
-import PasscodeGate from "./components/PasscodeGate";
 import { AuthProvider } from "./components/AuthProvider";
 import {
   JsonLd,
@@ -93,9 +92,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} ${bricolage.variable} antialiased bg-[#0c0a0a] text-white`}>
         <JsonLd data={[organizationSchema(), websiteSchema(), personSchema()]} />
         <AuthProvider>
-          <PasscodeGate>
-            <SmoothScroll>{children}</SmoothScroll>
-          </PasscodeGate>
+          <SmoothScroll>{children}</SmoothScroll>
         </AuthProvider>
       </body>
     </html>

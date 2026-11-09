@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 // The public site is the static author site in /public (index.html, about.html,
 // books ...). Clean URLs: /about serves about.html. Next.js still serves /api/*, /success, /privacy and /terms.
 // Old app pages redirect to the matching new page; their code is left in place.
-const PAGES = ["about", "books", "built-for-more", "figure-it-out", "read", "teams", "orders", "york"];
+const PAGES = ["about", "books", "built-for-more", "figure-it-out", "read", "teams", "orders", "york", "success", "privacy", "terms"];
 const OLD_TO_HOME = [
   "blog", "certificate", "community", "dashboard", "hub", "learn", "login",
   "portals", "pricing", "signup", "tools", "verticals",

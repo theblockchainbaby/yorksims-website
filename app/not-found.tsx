@@ -1,52 +1,52 @@
-import Link from "next/link";
 import type { Metadata } from "next";
-import { pageMetadata } from "./lib/seo";
 
 export const metadata: Metadata = {
-  ...pageMetadata({
-    title: "Page Not Found — YorkSims.com",
-    description:
-      "This page doesn't exist. Head back to the build blog, the verticals, or the platform hub.",
-    path: "/404",
-    noIndex: true,
-  }),
+  title: "Page not found | York Sims, Jr.",
+  robots: { index: false, follow: false },
 };
 
+// The public site is static HTML in /public and shares its stylesheet here so
+// a wrong URL lands on a page that looks like the rest of the site.
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-[#0c0a0a] text-white flex flex-col items-center justify-center px-6">
-      <div className="text-center max-w-md">
-        <p className="text-[11px] uppercase tracking-[0.3em] text-[#e63946] font-semibold mb-6">
-          404 — Not Found
-        </p>
-        <h1 className="text-5xl md:text-6xl font-display font-extrabold tracking-tight leading-[0.95] mb-6">
-          Wrong turn.
-        </h1>
-        <p className="text-sm text-white/30 mb-10 leading-relaxed">
-          The page you&rsquo;re looking for doesn&rsquo;t exist. Maybe a typo, maybe
-          it moved. Either way, let&rsquo;s get you back on track.
-        </p>
-        <div className="flex flex-wrap gap-4 justify-center">
-          <Link
-            href="/"
-            className="inline-block text-sm font-bold uppercase tracking-widest px-8 py-4 bg-[#e63946] text-white rounded-full hover:bg-[#ff4d5a] transition-all"
-          >
-            Home
-          </Link>
-          <Link
-            href="/blog"
-            className="inline-block text-sm font-bold uppercase tracking-widest px-8 py-4 border border-white/10 text-white/70 rounded-full hover:border-white/30 hover:text-white transition-all"
-          >
-            Build Blog
-          </Link>
-          <Link
-            href="/verticals"
-            className="inline-block text-sm font-bold uppercase tracking-widest px-8 py-4 border border-white/10 text-white/70 rounded-full hover:border-white/30 hover:text-white transition-all"
-          >
-            Verticals
-          </Link>
-        </div>
+    <>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet" />
+      <link rel="stylesheet" href="/style.css" />
+      <style>{`html, body { background: #f3efe6 !important; color: #1d1a17 !important; }`}</style>
+      <div style={{ minHeight: "100vh", background: "#f3efe6", color: "#1d1a17" }}>
+        <header className="masthead compact wrap">
+          <a className="nameplate" href="/">
+            York Sims<span className="jr">Jr.</span>
+          </a>
+          <nav className="mast-nav" aria-label="Main">
+            <a href="/books">Books</a>
+            <a href="/read">Read the intro</a>
+            <a href="/about">About</a>
+            <a href="/teams">Teams</a>
+          </nav>
+        </header>
+        <main id="main">
+          <div className="reader">
+            <div className="title-block">
+              <h1>That page isn&apos;t here</h1>
+              <p className="note">The link may be old, or the address has a typo.</p>
+            </div>
+            <div className="prose">
+              <p>
+                <a className="btn primary" href="/">
+                  Go to the home page
+                </a>
+              </p>
+              <p>
+                Or jump to <a href="/books">the books</a>, <a href="/read">the free introduction</a> or{" "}
+                <a href="/about">about York</a>.
+              </p>
+            </div>
+          </div>
+        </main>
       </div>
-    </div>
+    </>
   );
 }
