@@ -75,7 +75,7 @@ function SuccessContent() {
                 ' Your copy is printed on demand and ships to the address you gave at checkout — allow 5–10 business days.'}
               {order?.fileReady
                 ? ` ${order?.format === 'print' ? 'The PDF is included — download it now while you wait.' : 'Hit the button below to download your PDF.'} Save this page’s link — it keeps working if you need the file again.`
-                : ' The PDF download is being finalized — email contact@yorksims.com with your receipt and you’ll get it directly.'}
+                : ' The PDF download is being finalized — email york@yorksims.com with your receipt and you’ll get it directly.'}
             </p>
             {order?.fileReady ? (
               <a
@@ -86,7 +86,7 @@ function SuccessContent() {
               </a>
             ) : (
               <a
-                href="mailto:contact@yorksims.com"
+                href="mailto:york@yorksims.com"
                 className="inline-block text-sm font-bold uppercase tracking-widest px-10 py-4 bg-[#e63946] text-white rounded-full hover:bg-[#ff4d5a] transition-all"
               >
                 Email for your PDF
@@ -108,7 +108,7 @@ function SuccessContent() {
             </h1>
             <p className="text-white/40 text-sm leading-relaxed mb-10">
               Payment confirmed. If you were expecting a download and don&apos;t
-              see it, email contact@yorksims.com with your receipt.
+              see it, email york@yorksims.com with your receipt.
             </p>
             <Link
               href="/hub"

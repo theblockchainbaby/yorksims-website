@@ -82,7 +82,7 @@ export async function GET(req: NextRequest) {
       {
         error:
           'Your purchase is confirmed, but the download is temporarily unavailable. ' +
-          'Email contact@yorksims.com with your receipt and you will get the PDF directly.',
+          'Email york@yorksims.com with your receipt and you will get the PDF directly.',
       },
       { status: 503 }
     );

@@ -466,3 +466,27 @@ body { line-height: 1.6; }
 .record-headshot .caption { margin-top: 12px; text-align: center; }
 @media (max-width: 600px) { .record-headshot { margin-top: -12px; } }
 
+
+/* ---------- Mobile pass (Nov 8) ---------- */
+/* Section rules like .book and .about zeroed the side padding that .wrap sets.
+   On narrow screens that put text against the glass. Restore it everywhere. */
+.wrap.wrap { padding-left: var(--gutter); padding-right: var(--gutter); }
+/* Tap targets: 44px for the menu, 40px+ for text links and compact buttons. */
+.mast-nav { padding: 2px 0; }
+.mast-nav a { padding: 10px 2px; }
+.read-link { padding: 6px 0; }
+.compact-buy .btn { padding: 11px 14px; }
+.colophon .fine a { display: inline-block; padding: 6px 0; }
+/* Small type: nothing under 14px, footer links at 16px. */
+.colophon .fine, .colophon .fine a { font-size: 16px; }
+.colophon p.fine:last-child { font-size: 14px; }
+.box th { font-size: 13px; }
+.contents .part { font-size: 14px; }
+.pull cite { font-size: 15px; }
+.paper-src { font-size: 13px; }
+.paper-go { font-size: 15px; }
+/* The roster headshot source is 143px wide; keep it near that so it stays sharp. */
+.record-headshot img { width: 140px; }
+@media (max-width: 560px) {
+  .about .prose p:first-of-type::first-letter { font-size: 3.4em; }
+}

@@ -69,10 +69,10 @@ export default function PrivacyPage() {
             <P>
               Contact:{" "}
               <a
-                href="mailto:contact@yorksims.com"
+                href="mailto:york@yorksims.com"
                 className="text-[#e63946] hover:text-white transition-colors"
               >
-                contact@yorksims.com
+                york@yorksims.com
               </a>
               .
             </P>
@@ -169,10 +169,10 @@ export default function PrivacyPage() {
             <P>
               Email{" "}
               <a
-                href="mailto:contact@yorksims.com"
+                href="mailto:york@yorksims.com"
                 className="text-[#e63946] hover:text-white transition-colors"
               >
-                contact@yorksims.com
+                york@yorksims.com
               </a>{" "}
               and we&rsquo;ll handle it. If you&rsquo;re in the EU/UK, the
               same rights apply under GDPR; we&rsquo;ll respond within the
@@ -207,10 +207,10 @@ export default function PrivacyPage() {
               knowingly collect personal information from children under 13.
               If you believe a child has provided us with information, email{" "}
               <a
-                href="mailto:contact@yorksims.com"
+                href="mailto:york@yorksims.com"
                 className="text-[#e63946] hover:text-white transition-colors"
               >
-                contact@yorksims.com
+                york@yorksims.com
               </a>{" "}
               and we&rsquo;ll delete it.
             </P>
@@ -229,10 +229,10 @@ export default function PrivacyPage() {
             <P>
               Questions, requests, complaints — email{" "}
               <a
-                href="mailto:contact@yorksims.com"
+                href="mailto:york@yorksims.com"
                 className="text-[#e63946] hover:text-white transition-colors"
               >
-                contact@yorksims.com
+                york@yorksims.com
               </a>
               . The legal entity is Caipher AI LLC, a Wyoming limited
               liability company.

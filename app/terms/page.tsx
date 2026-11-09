@@ -73,10 +73,10 @@ export default function TermsPage() {
               YorkSims.com is operated by <strong>Caipher AI LLC</strong>, a
               Wyoming limited liability company. Contact:{" "}
               <a
-                href="mailto:contact@yorksims.com"
+                href="mailto:york@yorksims.com"
                 className="text-[#e63946] hover:text-white transition-colors"
               >
-                contact@yorksims.com
+                york@yorksims.com
               </a>
               .
             </P>
@@ -128,7 +128,7 @@ export default function TermsPage() {
                 "PDF delivery is digital: your download is available on the confirmation screen immediately after payment. Keep that page's link — it keeps working if you need the file again.",
                 "Printed copies are printed on demand and shipped to the address you provide at checkout. Shipping is included in the price, U.S. addresses only. Allow 5–10 business days for printing and delivery. Every printed order includes the PDF.",
                 "There is no recurring billing. Buying a book charges you exactly once.",
-                "If your file is corrupted, won't download, you were charged more than once, or a printed copy arrives damaged or misprinted, email contact@yorksims.com and we'll replace it, fix it, or refund you. No questions, no friction.",
+                "If your file is corrupted, won't download, you were charged more than once, or a printed copy arrives damaged or misprinted, email york@yorksims.com and we'll replace it, fix it, or refund you. No questions, no friction.",
                 "Book PDFs are licensed for your personal use — don't redistribute, share, or resell them (see Intellectual property below).",
               ]}
             />
@@ -252,10 +252,10 @@ export default function TermsPage() {
             <P>
               Before filing a formal dispute, you agree to email{" "}
               <a
-                href="mailto:contact@yorksims.com"
+                href="mailto:york@yorksims.com"
                 className="text-[#e63946] hover:text-white transition-colors"
               >
-                contact@yorksims.com
+                york@yorksims.com
               </a>{" "}
               and give us 30 days to resolve it informally.
             </P>
@@ -274,10 +274,10 @@ export default function TermsPage() {
             <P>
               Questions about these Terms — email{" "}
               <a
-                href="mailto:contact@yorksims.com"
+                href="mailto:york@yorksims.com"
                 className="text-[#e63946] hover:text-white transition-colors"
               >
-                contact@yorksims.com
+                york@yorksims.com
               </a>
               . Legal entity: Caipher AI LLC, a Wyoming limited liability
               company.
