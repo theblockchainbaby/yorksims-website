@@ -418,7 +418,7 @@ body { line-height: 1.6; }
 }
 
 /* Introduce the book before presenting purchase options. */
-.intro-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 18px 24px; margin-top: 28px; }
+.intro-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
 .intro-actions .read-link { margin-top: 0; }
 .book-outcomes, .purchase-section { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px 64px; padding-top: 48px; padding-bottom: 64px; }
 .book-outcomes p, .purchase-section p { max-width: 44ch; }
@@ -431,3 +431,38 @@ body { line-height: 1.6; }
 @media (max-width: 760px) {
   .book-outcomes, .purchase-section { grid-template-columns: 1fr; gap: 20px; padding-top: 32px; padding-bottom: 40px; }
 }
+
+/* A composed basketball archive: story, featured yearbook, supporting record. */
+.record-story .record-grid {
+  grid-template-columns: minmax(0, 3fr) minmax(0, 4fr) minmax(0, 3fr);
+  gap: clamp(24px, 3vw, 44px);
+  align-items: start;
+}
+.record-story .record-copy { grid-column: auto; }
+.yearbook-feature { margin: 0; }
+.yearbook-link { display: block; background: #fff; box-shadow: 0 8px 24px rgba(29,26,23,.12); }
+.yearbook-link img { width: 100%; height: auto; }
+.yearbook-feature .caption { margin-top: 14px; }
+.yearbook-feature .caption strong { font-style: normal; font-weight: 600; color: var(--ink); }
+.record-support { display: grid; gap: 64px; }
+.record-support .caption { margin-top: 12px; }
+.record-support .clip-link:hover .clipping { transform: none; box-shadow: none; }
+.record-story .archive-more { margin-top: 28px; }
+@media (max-width: 980px) {
+  .record-story .record-grid { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); }
+  .record-story .record-copy { grid-column: 1 / -1; }
+  .record-story .record-copy p { max-width: 64ch; }
+  .record-story .box { max-width: 360px; }
+}
+@media (max-width: 600px) {
+  .record-story .record-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .record-story .record-copy { grid-column: auto; }
+  .record-support { gap: 48px; }
+}
+
+/* Roster portrait with the same caption treatment as the archive images. */
+.record-headshot { display: block; margin: -24px 0 0; }
+.record-headshot img { width: 180px; max-width: 100%; height: auto; margin-inline: auto; }
+.record-headshot .caption { margin-top: 12px; text-align: center; }
+@media (max-width: 600px) { .record-headshot { margin-top: -12px; } }
+
