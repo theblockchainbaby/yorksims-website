@@ -55,7 +55,7 @@
         ? '<p><a class="btn primary" href="' + dl + '">Download the PDF</a></p>'
         : "<p>The PDF isn't attached to this order yet. Email " + mail + " with your receipt and I'll send it to you directly.</p>";
       if (o.format === "print") {
-        show("Order received", "<p>Thanks for buying the paperback of " + title + ". It's printed on demand and ships to the address you gave at checkout, with tracking sent to your email when it goes out.</p><p>The PDF is included, so you can start reading now.</p>" + btn + "<p class=\"small\">Keep this page's link. The download keeps working if you need the file again. Questions: " + mail + ".</p>");
+        show("Order received", "<p>Thanks for buying the paperback of " + title + ". It ships from Folsom, California, to the address you gave at checkout within two business days, with a tracking number sent to your email when it goes out.</p><p>The PDF is included, so you can start reading now.</p>" + btn + "<p class=\"small\">Keep this page's link. The download keeps working if you need the file again. Questions: " + mail + ".</p>");
       } else {
         show("Your book is ready", "<p>Thanks for buying the PDF of " + title + ".</p>" + btn + "<p class=\"small\">Keep this page's link. The download keeps working if you need the file again. If anything goes wrong, email " + mail + " with your receipt.</p>");
       }

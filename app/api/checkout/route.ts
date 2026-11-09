@@ -65,7 +65,7 @@ export async function POST(req: NextRequest) {
             product_data: {
               name: `${book.title} (${formatLabel})`,
               description: isPrint
-                ? `${book.description} Printed on demand and shipped. Includes the PDF right away.`
+                ? `${book.description} Ships from Folsom, California within two business days. Includes the PDF right away.`
                 : book.description,
               images: [`${baseUrl}${book.cover}`],
             },
