@@ -4,7 +4,7 @@ import { createReadStream } from 'fs';
 import { stat } from 'fs/promises';
 import { Readable } from 'stream';
 import path from 'path';
-import { getBookById, type Book } from '@/app/lib/books';
+import { getBookById, isPreorder, type Book } from '@/app/lib/books';
 
 function getStripe() {
   return new Stripe(process.env.STRIPE_SECRET_KEY!);
@@ -57,14 +57,20 @@ export async function GET(req: NextRequest) {
   const book = bookId ? getBookById(bookId) : undefined;
   const paid = session.payment_status === 'paid';
 
+  // A preordered book stays locked until its release moment, then the same
+  // link starts working. `locked` lets the success page say when.
+  const locked = book ? isPreorder(book) : false;
+
   if (checkOnly) {
-    const fileReady = paid && book ? (await pdfSize(book)) !== null : false;
+    const fileReady = paid && book && !locked ? (await pdfSize(book)) !== null : false;
     return NextResponse.json({
       paid,
       bookId: book?.id ?? null,
       title: book?.title ?? null,
       format: session.metadata?.format === 'print' ? 'print' : 'pdf',
       fileReady,
+      locked,
+      releaseLabel: locked ? book?.releaseLabel ?? null : null,
     });
   }
 
@@ -73,6 +79,15 @@ export async function GET(req: NextRequest) {
   }
   if (!book) {
     return NextResponse.json({ error: 'This purchase is not a book' }, { status: 400 });
+  }
+
+  if (locked) {
+    return NextResponse.json(
+      {
+        error: `Your preorder is confirmed. The download unlocks on ${book.releaseLabel ?? 'release day'}. This same link will work then.`,
+      },
+      { status: 403 }
+    );
   }
 
   const size = await pdfSize(book);

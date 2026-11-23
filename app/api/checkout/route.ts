@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
-import { getBookById } from '@/app/lib/books';
+import { getBookById, isPreorder } from '@/app/lib/books';
 
 function getStripe() {
   return new Stripe(process.env.STRIPE_SECRET_KEY!);
@@ -56,6 +56,18 @@ export async function POST(req: NextRequest) {
         : 'Paperback'
       : 'PDF';
 
+    // Preorder: the card is charged today, the book arrives on release day.
+    // The copy here is what the buyer sees on Stripe's page and receipt.
+    const preorder = isPreorder(book);
+    const day = book.releaseLabel ?? 'release day';
+    const description = preorder
+      ? isPrint
+        ? `Preorder. York signs your copy and ships it from Folsom, California on ${day}. The PDF unlocks the same day. You are charged today.`
+        : `Preorder. Your PDF download unlocks on ${day}. You are charged today.`
+      : isPrint
+        ? `${book.description} Ships from Folsom, California within two business days. Includes the PDF right away.`
+        : book.description;
+
     const session = await getStripe().checkout.sessions.create({
       mode: 'payment',
       line_items: [
@@ -63,10 +75,10 @@ export async function POST(req: NextRequest) {
           price_data: {
             currency: 'usd',
             product_data: {
-              name: `${book.title} (${formatLabel})`,
-              description: isPrint
-                ? `${book.description} Ships from Folsom, California within two business days. Includes the PDF right away.`
-                : book.description,
+              name: preorder
+                ? `${book.title} (${isPrint ? `Signed ${formatLabel.toLowerCase()}` : formatLabel} preorder)`
+                : `${book.title} (${formatLabel})`,
+              description,
               images: [`${baseUrl}${book.cover}`],
             },
             unit_amount: isPrint ? book.printPriceCents : book.priceCents,
@@ -77,7 +89,7 @@ export async function POST(req: NextRequest) {
       ...(isPrint && {
         shipping_address_collection: { allowed_countries: ['US'] },
       }),
-      metadata: { bookId: book.id, format },
+      metadata: { bookId: book.id, format, ...(preorder && { preorder: 'true' }) },
       success_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${baseUrl}/books`,
     });

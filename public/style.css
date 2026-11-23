@@ -97,6 +97,9 @@ h3 { font-size: 24px; letter-spacing: .01em; }
 .btn.ghost { background: transparent; color: var(--ink); }
 .btn.ghost:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 .ship { font-size: 14px; color: var(--muted); margin: 10px 0 0; }
+[hidden] { display: none !important; }
+.launch { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; letter-spacing: .06em; font-size: 18px; color: var(--accent); margin: 0 0 4px; }
+.launch-form { margin-top: 22px; padding-top: 14px; border-top: 1px solid var(--rule); }
 .preview-note { font-size: 14px; color: var(--accent); margin: 8px 0 0; min-height: 1.4em; }
 .read-link { display: inline-block; margin-top: 18px; font-family: var(--font-display); font-weight: 800; text-transform: uppercase; letter-spacing: .1em; font-size: 17px; color: var(--accent); }
 

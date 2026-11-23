@@ -36,6 +36,19 @@ export interface Book {
   fileName: string;
   /** ISBN or year published, if known. Optional display metadata. */
   year?: number;
+  /**
+   * Release moment (ISO). Before it the book sells as a preorder: checkout
+   * says so, the PDF download stays locked, and paperbacks ship on the day.
+   * After it everything behaves like a normal sale with no code change.
+   */
+  releaseAt?: string;
+  /** How the release day reads in copy, e.g. "December 11". */
+  releaseLabel?: string;
+}
+
+/** True while a book with a release date has not come out yet. */
+export function isPreorder(book: Book, now: number = Date.now()): boolean {
+  return Boolean(book.releaseAt) && now < Date.parse(book.releaseAt!);
 }
 
 export const BOOKS: Book[] = [
@@ -62,6 +75,9 @@ export const BOOKS: Book[] = [
     printPriceCents: 2399,
     printFormat: "paperback",
     fileName: "built-for-more.pdf",
+    // Launch day, midnight Pacific. Preorders until then (signed paperbacks).
+    releaseAt: "2026-12-11T08:00:00Z",
+    releaseLabel: "December 11",
   },
   {
     id: "figure-it-out",

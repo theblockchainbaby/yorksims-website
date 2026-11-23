@@ -66,6 +66,15 @@ document.addEventListener("submit", async (e) => {
   }
 });
 
+// Preorder copy (data-pre holds the release time) gives way to the regular
+// buy copy right after it (data-post) the moment the book is out.
+document.querySelectorAll("[data-pre]").forEach((el) => {
+  if (Date.now() < Date.parse(el.dataset.pre)) return;
+  el.hidden = true;
+  const next = el.nextElementSibling;
+  if (next && next.hasAttribute("data-post")) next.hidden = false;
+});
+
 const bar = document.querySelector(".progress");
 const chapter = document.querySelector(".chapter");
 if (bar && chapter) {

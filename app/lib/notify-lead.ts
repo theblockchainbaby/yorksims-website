@@ -12,6 +12,7 @@ const LABELS: Record<string, string> = {
   "team-order": "Team order request",
   "memoir-list": "Memoir list signup",
   "intro-pdf": "Intro PDF download",
+  "bfm-launch": "Built For More launch list signup",
 };
 
 export async function notifyLead(
