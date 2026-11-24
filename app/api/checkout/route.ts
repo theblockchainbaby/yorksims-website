@@ -44,6 +44,9 @@ export async function POST(req: NextRequest) {
     if (!book) {
       return NextResponse.json({ error: 'Unknown book' }, { status: 400 });
     }
+    if (book.comingSoon) {
+      return NextResponse.json({ error: 'This book is not on sale yet' }, { status: 400 });
+    }
     if (format !== 'pdf' && format !== 'print') {
       return NextResponse.json({ error: 'Unknown format' }, { status: 400 });
     }

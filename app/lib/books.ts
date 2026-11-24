@@ -44,6 +44,8 @@ export interface Book {
   releaseAt?: string;
   /** How the release day reads in copy, e.g. "December 11". */
   releaseLabel?: string;
+  /** Not on sale yet: the site shows "Coming soon" and checkout refuses it. */
+  comingSoon?: boolean;
 }
 
 /** True while a book with a release date has not come out yet. */
@@ -90,6 +92,7 @@ export const BOOKS: Book[] = [
     printPriceCents: 2399,
     printFormat: "paperback",
     fileName: "figure-it-out.pdf",
+    comingSoon: true,
   },
 ];
 

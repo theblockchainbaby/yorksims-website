@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" href="/icon.png" type="image/png"><link rel="apple-touch-icon" href="/apple-icon.png">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Book", "name": "Figure It Out", "description": "Twelve rules for building something from nothing.", "author": {"@type": "Person", "name": "York Sims, Jr.", "url": "https://yorksims.com/about"}, "image": "https://yorksims.com/img/cover-figure-it-out.webp", "inLanguage": "en", "url": "https://yorksims.com/figure-it-out", "workExample": [{"@type": "Book", "bookFormat": "https://schema.org/EBook", "offers": {"@type": "Offer", "price": "12.99", "priceCurrency": "USD", "availability": "https://schema.org/InStock"}}, {"@type": "Book", "bookFormat": "https://schema.org/Paperback", "offers": {"@type": "Offer", "price": "23.99", "priceCurrency": "USD", "availability": "https://schema.org/InStock"}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Book", "name": "Figure It Out", "description": "Twelve rules for building something from nothing.", "author": {"@type": "Person", "name": "York Sims, Jr.", "url": "https://yorksims.com/about"}, "image": "https://yorksims.com/img/cover-figure-it-out.webp", "inLanguage": "en", "url": "https://yorksims.com/figure-it-out", "workExample": [{"@type": "Book", "bookFormat": "https://schema.org/EBook", "offers": {"@type": "Offer", "price": "12.99", "priceCurrency": "USD", "availability": "https://schema.org/OutOfStock"}}, {"@type": "Book", "bookFormat": "https://schema.org/Paperback", "offers": {"@type": "Offer", "price": "23.99", "priceCurrency": "USD", "availability": "https://schema.org/OutOfStock"}}]}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -31,10 +31,14 @@
   <aside class="book-side">
     <div class="cover "><img src="img/book-figure-it-out.webp" alt="Front cover of Figure It Out by York Sims, Jr." width="1500" height="2000" fetchpriority="high"><img class="back" src="img/book-figure-it-out-back.webp" alt="" aria-hidden="true" width="1500" height="2000" loading="lazy"></div>
     <div class="buy">
-  <div class="buy-row"><span class="fmt">Paperback<small>Ships in the US</small></span><span class="price">$23.99</span><button class="btn primary" data-buy="figure-it-out" data-format="print">Buy paperback</button></div>
-  <div class="buy-row"><span class="fmt">PDF<small>Download right after checkout</small></span><span class="price">$12.99</span><button class="btn" data-buy="figure-it-out" data-format="pdf">Buy PDF</button></div>
-  <p class="ship">Paperbacks ship to US addresses. Shipping is added at checkout, before you pay. <a href="/orders">Orders and delivery</a>.</p>
-  <p class="preview-note" aria-live="polite"></p>
+  <p class="launch">Coming soon</p>
+  <p class="ship" style="margin-top:6px">Figure It Out isn't on sale yet. Leave your email and I'll tell you the day it is.</p>
+  <form class="form" data-lead="fio-list" data-done="You're on the list. One email when Figure It Out is ready.">
+    <label for="fe">Email</label><input id="fe" type="email" autocomplete="email" required>
+    <input class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" name="company">
+    <button class="btn" type="submit">Tell me when it's out</button>
+    <p class="preview-note" aria-live="polite"></p>
+  </form>
 </div>
     <a class="read-link" href="#opening">Read the opening free</a>
   </aside>
@@ -61,12 +65,7 @@
       <div class="after-excerpt">
         <h2 class="section-h">Keep reading</h2>
         <p>That's the first rule. There are eleven more.</p>
-        <div class="buy">
-  <div class="buy-row"><span class="fmt">Paperback<small>Ships in the US</small></span><span class="price">$23.99</span><button class="btn primary" data-buy="figure-it-out" data-format="print">Buy paperback</button></div>
-  <div class="buy-row"><span class="fmt">PDF<small>Download right after checkout</small></span><span class="price">$12.99</span><button class="btn" data-buy="figure-it-out" data-format="pdf">Buy PDF</button></div>
-  <p class="ship">Paperbacks ship to US addresses. Shipping is added at checkout, before you pay. <a href="/orders">Orders and delivery</a>.</p>
-  <p class="preview-note" aria-live="polite"></p>
-</div>
+        <div class="buy"><p class="launch">Coming soon</p><p class="ship" style="margin-top:6px">Get on the list above and I'll email you the day it's out.</p></div>
       </div>
     </section>
   </article>
