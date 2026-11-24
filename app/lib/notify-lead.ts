@@ -13,6 +13,7 @@ const LABELS: Record<string, string> = {
   "memoir-list": "Memoir list signup",
   "intro-pdf": "Intro PDF download",
   "bfm-launch": "Built For More launch list signup",
+  "bfm-award": "Built For More Award application",
 };
 
 export async function notifyLead(
