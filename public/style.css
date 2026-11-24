@@ -567,3 +567,11 @@ body { line-height: 1.6; }
   .book3d, .book-cover, .opening-cue { animation: none; }
   .book3d { transform: none; } .book-cover { transform: rotateY(-180deg); } .opening-cue { opacity: 1; }
 }
+
+/* ---------- Trailer ---------- */
+.trailer { margin-top: 48px; margin-bottom: 8px; }
+.trailer-h { font-size: clamp(28px, 4vw, 44px); margin-bottom: 16px; }
+.trailer video { display: block; width: 100%; max-width: 960px; height: auto; aspect-ratio: 16 / 9; background: #000; border: 1px solid var(--ink); }
+.trailer .caption { max-width: 960px; }
+.trailer-book { margin: 28px 0 8px; }
+.trailer-book video { max-width: none; }
